@@ -1,434 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>winter_x64 — Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <style>
-      body {
-        font-family: "Inter", sans-serif;
-      }
-
-      /* Card hover animation */
-      .card {
-        @apply transition-all transform hover:scale-[1.02] hover:shadow-xl cursor-pointer;
-      }
-
-      /* Bento Layout adjustments */
-      .bento-section {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 1.5rem;
-      }
-
-      /* Smooth hover effect for scaling and shadow */
-      .card:hover {
-        transform: scale(1.06);
-        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-      }
-
-      @keyframes fadeIn {
-        0% {
-          opacity: 0;
-          transform: translateY(-10px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes typing {
-        from {
-          width: 0;
-        }
-        to {
-          width: 40%;
-        }
-      }
-
-      @keyframes blinkCaret {
-        0%,
-        100% {
-          border-color: transparent;
-        }
-        50% {
-          border-color: #6366f1; /* Indigo-500 */
-        }
-      }
-
-      .fade-in {
-        animation: fadeIn 1.2s ease-out forwards;
-      }
-
-      .typewriter {
-        display: inline-block;
-        overflow: hidden;
-        white-space: nowrap;
-        border-right: 3px solid #6366f1;
-        width: 0;
-        animation: typing 4s steps(30, end) forwards,
-          blinkCaret 0.75s step-end infinite;
-      }
-    </style>
-  </head>
-  <body
-    class="bg-gradient-to-br from-indigo-100 to-pink-100 min-h-screen text-gray-800"
-  >
-    <div class="max-w-7xl mx-auto px-6 py-12">
-      <!-- Header -->
-      <header class="mb-20 text-center space-y-6">
-        <!-- Main Heading with fade-in -->
-        <h1
-          class="text-5xl sm:text-6xl font-extrabold tracking-tight text-gray-900 leading-tight fade-in"
-        >
-          Hi, I'm <span class="text-indigo-600">winter_x64</span>
-        </h1>
-
-        <!-- Smooth Typewriter -->
-        <p class="text-xl text-gray-700 font-mono">
-          <span class="typewriter"
-            >Hardware Hacker | Full-Stack Dev | Builder</span
-          >
-        </p>
-      </header>
-
-      <!-- Bento Grid Layout -->
-      <section class="bento-section">
-        <!-- About -->
-        <div
-          class="card bg-gradient-to-br from-indigo-50 via-white to-indigo-100 rounded-2xl p-6 shadow-lg border border-indigo-200 lg:col-span-2 max-h-[400px] overflow-y-auto space-y-4"
-        >
-          <h2
-            class="text-3xl font-bold text-indigo-700 flex items-center gap-2"
-          >
-            <i data-lucide="user" class="w-6 h-6 text-indigo-600"></i>
-            About Me
-          </h2>
-          <p class="text-gray-800 text-base leading-relaxed tracking-wide">
-            I'm a <span class="font-semibold text-indigo-600">builder</span> who
-            blends hardware and software — from real-time IoT systems to
-            creative frontend experiences. I love turning raw ideas into
-            impactful tools that solve real problems.
-          </p>
-        </div>
-
-        <!-- Contact -->
-        <div
-          class="card bg-gradient-to-br from-yellow-50 to-orange-100 rounded-2xl p-6 shadow-lg border border-yellow-200 space-y-3"
-        >
-          <h2
-            class="text-3xl font-bold text-yellow-800 flex items-center gap-2"
-          >
-            <i data-lucide="contact" class="w-6 h-6 text-yellow-700"></i>
-            Contact
-          </h2>
-
-          <div class="flex items-center gap-2 text-gray-800">
-            <i data-lucide="mail" class="w-5 h-5 text-yellow-700"></i>
-            <a
-              href="mailto:winterx64.work@email.com"
-              target="_blank"
-              class="underline hover:text-yellow-900 transition-all"
-            >
-              winterx64.work@gmail.com
-            </a>
-          </div>
-
-          <div class="flex items-center gap-2 text-gray-800">
-            <i data-lucide="github" class="w-5 h-5 text-gray-900"></i>
-            <a
-              href="https://github.com/winter-x64"
-              target="_blank"
-              class="underline hover:text-black transition-all"
-            >
-              @winter-x64
-            </a>
-          </div>
-
-          <div class="flex items-center gap-2 text-gray-800">
-            <i data-lucide="linkedin" class="w-5 h-5 text-blue-700"></i>
-            <a
-              href="https://www.linkedin.com/in/winter-x64/"
-              target="_blank"
-              class="underline hover:text-blue-900 transition-all"
-            >
-              winter-x64
-            </a>
-          </div>
-
-          <div class="flex items-center gap-2 text-gray-800">
-            <i data-lucide="instagram" class="w-5 h-5 text-pink-500"></i>
-            <a
-              href="https://www.instagram.com/winter_x64.dev/"
-              target="_blank"
-              class="underline hover:text-pink-600 transition-all"
-            >
-              @winter_x64.dev
-            </a>
-          </div>
-        </div>
-
-        <!-- Hobbies -->
-        <div
-          class="card bg-gradient-to-br from-purple-50 to-pink-100 rounded-2xl p-6 shadow-lg border border-purple-100 hover:shadow-xl transition-shadow duration-300"
-        >
-          <h2
-            class="text-3xl font-bold mb-4 text-purple-800 flex items-center gap-2"
-          >
-            <i data-lucide="sparkles" class="w-6 h-6 text-pink-600"></i>
-            Hobbies
-          </h2>
-          <div class="space-y-2 text-lg text-gray-700">
-            <p>📸 Photography</p>
-            <p>🎮 Gaming</p>
-            <p>🤖 Robotics</p>
-            <p>✏️ Drawing</p>
-          </div>
-        </div>
-
-        <!-- Motto -->
-        <div
-          class="card bg-white rounded-2xl p-6 shadow-md lg:col-span-2 max-h-[400px] overflow-y-auto space-y-6"
-        >
-          <div class="flex items-center mb-4 gap-2">
-            <i data-lucide="quote" class="w-6 h-6 text-indigo-600"></i>
-            <h2 class="text-2xl font-semibold text-gray-800">Motto</h2>
-          </div>
-          <p
-            class="text-gray-700 italic text-lg pl-2 border-l-4 border-indigo-300 leading-relaxed"
-          >
-            "Build what matters. Break things to learn. Ship relentlessly."
-          </p>
-        </div>
-
-        <!-- Certifications -->
-        <div
-          class="card bg-gradient-to-br from-blue-50 to-purple-100 rounded-2xl p-6 shadow-lg border border-blue-100 hover:shadow-xl transition-shadow duration-300"
-        >
-          <h2
-            class="text-3xl font-bold mb-4 text-blue-800 flex items-center gap-2"
-          >
-            <i data-lucide="award" class="w-6 h-6 text-purple-600"></i>
-            Certifications
-          </h2>
-          <ul class="space-y-3 text-gray-700 text-lg">
-            <li class="flex items-center gap-3">
-              <img
-                src="https://hrcdn.net/fcore/assets/work/header/hackerrank_logo-21e2867566.svg"
-                alt="HackerRank Logo"
-                class="w-6 h-6"
-              />
-              <a
-                href="https://www.linkedin.com/posts/winter-x64_python-pythonprogramming-learningeveryday-activity-7050057083852914688-YtIi?utm_source=share&utm_medium=member_desktop&rcm=ACoAADYnbG0BgkEI744L9XpGxqB3vNgnVtPqCak"
-                target="_blank"
-                class="underline text-black-700 hover:text-blue-900"
-              >
-                HackerRank Certified Python Developer
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Education -->
-        <div
-          class="card bg-gradient-to-br from-blue-100 to-blue-300 rounded-2xl p-6 shadow-lg"
-        >
-          <h2
-            class="text-3xl font-bold text-yellow-900 mb-4 flex items-center gap-2"
-          >
-            <i data-lucide="book" class="w-6 h-6 text-yellow-800"></i>
-            Education
-          </h2>
-
-          <div class="text-gray-700 space-y-4">
-            <div class="flex items-start gap-4">
-              <span class="text-sm font-semibold text-indigo-800">
-                <strong>2020-2024</strong>
-              </span>
-              <p class="text-sm text-gray-700">
-                B.Tech passout in Electronics and Communication, KTU University
-              </p>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>winter_x64 Portfolio</title>
+        <link rel="stylesheet" href="style.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="navbar-content">
+                <a href="#home" class="nav-logo">AK</a>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="nav-links">
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#experience" class="nav-link">Experience</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#certifications" class="nav-link"
+                        >Certifications</a
+                    >
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
             </div>
-          </div>
+        </nav>
+        <div class="container">
+            <div class="landing" id="home">
+                <div class="name-wrapper">
+                    <span class="small-text">I'm</span>
+                    <span class="large-text">winter_x64</span>
+                </div>
+                <div class="motto">
+                    Build what matters. Break things to learn. Ship
+                    relentlessly.
+                </div>
+                <div class="scroll-indicator">
+                    <span class="scroll-text">Scroll Down</span>
+                    <div class="scroll-arrow">↓</div>
+                </div>
+            </div>
+
+            <div class="about-section" id="about">
+                <h2 class="section-title animated-text">About Me</h2>
+                <p class="about-text">
+                    I'm a builder who blends hardware and software — from
+                    real-time IoT systems to creative frontend experiences. I
+                    love turning raw ideas into impactful tools that solve real
+                    problems.
+                </p>
+            </div>
+
+            <div class="skills-section" id="skills">
+                <h2 class="section-title">Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Languages</h3>
+                        <p>Python, C/C++</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Backend</h3>
+                        <p>Flask, Django, FastAPI</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Frontend</h3>
+                        <p>HTML, CSS, JS</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Databases</h3>
+                        <p>Firebase, Supabase</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Hardware</h3>
+                        <p>Embedded Systems, IoT</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Platforms</h3>
+                        <p>ESP, Arduino, Raspberry Pi</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Systems</h3>
+                        <p>Linux, SQL</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Game Dev</h3>
+                        <p>Unity, Godot</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-section" id="experience">
+                <h2 class="section-title">Experience</h2>
+                <div class="experience-wrapper">
+                    <!-- Added wrapper for consistent alignment -->
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h3>Community Management Intern</h3>
+                                <h4>TinkerHub</h4>
+                                <p class="duration">
+                                    Apr 2023 - Present · 2 yrs 1 mo
+                                </p>
+                                <p class="work-type">Hybrid</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h3>SaaS Developer</h3>
+                                <h4>Chird.co</h4>
+                                <p class="duration">sept 2024 - Feb 2025</p>
+                                <p class="work-type">Hybrid</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h3>Technical Lead</h3>
+                                <h4>Tinkerhub AISAT</h4>
+                                <p class="duration">Feb 2022 - Feb 2023</p>
+                                <p class="work-type">Hybrid</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="projects-section" id="projects">
+                <h2 class="section-title">Projects That Matter</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3>Visual Studio Code Theme Extension</h3>
+                        <p class="project-description">
+                            WinterIsCoding is a sleek and modern theme pack
+                            designed for developers who want a smooth, clean
+                            coding experience. It comes in four distinct dark
+                            mode variations to suit your coding flow and style
+                            preferences. with 400+ installs on the VS Code
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Visual Studio Code</span>
+                            <span class="tech-tag">JSON</span>
+                        </div>
+                        <a
+                            href="https://marketplace.visualstudio.com/items?itemName=winterx64.winteriscoding"
+                            target="_blank"
+                            class="view-project"
+                            >View Project</a
+                        >
+                    </div>
+
+                    <div class="project-card">
+                        <h3>IR CubeSat Spectrometer</h3>
+                        <p class="project-description">
+                            A DIY spectrometer for analyzing materials in space
+                            debris using Raspberry Pi and Arducam.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Raspberry Pi 4</span>
+                            <span class="tech-tag">Arducam OB5647</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">Supabase</span>
+                        </div>
+                        <a href="#" target="_blank" class="view-project"
+                            >View Project</a
+                        >
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Waitlist Web App</h3>
+                        <p class="project-description">
+                            Customizable waitlist manager using Google Sheets as
+                            a backend database via Flask API.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">Google Sheets API</span>
+                            <span class="tech-tag">Google Drive API</span>
+                        </div>
+                        <a href="#" target="_blank" class="view-project"
+                            >View Project</a
+                        >
+                    </div>
+                </div>
+            </div>
+
+            <div class="certifications-section" id="certifications">
+                <h2 class="section-title">Certifications</h2>
+                <div class="certificates-grid">
+                    <div class="certificate-card">
+                        <h3>HackerRank Certified Python Developer</h3>
+                        <div class="certificate-frame">
+                            <iframe
+                                src="https://www.hackerrank.com/certificates/iframe/95ce4a1561ff"
+                                frameborder="0"
+                                scrolling="no"
+                                title="HackerRank Python Certificate"
+                            >
+                            </iframe>
+                        </div>
+                        <a
+                            href="https://www.hackerrank.com/certificates/95ce4a1561ff"
+                            target="_blank"
+                            class="view-certificate"
+                        >
+                            View Certificate
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-section" id="contact">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-wrapper">
+                    <div class="contact-grid">
+                        <a
+                            href="mailto:winterx64.work@gmail.com"
+                            class="contact-item"
+                        >
+                            <i class="contact-icon fa-solid fa-envelope"></i>
+                            <span class="contact-text"
+                                >winterx64.work@gmail.com</span
+                            >
+                        </a>
+
+                        <a
+                            href="https://www.linkedin.com/in/winter-x64/"
+                            target="_blank"
+                            class="contact-item"
+                        >
+                            <i class="contact-icon fa-brands fa-linkedin"></i>
+                            <span class="contact-text">@winter-x64</span>
+                        </a>
+                        <a
+                            href="https://github.com/winter-x64"
+                            target="_blank"
+                            class="contact-item"
+                        >
+                            <i class="contact-icon fa-brands fa-github"></i>
+                            <span class="contact-text">winter-x64</span>
+                        </a>
+                        <a
+                            href="https://instagram.com/winter_x64.dev"
+                            target="_blank"
+                            class="contact-item"
+                        >
+                            <i class="contact-icon fa-brands fa-instagram"></i>
+                            <span class="contact-text">@winter_x64.dev</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <!-- Skills -->
-        <div
-          class="card bg-gradient-to-r from-green-100 via-lime-100 to-lime-50 rounded-2xl p-6 shadow-lg border border-green-200 min-h-[450px]"
-        >
-          <h2
-            class="text-3xl font-bold text-green-700 mb-6 flex items-center gap-2"
-          >
-            <i data-lucide="settings" class="w-6 h-6 text-green-600"></i>
-            Skills
-          </h2>
-
-          <ul class="space-y-4 text-gray-800 text-base">
-            <!-- Programming & Web Development -->
-            <li class="flex items-center gap-3">
-              <i data-lucide="code" class="w-5 h-5 text-green-600"></i>
-              <span class="font-medium">Python, C/C++</span>
-            </li>
-
-            <!-- Frameworks & Backend -->
-            <li class="flex items-center gap-3">
-              <i data-lucide="server" class="w-5 h-5 text-green-600"></i>
-              <span class="font-medium">Flask, Django, FastAPI</span>
-            </li>
-
-            <!-- Web Technologies -->
-            <li class="flex items-center gap-3">
-              <i data-lucide="globe" class="w-5 h-5 text-green-600"></i>
-              <span class="font-medium">HTML, CSS, JS</span>
-            </li>
-
-            <!-- Cloud & Databases -->
-            <li class="flex items-center gap-3">
-              <i data-lucide="cloud" class="w-5 h-5 text-green-600"></i>
-              <span class="font-medium">Firebase, Supabase</span>
-            </li>
-
-            <!-- Embedded Systems & IoT -->
-            <li class="flex items-center gap-3">
-              <i data-lucide="activity" class="w-5 h-5 text-green-600"></i>
-              <span class="font-medium">Embedded Systems, IoT</span>
-            </li>
-
-            <!-- Hardware Platforms -->
-            <li class="flex items-center gap-3">
-              <i data-lucide="cpu" class="w-5 h-5 text-green-600"></i>
-              <span class="font-medium">ESP, Arduino, Raspberry Pi</span>
-            </li>
-
-            <!-- Linux -->
-            <li class="flex items-center gap-3">
-              <i data-lucide="terminal" class="w-5 h-5 text-green-600"></i>
-              <span class="font-medium">Linux, SQL</span>
-            </li>
-
-            <!-- Game Development -->
-            <li class="flex items-center gap-3">
-              <i data-lucide="gamepad" class="w-5 h-5 text-green-600"></i>
-              <span class="font-medium">Game Development (Unity, Godot)</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Timeline -->
-        <div
-          class="card bg-gradient-to-br from-pink-50 to-rose-100 rounded-2xl p-6 shadow-lg border border-pink-100 hover:shadow-xl transition-shadow duration-300 min-h-[450px]"
-        >
-          <h2
-            class="text-3xl font-semibold mb-5 text-pink-800 flex items-center gap-2"
-          >
-            <i data-lucide="calendar" class="w-6 h-6 text-pink-600"></i>
-            Timeline
-          </h2>
-          <ul class="space-y-4 text-gray-700 text-sm">
-            <li class="flex items-start gap-3">
-              <span class="text-pink-600 font-semibold">2025</span> IR CubeSat
-              Spectrometer Project
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-pink-600 font-semibold">2025</span> Speaker @
-              SCMS ASCENDO 7.0
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-pink-600 font-semibold">2024</span> NASA Space
-              Apps Challenge Participant
-            </li>
-          </ul>
-        </div>
-
-        <!-- Projects Section -->
-        <div
-          class="card bg-gradient-to-br from-white to-indigo-50 rounded-2xl p-6 shadow-xl lg:col-span-2 max-h-[400px] overflow-y-auto space-y-6 min-h-[450px]"
-        >
-          <h2
-            class="text-3xl font-bold text-indigo-700 mb-6 flex items-center gap-2"
-          >
-            <i data-lucide="briefcase" class="w-6 h-6 text-indigo-600"></i>
-            Projects That Matter
-          </h2>
-
-          <!-- Project Item -->
-          <div class="border-b border-gray-200 pb-6">
-            <h3 class="text-xl font-semibold text-indigo-800">
-              Visual Studio Code Theme Extension
-            </h3>
-            <p class="text-sm text-gray-700 mt-2">
-              WinterIsCoding is a sleek and modern theme pack designed for
-              developers who want a smooth, clean coding experience. It comes in
-              four distinct dark mode variations to suit your coding flow and
-              style preferences. with <b>400+ installs </b> on the VS Code
-            </p>
-            <p class="text-xs text-gray-500 mt-2">
-              <strong>Tech Stack:</strong> Visual Studio Code, JSON
-            </p>
-            <a
-              href="https://marketplace.visualstudio.com/items?itemName=winterx64.winteriscoding"
-              class="text-sm text-indigo-600 hover:text-indigo-800 underline mt-3 inline-block"
-              target="_blank"
-            >
-              View Project
-            </a>
-          </div>
-
-          <!-- Project Item -->
-          <div class="border-b border-gray-200 pb-6">
-            <h3 class="text-xl font-semibold text-indigo-800">
-              IR CubeSat Spectrometer
-            </h3>
-            <p class="text-sm text-gray-700 mt-2">
-              A DIY spectrometer for analyzing materials in space debris using
-              Raspberry Pi and Arducam.
-            </p>
-            <p class="text-xs text-gray-500 mt-2">
-              <strong>Tech Stack:</strong> Raspberry Pi 4, Arducam OB5647,
-              Python, OpenCV, Flask, Supabase
-            </p>
-            <a
-              href="#"
-              class="text-sm text-indigo-600 hover:text-indigo-800 underline mt-3 inline-block"
-            >
-              View Project
-            </a>
-          </div>
-
-          <!-- Project Item -->
-          <div class="pb-6">
-            <h3 class="text-xl font-semibold text-indigo-800">
-              Waitlist Web App
-            </h3>
-            <p class="text-sm text-gray-700 mt-2">
-              Customizable waitlist manager using Google Sheets as a backend
-              database via Flask API.
-            </p>
-            <p class="text-xs text-gray-500 mt-2">
-              <strong>Tech Stack:</strong> Flask, Google Sheets API, Google
-              Drive API
-            </p>
-            <a
-              href="#"
-              class="text-sm text-indigo-600 hover:text-indigo-800 underline mt-3 inline-block"
-            >
-              View Project
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Footer -->
-      <footer class="mt-20 text-center text-gray-500 text-sm">
-        © 2025 winter_x64 - vHackBotz.
-      </footer>
-    </div>
-    <script>
-      lucide.createIcons();
-    </script>
-  </body>
+        <script src="script.js"></script>
+    </body>
 </html>
