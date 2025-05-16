@@ -4,3 +4,4 @@
 this is my portfolio
 
 https://winter-x64.github.io/my-portfolio/
+https://winter-x64.github.io
