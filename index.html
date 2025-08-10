@@ -1,279 +1,765 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>winter_x64 Portfolio</title>
-        <link rel="stylesheet" href="style.css" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>winter_x64 — Full Stack Developer & Hardware Enthusiast</title>
+
+        <!-- SEO + Social -->
+        <meta
+            name="description"
+            content="Akhil B Xavier (winter_x64) — Full Stack Developer & Hardware Enthusiast. IoT, web, and embedded systems."
+        />
+        <meta property="og:title" content="winter_x64 Portfolio" />
+        <meta
+            property="og:description"
+            content="Full Stack Developer & Hardware Enthusiast"
+        />
+        <meta name="theme-color" content="#05060a" />
+
+        <!-- Fonts & Icons -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Share+Tech+Mono&display=swap"
             rel="stylesheet"
         />
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         />
+
+        <!-- Tailwind CDN (for quick setup) -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            // Tailwind theme extension
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            neon: "#00f7ff",
+                            neon2: "#a855f7",
+                        },
+                        fontFamily: {
+                            monoHead: [
+                                "Share Tech Mono",
+                                "ui-monospace",
+                                "SFMono-Regular",
+                            ],
+                            body: ["Inter", "system-ui", "Segoe UI"],
+                        },
+                    },
+                },
+            };
+        </script>
+
+        <style>
+            /* small custom styles */
+            body {
+                background: radial-gradient(
+                        ellipse at top right,
+                        rgba(168, 85, 247, 0.06),
+                        transparent 20%
+                    ),
+                    #05060a;
+            }
+            .glass {
+                backdrop-filter: blur(6px) saturate(120%);
+                background: linear-gradient(
+                    180deg,
+                    rgba(255, 255, 255, 0.02),
+                    rgba(255, 255, 255, 0.01)
+                );
+            }
+            .neon-text {
+                text-shadow: 0 0 8px rgba(0, 247, 255, 0.12),
+                    0 0 20px rgba(168, 85, 247, 0.04);
+            }
+            /* particle placeholder container */
+            #particles {
+                position: absolute;
+                inset: 0;
+                z-index: 0;
+                pointer-events: none;
+            }
+            .card-tilt {
+                transform-style: preserve-3d;
+                transition: transform 0.25s ease;
+            }
+            .card-tilt:hover {
+                transform: translateY(-6px) rotateX(2deg) rotateY(-2deg);
+            }
+            .loader {
+                display: none;
+            }
+        </style>
     </head>
-    <body>
-        <nav class="navbar">
-            <div class="navbar-content">
-                <a href="#home" class="nav-logo">AK</a>
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <div class="nav-links">
-                    <a href="#about" class="nav-link">About</a>
-                    <a href="#skills" class="nav-link">Skills</a>
-                    <a href="#experience" class="nav-link">Experience</a>
-                    <a href="#projects" class="nav-link">Projects</a>
-                    <a href="#certifications" class="nav-link"
-                        >Certifications</a
+    <body
+        class="text-gray-200 antialiased relative min-h-screen selection:bg-neon/30 selection:text-white"
+    >
+        <!-- Particles / subtle background lines (SVG) -->
+        <div id="particles" aria-hidden="true">
+            <svg
+                class="w-full h-full"
+                preserveAspectRatio="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <defs>
+                    <linearGradient id="g" x1="0" x2="1">
+                        <stop
+                            offset="0%"
+                            stop-color="#00f7ff"
+                            stop-opacity="0.04"
+                        />
+                        <stop
+                            offset="100%"
+                            stop-color="#a855f7"
+                            stop-opacity="0.02"
+                        />
+                    </linearGradient>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#g)" />
+            </svg>
+        </div>
+
+        <!-- NAVBAR -->
+        <header class="fixed top-4 left-0 right-0 z-30 px-4 md:px-10">
+            <nav
+                class="max-w-6xl mx-auto flex items-center justify-between p-2 rounded-2xl glass shadow-lg"
+            >
+                <a href="#home" class="flex items-center gap-3">
+                    <div
+                        class="w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-neon to-neon2 text-black font-bold"
                     >
-                    <a href="#contact" class="nav-link">Contact</a>
-                </div>
-            </div>
-        </nav>
-        <div class="container">
-            <div class="landing" id="home">
-                <div class="name-wrapper">
-                    <span class="small-text">I'm</span>
-                    <span class="large-text">winter_x64</span>
-                </div>
-                <div class="motto">
-                    Build what matters. Break things to learn. Ship
-                    relentlessly.
-                </div>
-                <div class="scroll-indicator">
-                    <span class="scroll-text">Scroll Down</span>
-                    <div class="scroll-arrow">↓</div>
-                </div>
-            </div>
-
-            <div class="about-section" id="about">
-                <h2 class="section-title animated-text">About Me</h2>
-                <p class="about-text">
-                    I'm Akhil B Xavier AKA winter_x64, a maker who blends
-                    hardware and software — from real-time IoT systems to
-                    creative frontend experiences. I love turning raw ideas into
-                    impactful tools that solve real problems.
-                </p>
-            </div>
-
-            <div class="skills-section" id="skills">
-                <h2 class="section-title">Skills</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>Languages</h3>
-                        <p>Python, C/C++</p>
+                        AK
                     </div>
-                    <div class="skill-category">
-                        <h3>Backend</h3>
-                        <p>Flask, Django, FastAPI</p>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Frontend</h3>
-                        <p>HTML, CSS, JS</p>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Databases</h3>
-                        <p>Firebase, Supabase</p>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Hardware</h3>
-                        <p>Embedded Systems, IoT</p>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Platforms</h3>
-                        <p>ESP, Arduino, Raspberry Pi</p>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Systems</h3>
-                        <p>Linux, SQL</p>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Game Dev</h3>
-                        <p>Unity, Godot</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="experience-section" id="experience">
-                <h2 class="section-title">Experience</h2>
-                <div class="experience-wrapper">
-                    <!-- Added wrapper for consistent alignment -->
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <h3>Community Management Intern</h3>
-                                <h4>TinkerHub</h4>
-                                <p class="duration">
-                                    Apr 2023 - May 2025 · 2 yrs 2 mo
-                                </p>
-                                <p class="work-type">Hybrid</p>
-                            </div>
-                        </div>
-
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <h3>Software Engineer Intern</h3>
-                                <h4>Chirad Technologies LLP</h4>
-                                <p class="duration">sept 2024 - Feb 2025</p>
-                                <p class="work-type">Hybrid</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <h3>Technical Lead</h3>
-                                <h4>Tinkerhub AISAT</h4>
-                                <p class="duration">Feb 2022 - Feb 2023</p>
-                                <p class="work-type">Hybrid</p>
-                            </div>
+                    <div class="hidden sm:block">
+                        <div class="text-sm font-semibold">winter_x64</div>
+                        <div class="text-[11px] text-gray-400">
+                            maker · dev · hardware
                         </div>
                     </div>
+                </a>
+
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="#about" class="nav-link text-sm hover:underline"
+                        >About</a
+                    >
+                    <a href="#projects" class="nav-link text-sm hover:underline"
+                        >Projects</a
+                    >
+                    <a
+                        href="#experience"
+                        class="nav-link text-sm hover:underline"
+                        >Experience</a
+                    >
+                    <a href="#contact" class="nav-link text-sm hover:underline"
+                        >Contact</a
+                    >
                 </div>
-            </div>
-            <div class="projects-section" id="projects">
-                <h2 class="section-title">Projects That Matter</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <h3>Visual Studio Code Theme Extension</h3>
-                        <p class="project-description">
-                            WinterIsCoding is a sleek and modern theme pack
-                            designed for developers who want a smooth, clean
-                            coding experience. It comes in four distinct dark
-                            mode variations to suit your coding flow and style
-                            preferences. with 400+ installs on the VS Code
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Visual Studio Code</span>
-                            <span class="tech-tag">JSON</span>
+
+                <div class="flex items-center gap-3">
+                    <a
+                        href="#"
+                        class="hidden sm:inline-block text-sm px-3 py-2 rounded-md border border-neon/20 hover:bg-neon/5"
+                        >Resume</a
+                    >
+                    <button
+                        id="themeToggle"
+                        class="w-10 h-10 rounded-md flex items-center justify-center bg-transparent hover:bg-white/3"
+                    >
+                        <i id="themeIcon" class="fa-solid fa-moon text-sm"></i>
+                    </button>
+
+                    <!-- mobile menu -->
+                    <button
+                        id="mobileBtn"
+                        class="md:hidden p-2 ml-2 rounded-md bg-white/3"
+                    >
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </nav>
+        </header>
+
+        <!-- HERO -->
+        <main class="pt-28">
+            <section
+                id="home"
+                class="max-w-6xl mx-auto px-6 md:px-8 lg:px-0 min-h-[70vh] flex items-center z-10 relative"
+            >
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <!-- left: intro -->
+                    <div class="space-y-6">
+                        <div class="text-sm text-neon2 font-medium">
+                            Hello, I'm
                         </div>
-                        <a
-                            href="https://marketplace.visualstudio.com/items?itemName=winterx64.winteriscoding"
-                            target="_blank"
-                            class="view-project"
+                        <h1
+                            class="text-4xl md:text-6xl font-extrabold leading-tight neon-text font-monoHead"
                         >
-                            View Project
-                        </a>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>DropaNote</h3>
-                        <div class="project-description">
-                            DropaNote is a lightweight feedback collection tool
-                            that allows users to create embeddable feedback
-                            forms instantly. Each form (called an "app") comes
-                            with a unique iframe code that can be shared or
-                            embedded into any website. Users can view all
-                            submitted messages in a clean, responsive dashboard
-                            and even update their app name on the go. Perfect
-                            for creators, developers, and teams who want a quick
-                            way to gather thoughts, suggestions, or reports
-                            without needing complex tools.
-                        </div>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Flask</span>
-                            <span class="tech-tag">Supabase</span>
-                            <span class="tech-tag">Tailwind CSS</span>
-                        </div>
-                        <a
-                            href="https://dropanote.onrender.com/"
-                            target="_blank"
-                            class="view-project"
-                        >
-                            View Project
-                        </a>
-                    </div>
-                    <div class="project-card">
-                        <h3>Payload for CubeSat</h3>
-                        <p class="project-description">
-                            A DIY spectrometer for analyzing materials in space
-                            debris using Raspberry Pi and Arducam.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Raspberry Pi 4</span>
-                            <span class="tech-tag">Arducam OB5647</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">OpenCV</span>
-                            <span class="tech-tag">Flask</span>
-                            <span class="tech-tag">Supabase</span>
-                        </div>
-                        <a href="#" target="_blank" class="view-project">
-                            View Project
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="certifications-section" id="certifications">
-                <h2 class="section-title">Certifications</h2>
-                <div class="certificates-grid">
-                    <div class="certificate-card">
-                        <h3>HackerRank Certified Python Developer</h3>
-                        <div class="certificate-frame">
-                            <iframe
-                                src="https://www.hackerrank.com/certificates/iframe/95ce4a1561ff"
-                                frameborder="0"
-                                scrolling="no"
-                                title="HackerRank Python Certificate"
+                            winter_x64
+                            <span
+                                class="block text-lg md:text-2xl font-bold text-gray-400 mt-2"
+                                >Akhil B Xavier</span
                             >
-                            </iframe>
+                        </h1>
+
+                        <div
+                            class="flex items-center gap-3 text-lg md:text-xl text-gray-300"
+                        >
+                            <div class="type-roles font-semibold">
+                                Full Stack Developer
+                            </div>
+                        </div>
+
+                        <p class="text-gray-400 max-w-xl">
+                            I design and build full-stack web apps and IoT
+                            systems — from experimental embedded builds to
+                            polished web products. I ship pragmatic solutions
+                            and love turning ideas into working prototypes.
+                        </p>
+
+                        <div class="flex items-center gap-4 mt-3">
+                            <a
+                                href="#projects"
+                                class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-neon to-neon2 text-black font-semibold shadow-lg"
+                                >View My Work
+                                <i class="fa-solid fa-arrow-right ml-2"></i
+                            ></a>
+                            <a
+                                href="/resume.pdf"
+                                class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/10 hover:bg-white/2"
+                                >Download Resume</a
+                            >
+                        </div>
+
+                        <div
+                            class="mt-6 flex items-center gap-4 text-sm text-gray-400"
+                        >
+                            <div class="flex items-center gap-2">
+                                <i class="fa-brands fa-github"></i>
+                                <a
+                                    class="underline"
+                                    href="https://github.com/winter-x64"
+                                    target="_blank"
+                                    >github.com/winter-x64</a
+                                >
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fa-brands fa-linkedin"></i>
+                                <a
+                                    class="underline"
+                                    href="https://linkedin.com/in/winter-x64"
+                                    target="_blank"
+                                    >linkedin</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- right: card / avatar -->
+                    <div class="relative">
+                        <div class="card-tilt p-6 rounded-2xl glass shadow-xl">
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="w-20 h-20 rounded-xl bg-gradient-to-br from-neon to-neon2 flex items-center justify-center text-black font-bold text-xl"
+                                >
+                                    AK
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold">
+                                        Akhil B Xavier
+                                    </h3>
+                                    <p class="text-xs text-gray-400">
+                                        Full Stack Dev · Embedded Systems
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 grid grid-cols-2 gap-3">
+                                <div class="p-3 rounded-md bg-white/3">
+                                    <div class="text-xs text-gray-300">
+                                        Experience
+                                    </div>
+                                    <div class="font-bold text-lg">3+ yrs</div>
+                                </div>
+                                <div class="p-3 rounded-md bg-white/3">
+                                    <div class="text-xs text-gray-300">
+                                        Projects
+                                    </div>
+                                    <div class="font-bold text-lg">12+</div>
+                                </div>
+                                <div class="p-3 rounded-md bg-white/3">
+                                    <div class="text-xs text-gray-300">
+                                        Certs
+                                    </div>
+                                    <div class="font-bold text-lg">4</div>
+                                </div>
+                                <div class="p-3 rounded-md bg-white/3">
+                                    <div class="text-xs text-gray-300">
+                                        Open Source
+                                    </div>
+                                    <div class="font-bold text-lg">6 repos</div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <div class="text-sm text-gray-300">
+                                    Quick Links
+                                </div>
+                                <div class="flex gap-3 mt-3">
+                                    <a
+                                        href="https://dropanote.onrender.com/"
+                                        target="_blank"
+                                        class="px-3 py-2 rounded-md bg-white/3"
+                                        >DropaNote</a
+                                    >
+                                    <a
+                                        href="https://marketplace.visualstudio.com/items?itemName=winterx64.winteriscoding"
+                                        target="_blank"
+                                        class="px-3 py-2 rounded-md bg-white/3"
+                                        >VSCode Theme</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="absolute -right-8 -bottom-8 w-40 h-40 rounded-full bg-gradient-to-br from-neon/30 to-neon2/20 blur-3xl"
+                        ></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ABOUT -->
+            <section id="about" class="max-w-6xl mx-auto px-6 md:px-8 py-12">
+                <div class="grid md:grid-cols-3 gap-8 items-center">
+                    <div class="md:col-span-1">
+                        <h2 class="text-2xl font-bold">About Me</h2>
+                        <p class="text-sm text-gray-400 mt-2">
+                            I build across the stack — from embedded firmware
+                            and electronics to web apps and developer tools. My
+                            background mixes community building, product
+                            development, and a love for fast prototypes.
+                        </p>
+
+                        <div class="mt-4 space-y-2">
+                            <div class="text-xs text-gray-400">Location</div>
+                            <div class="font-medium">Kochi, India</div>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-2">
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div class="p-4 rounded-xl glass">
+                                <h4 class="text-sm font-semibold">
+                                    What I enjoy
+                                </h4>
+                                <p class="text-xs text-gray-300 mt-2">
+                                    Tiny satellites, IoT sensors,
+                                    product-focused web apps, and developer
+                                    tooling.
+                                </p>
+                            </div>
+                            <div class="p-4 rounded-xl glass">
+                                <h4 class="text-sm font-semibold">
+                                    How I work
+                                </h4>
+                                <p class="text-xs text-gray-300 mt-2">
+                                    Iterative — build small prototypes, test
+                                    early, and ship. I prefer simple APIs and
+                                    clear UX.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROJECTS -->
+            <section id="projects" class="max-w-6xl mx-auto px-6 md:px-8 py-12">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold">Projects That Matter</h2>
+                    <div class="text-sm text-gray-400">Featured: DropaNote</div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- DropaNote -->
+                    <article class="p-6 rounded-2xl glass shadow-lg card-tilt">
+                        <div class="flex items-start justify-between gap-4">
+                            <div>
+                                <h3 class="font-semibold text-lg">DropaNote</h3>
+                                <p class="text-xs text-gray-400 mt-1">
+                                    Lightweight embeddable feedback collection
+                                    tool.
+                                </p>
+                            </div>
+                            <div class="text-sm text-gray-300">
+                                Flask · Supabase
+                            </div>
+                        </div>
+
+                        <p class="text-sm text-gray-300 mt-4">
+                            Create embeddable forms, view submissions on a
+                            responsive dashboard, and manage apps quickly. Built
+                            to be simple and privacy-friendly.
+                        </p>
+
+                        <div class="mt-4 flex gap-3">
+                            <a
+                                href="https://dropanote.onrender.com/"
+                                target="_blank"
+                                class="px-3 py-2 rounded-md bg-white/5 text-sm"
+                                >Live</a
+                            >
+                            <a
+                                href="https://github.com/winter-x64/dropanote"
+                                target="_blank"
+                                class="px-3 py-2 rounded-md bg-white/5 text-sm"
+                                >Source</a
+                            >
+                        </div>
+                    </article>
+
+                    <!-- VSCode Theme -->
+                    <article class="p-6 rounded-2xl glass shadow-lg card-tilt">
+                        <div class="flex items-start justify-between gap-4">
+                            <div>
+                                <h3 class="font-semibold text-lg">
+                                    WinterIsCoding — VSCode Theme
+                                </h3>
+                                <p class="text-xs text-gray-400 mt-1">
+                                    Modern dark theme with multiple variants.
+                                </p>
+                            </div>
+                            <div class="text-sm text-gray-300">
+                                JSON · Marketplace
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-300 mt-4">
+                            Theme focused on legibility and a calm color palette
+                            for long coding sessions.
+                        </p>
+                        <div class="mt-4 flex gap-3">
+                            <a
+                                href="https://marketplace.visualstudio.com/items?itemName=winterx64.winteriscoding"
+                                target="_blank"
+                                class="px-3 py-2 rounded-md bg-white/5 text-sm"
+                                >Marketplace</a
+                            >
+                            <a
+                                href="https://github.com/winter-x64/vscode-theme"
+                                target="_blank"
+                                class="px-3 py-2 rounded-md bg-white/5 text-sm"
+                                >Source</a
+                            >
+                        </div>
+                    </article>
+
+                    <!-- CubeSat payload -->
+                    <article class="p-6 rounded-2xl glass shadow-lg card-tilt">
+                        <div class="flex items-start justify-between gap-4">
+                            <div>
+                                <h3 class="font-semibold text-lg">
+                                    Payload for CubeSat
+                                </h3>
+                                <p class="text-xs text-gray-400 mt-1">
+                                    DIY spectrometer using Raspberry Pi +
+                                    Arducam.
+                                </p>
+                            </div>
+                            <div class="text-sm text-gray-300">
+                                Raspberry Pi · Python
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-300 mt-4">
+                            Proof-of-concept spectrometer for material analysis
+                            in low-orbit scenarios.
+                        </p>
+                        <div class="mt-4 flex gap-3">
+                            <a
+                                href="#"
+                                class="px-3 py-2 rounded-md bg-white/5 text-sm"
+                                >Details</a
+                            >
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- EXPERIENCE -->
+            <section
+                id="experience"
+                class="max-w-6xl mx-auto px-6 md:px-8 py-12"
+            >
+                <h2 class="text-2xl font-bold mb-6">Experience</h2>
+                <div class="space-y-4">
+                    <div class="p-4 rounded-xl glass">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-semibold">
+                                    Community Management Intern — TinkerHub
+                                </h4>
+                                <div class="text-xs text-gray-400">
+                                    Apr 2023 - Present · Hybrid
+                                </div>
+                            </div>
+                            <div class="text-sm text-gray-300">2 yrs</div>
+                        </div>
+                        <p class="text-sm text-gray-300 mt-2">
+                            Led community engagement, mentored students, and
+                            organized tech events.
+                        </p>
+                    </div>
+
+                    <div class="p-4 rounded-xl glass">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-semibold">
+                                    Software Engineer Intern — Chirad
+                                    Technologies LLP
+                                </h4>
+                                <div class="text-xs text-gray-400">
+                                    Sept 2024 - Feb 2025 · Hybrid
+                                </div>
+                            </div>
+                            <div class="text-sm text-gray-300">Web & IoT</div>
+                        </div>
+                        <p class="text-sm text-gray-300 mt-2">
+                            Built web apps, implemented IoT solutions for
+                            automation.
+                        </p>
+                    </div>
+
+                    <div class="p-4 rounded-xl glass">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-semibold">
+                                    Technical Lead — Tinkerhub AISAT
+                                </h4>
+                                <div class="text-xs text-gray-400">
+                                    Feb 2022 - Feb 2023
+                                </div>
+                            </div>
+                            <div class="text-sm text-gray-300">Leadership</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CERTIFICATIONS -->
+            <section
+                id="certifications"
+                class="max-w-6xl mx-auto px-6 md:px-8 py-12"
+            >
+                <h2 class="text-2xl font-bold mb-6">Certifications</h2>
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div
+                        class="p-4 rounded-xl glass flex items-center justify-between"
+                    >
+                        <div>
+                            <div class="font-semibold">
+                                HackerRank Certified Python Developer
+                            </div>
+                            <div class="text-xs text-gray-400 mt-1">
+                                Issued: May 2023
+                            </div>
                         </div>
                         <a
                             href="https://www.hackerrank.com/certificates/95ce4a1561ff"
                             target="_blank"
-                            class="view-certificate"
+                            class="px-3 py-2 rounded-md bg-white/5"
+                            >View</a
                         >
-                            View Certificate
-                        </a>
                     </div>
+                    <!-- add more cards as needed -->
                 </div>
-            </div>
+            </section>
 
-            <div class="contact-section" id="contact">
-                <h2 class="section-title">Get In Touch</h2>
-                <div class="contact-wrapper">
-                    <div class="contact-grid">
-                        <a
-                            href="mailto:winterx64.work@gmail.com"
-                            class="contact-item"
-                        >
-                            <i class="contact-icon fa-solid fa-envelope"></i>
-                            <span class="contact-text"
-                                >winterx64.work@gmail.com</span
+            <!-- CONTACT -->
+            <section id="contact" class="max-w-6xl mx-auto px-6 md:px-8 py-12">
+                <h2 class="text-2xl font-bold mb-6">Get In Touch</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="p-6 rounded-xl glass">
+                        <h4 class="font-semibold">Say hi</h4>
+                        <p class="text-sm text-gray-400 mt-2">
+                            Prefer email? Send me a message and I usually reply
+                            within a few days.
+                        </p>
+
+                        <div class="mt-4 flex flex-col gap-3">
+                            <a
+                                class="p-3 rounded-md bg-white/3 flex items-center gap-3"
+                                href="mailto:winterx64.work@gmail.com"
+                                ><i class="fa-solid fa-envelope"></i>
+                                winterx64.work@gmail.com</a
                             >
-                        </a>
-
-                        <a
-                            href="https://www.linkedin.com/in/winter-x64/"
-                            target="_blank"
-                            class="contact-item"
-                        >
-                            <i class="contact-icon fa-brands fa-linkedin"></i>
-                            <span class="contact-text">@winter-x64</span>
-                        </a>
-                        <a
-                            href="https://github.com/winter-x64"
-                            target="_blank"
-                            class="contact-item"
-                        >
-                            <i class="contact-icon fa-brands fa-github"></i>
-                            <span class="contact-text">winter-x64</span>
-                        </a>
-                        <a
-                            href="https://instagram.com/winter_x64.dev"
-                            target="_blank"
-                            class="contact-item"
-                        >
-                            <i class="contact-icon fa-brands fa-instagram"></i>
-                            <span class="contact-text">@winter_x64.dev</span>
-                        </a>
+                            <a
+                                class="p-3 rounded-md bg-white/3 flex items-center gap-3"
+                                href="https://github.com/winter-x64"
+                                target="_blank"
+                                ><i class="fa-brands fa-github"></i>
+                                @winter-x64</a
+                            >
+                            <a
+                                class="p-3 rounded-md bg-white/3 flex items-center gap-3"
+                                href="https://linkedin.com/in/winter-x64"
+                                target="_blank"
+                                ><i class="fa-brands fa-linkedin"></i>
+                                linkedin</a
+                            >
+                        </div>
                     </div>
+
+                    <form
+                        class="p-6 rounded-xl glass"
+                        action="https://formspree.io/f/your-form-id"
+                        method="POST"
+                    >
+                        <label class="block text-xs text-gray-300">Name</label>
+                        <input
+                            name="name"
+                            required
+                            class="w-full mt-2 p-3 rounded-md bg-transparent border border-white/6 text-sm"
+                        />
+
+                        <label class="block text-xs text-gray-300 mt-3"
+                            >Email</label
+                        >
+                        <input
+                            name="email"
+                            type="email"
+                            required
+                            class="w-full mt-2 p-3 rounded-md bg-transparent border border-white/6 text-sm"
+                        />
+
+                        <label class="block text-xs text-gray-300 mt-3"
+                            >Message</label
+                        >
+                        <textarea
+                            name="message"
+                            required
+                            rows="4"
+                            class="w-full mt-2 p-3 rounded-md bg-transparent border border-white/6 text-sm"
+                        ></textarea>
+
+                        <button
+                            type="submit"
+                            class="mt-4 px-4 py-2 rounded-md bg-gradient-to-r from-neon to-neon2 text-black font-semibold"
+                        >
+                            Send Message
+                        </button>
+                    </form>
                 </div>
+            </section>
+
+            <footer
+                class="max-w-6xl mx-auto px-6 md:px-8 py-8 text-center text-sm text-gray-500"
+            >
+                © <span id="year"></span> Akhil B Xavier (winter_x64). Built
+                with ❤️ and a bias for action.
+            </footer>
+        </main>
+
+        <!-- Mobile Sidebar (basic) -->
+        <div id="mobileMenu" class="fixed inset-0 z-40 bg-black/50 hidden">
+            <div
+                class="absolute right-0 top-0 w-64 h-full p-6 bg-[#07070b] glass"
+            >
+                <button id="closeMobile" class="mb-4 p-2 rounded-md bg-white/3">
+                    Close
+                </button>
+                <nav class="flex flex-col gap-3">
+                    <a href="#about" class="py-2">About</a>
+                    <a href="#projects" class="py-2">Projects</a>
+                    <a href="#experience" class="py-2">Experience</a>
+                    <a href="#contact" class="py-2">Contact</a>
+                </nav>
             </div>
         </div>
-        <script src="script.js"></script>
+
+        <!-- Scripts -->
+        <script>
+            // Year
+            document.getElementById("year").textContent =
+                new Date().getFullYear();
+
+            // Theme toggle
+            const themeToggle = document.getElementById("themeToggle");
+            const themeIcon = document.getElementById("themeIcon");
+            if (localStorage.getItem("theme") === "light")
+                document.documentElement.classList.remove("dark");
+            else document.documentElement.classList.add("dark");
+
+            function updateIcon() {
+                if (document.documentElement.classList.contains("dark"))
+                    themeIcon.className = "fa-solid fa-moon";
+                else themeIcon.className = "fa-solid fa-sun";
+            }
+            updateIcon();
+            themeToggle.addEventListener("click", () => {
+                document.documentElement.classList.toggle("dark");
+                const nowDark =
+                    document.documentElement.classList.contains("dark");
+                localStorage.setItem("theme", nowDark ? "dark" : "light");
+                updateIcon();
+            });
+
+            // Mobile menu
+            const mobileBtn = document.getElementById("mobileBtn");
+            const mobileMenu = document.getElementById("mobileMenu");
+            const closeMobile = document.getElementById("closeMobile");
+            mobileBtn.addEventListener("click", () =>
+                mobileMenu.classList.remove("hidden")
+            );
+            closeMobile.addEventListener("click", () =>
+                mobileMenu.classList.add("hidden")
+            );
+
+            // Rotating roles
+            const roles = [
+                "Full Stack Developer",
+                "Hardware Enthusiast",
+                "IoT Innovator",
+                "Open Source Contributor",
+            ];
+            let ri = 0;
+            const roleEl = document.querySelector(".type-roles");
+            setInterval(() => {
+                ri = (ri + 1) % roles.length;
+                roleEl.textContent = roles[ri];
+            }, 2500);
+
+            // Simple tilt effect for cards using mouse position
+            document.querySelectorAll(".card-tilt").forEach((card) => {
+                card.addEventListener("mousemove", (e) => {
+                    const r = card.getBoundingClientRect();
+                    const x = (e.clientX - r.left) / r.width - 0.5;
+                    const y = (e.clientY - r.top) / r.height - 0.5;
+                    card.style.transform = `perspective(900px) translateZ(0) rotateX(${
+                        -y * 6
+                    }deg) rotateY(${x * 6}deg)`;
+                });
+                card.addEventListener("mouseleave", () => {
+                    card.style.transform = "";
+                });
+            });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach((a) => {
+                a.addEventListener("click", function (e) {
+                    const t = document.querySelector(this.getAttribute("href"));
+                    if (t) {
+                        e.preventDefault();
+                        t.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start",
+                        });
+                        mobileMenu.classList.add("hidden");
+                    }
+                });
+            });
+        </script>
     </body>
 </html>
