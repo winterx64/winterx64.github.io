@@ -47,7 +47,7 @@
                                 "ui-monospace",
                                 "SFMono-Regular",
                             ],
-                            body: ["Inter", "system-ui", "Segoe UI"],
+                            body: ["Inter"],
                         },
                     },
                 },
@@ -55,27 +55,64 @@
         </script>
 
         <style>
-            /* small custom styles */
-            body {
+            /* Dark mode styles (default) */
+            .dark body {
                 background: radial-gradient(
                         ellipse at top right,
                         rgba(168, 85, 247, 0.06),
                         transparent 20%
                     ),
                     #05060a;
+                color: #e5e7eb;
             }
+
+            /* Light mode styles */
+            body {
+                background: radial-gradient(
+                        ellipse at top right,
+                        rgba(168, 85, 247, 0.1),
+                        transparent 20%
+                    ),
+                    #f8fafc;
+                color: #1f2937;
+                transition: background-color 0.3s ease, color 0.3s ease;
+            }
+
             .glass {
                 backdrop-filter: blur(6px) saturate(120%);
+                transition: background-color 0.3s ease;
+            }
+
+            .dark .glass {
                 background: linear-gradient(
                     180deg,
                     rgba(255, 255, 255, 0.02),
                     rgba(255, 255, 255, 0.01)
                 );
             }
+
+            .glass {
+                background: linear-gradient(
+                    180deg,
+                    rgba(255, 255, 255, 0.8),
+                    rgba(255, 255, 255, 0.6)
+                );
+            }
+
             .neon-text {
                 text-shadow: 0 0 8px rgba(0, 247, 255, 0.12),
                     0 0 20px rgba(168, 85, 247, 0.04);
             }
+
+            /* Light mode text colors */
+            .light-text {
+                color: #374151;
+            }
+
+            .dark .light-text {
+                color: #e5e7eb;
+            }
+
             /* particle placeholder container */
             #particles {
                 position: absolute;
@@ -96,7 +133,7 @@
         </style>
     </head>
     <body
-        class="text-gray-200 antialiased relative min-h-screen selection:bg-neon/30 selection:text-white"
+        class="antialiased relative min-h-screen selection:bg-neon/30 selection:text-white"
     >
         <!-- Particles / subtle background lines (SVG) -->
         <div id="particles" aria-hidden="true">
@@ -135,7 +172,9 @@
                         AK
                     </div>
                     <div class="hidden sm:block">
-                        <div class="text-sm font-semibold">winter_x64</div>
+                        <div class="text-sm font-semibold light-text">
+                            winter_x64
+                        </div>
                         <div class="text-[11px] text-gray-400">
                             maker · dev · hardware
                         </div>
@@ -143,18 +182,24 @@
                 </a>
 
                 <div class="hidden md:flex items-center gap-6">
-                    <a href="#about" class="nav-link text-sm hover:underline"
+                    <a
+                        href="#about"
+                        class="nav-link text-sm hover:underline light-text"
                         >About</a
                     >
-                    <a href="#projects" class="nav-link text-sm hover:underline"
+                    <a
+                        href="#projects"
+                        class="nav-link text-sm hover:underline light-text"
                         >Projects</a
                     >
                     <a
                         href="#experience"
-                        class="nav-link text-sm hover:underline"
+                        class="nav-link text-sm hover:underline light-text"
                         >Experience</a
                     >
-                    <a href="#contact" class="nav-link text-sm hover:underline"
+                    <a
+                        href="#contact"
+                        class="nav-link text-sm hover:underline light-text"
                         >Contact</a
                     >
                 </div>
@@ -162,14 +207,17 @@
                 <div class="flex items-center gap-3">
                     <a
                         href="#"
-                        class="hidden sm:inline-block text-sm px-3 py-2 rounded-md border border-neon/20 hover:bg-neon/5"
+                        class="hidden sm:inline-block text-sm px-3 py-2 rounded-md border border-neon/20 hover:bg-neon/5 light-text"
                         >Resume</a
                     >
                     <button
                         id="themeToggle"
                         class="w-10 h-10 rounded-md flex items-center justify-center bg-transparent hover:bg-white/3"
                     >
-                        <i id="themeIcon" class="fa-solid fa-moon text-sm"></i>
+                        <i
+                            id="themeIcon"
+                            class="fa-solid fa-moon text-sm light-text"
+                        ></i>
                     </button>
 
                     <!-- mobile menu -->
@@ -177,7 +225,7 @@
                         id="mobileBtn"
                         class="md:hidden p-2 ml-2 rounded-md bg-white/3"
                     >
-                        <i class="fa-solid fa-bars"></i>
+                        <i class="fa-solid fa-bars light-text"></i>
                     </button>
                 </div>
             </nav>
@@ -196,7 +244,7 @@
                             Hello, I'm
                         </div>
                         <h1
-                            class="text-4xl md:text-6xl font-extrabold leading-tight neon-text font-monoHead"
+                            class="text-4xl md:text-6xl font-extrabold leading-tight neon-text font-monoHead light-text"
                         >
                             winter_x64
                             <span
@@ -208,7 +256,7 @@
                         <div
                             class="flex items-center gap-3 text-lg md:text-xl text-gray-300"
                         >
-                            <div class="type-roles font-semibold">
+                            <div class="type-roles font-semibold light-text">
                                 Full Stack Developer
                             </div>
                         </div>
@@ -229,7 +277,7 @@
                             ></a>
                             <a
                                 href="/resume.pdf"
-                                class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/10 hover:bg-white/2"
+                                class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/10 hover:bg-white/2 light-text"
                                 >Download Resume</a
                             >
                         </div>
@@ -268,7 +316,7 @@
                                     AK
                                 </div>
                                 <div>
-                                    <h3 class="font-semibold">
+                                    <h3 class="font-semibold light-text">
                                         Akhil B Xavier
                                     </h3>
                                     <p class="text-xs text-gray-400">
@@ -282,25 +330,33 @@
                                     <div class="text-xs text-gray-300">
                                         Experience
                                     </div>
-                                    <div class="font-bold text-lg">3+ yrs</div>
+                                    <div class="font-bold text-lg light-text">
+                                        3+ yrs
+                                    </div>
                                 </div>
                                 <div class="p-3 rounded-md bg-white/3">
                                     <div class="text-xs text-gray-300">
                                         Projects
                                     </div>
-                                    <div class="font-bold text-lg">12+</div>
+                                    <div class="font-bold text-lg light-text">
+                                        12+
+                                    </div>
                                 </div>
                                 <div class="p-3 rounded-md bg-white/3">
                                     <div class="text-xs text-gray-300">
                                         Certs
                                     </div>
-                                    <div class="font-bold text-lg">4</div>
+                                    <div class="font-bold text-lg light-text">
+                                        4
+                                    </div>
                                 </div>
                                 <div class="p-3 rounded-md bg-white/3">
                                     <div class="text-xs text-gray-300">
                                         Open Source
                                     </div>
-                                    <div class="font-bold text-lg">6 repos</div>
+                                    <div class="font-bold text-lg light-text">
+                                        6 repos
+                                    </div>
                                 </div>
                             </div>
 
@@ -312,13 +368,13 @@
                                     <a
                                         href="https://dropanote.onrender.com/"
                                         target="_blank"
-                                        class="px-3 py-2 rounded-md bg-white/3"
+                                        class="px-3 py-2 rounded-md bg-white/3 light-text"
                                         >DropaNote</a
                                     >
                                     <a
                                         href="https://marketplace.visualstudio.com/items?itemName=winterx64.winteriscoding"
                                         target="_blank"
-                                        class="px-3 py-2 rounded-md bg-white/3"
+                                        class="px-3 py-2 rounded-md bg-white/3 light-text"
                                         >VSCode Theme</a
                                     >
                                 </div>
@@ -336,7 +392,7 @@
             <section id="about" class="max-w-6xl mx-auto px-6 md:px-8 py-12">
                 <div class="grid md:grid-cols-3 gap-8 items-center">
                     <div class="md:col-span-1">
-                        <h2 class="text-2xl font-bold">About Me</h2>
+                        <h2 class="text-2xl font-bold light-text">About Me</h2>
                         <p class="text-sm text-gray-400 mt-2">
                             I build across the stack — from embedded firmware
                             and electronics to web apps and developer tools. My
@@ -346,14 +402,16 @@
 
                         <div class="mt-4 space-y-2">
                             <div class="text-xs text-gray-400">Location</div>
-                            <div class="font-medium">Kochi, India</div>
+                            <div class="font-medium light-text">
+                                Kochi, India
+                            </div>
                         </div>
                     </div>
 
                     <div class="md:col-span-2">
                         <div class="grid sm:grid-cols-2 gap-4">
                             <div class="p-4 rounded-xl glass">
-                                <h4 class="text-sm font-semibold">
+                                <h4 class="text-sm font-semibold light-text">
                                     What I enjoy
                                 </h4>
                                 <p class="text-xs text-gray-300 mt-2">
@@ -363,7 +421,7 @@
                                 </p>
                             </div>
                             <div class="p-4 rounded-xl glass">
-                                <h4 class="text-sm font-semibold">
+                                <h4 class="text-sm font-semibold light-text">
                                     How I work
                                 </h4>
                                 <p class="text-xs text-gray-300 mt-2">
@@ -380,7 +438,9 @@
             <!-- PROJECTS -->
             <section id="projects" class="max-w-6xl mx-auto px-6 md:px-8 py-12">
                 <div class="flex items-center justify-between mb-6">
-                    <h2 class="text-2xl font-bold">Projects That Matter</h2>
+                    <h2 class="text-2xl font-bold light-text">
+                        Projects That Matter
+                    </h2>
                     <div class="text-sm text-gray-400">Featured: DropaNote</div>
                 </div>
 
@@ -389,7 +449,9 @@
                     <article class="p-6 rounded-2xl glass shadow-lg card-tilt">
                         <div class="flex items-start justify-between gap-4">
                             <div>
-                                <h3 class="font-semibold text-lg">DropaNote</h3>
+                                <h3 class="font-semibold text-lg light-text">
+                                    DropaNote
+                                </h3>
                                 <p class="text-xs text-gray-400 mt-1">
                                     Lightweight embeddable feedback collection
                                     tool.
@@ -410,13 +472,13 @@
                             <a
                                 href="https://dropanote.onrender.com/"
                                 target="_blank"
-                                class="px-3 py-2 rounded-md bg-white/5 text-sm"
+                                class="px-3 py-2 rounded-md bg-white/5 text-sm light-text"
                                 >Live</a
                             >
                             <a
                                 href="https://github.com/winter-x64/dropanote"
                                 target="_blank"
-                                class="px-3 py-2 rounded-md bg-white/5 text-sm"
+                                class="px-3 py-2 rounded-md bg-white/5 text-sm light-text"
                                 >Source</a
                             >
                         </div>
@@ -426,7 +488,7 @@
                     <article class="p-6 rounded-2xl glass shadow-lg card-tilt">
                         <div class="flex items-start justify-between gap-4">
                             <div>
-                                <h3 class="font-semibold text-lg">
+                                <h3 class="font-semibold text-lg light-text">
                                     WinterIsCoding
                                 </h3>
                                 <p class="text-xs text-gray-400 mt-1">
@@ -446,13 +508,13 @@
                             <a
                                 href="https://marketplace.visualstudio.com/items?itemName=winterx64.winteriscoding"
                                 target="_blank"
-                                class="px-3 py-2 rounded-md bg-white/5 text-sm"
+                                class="px-3 py-2 rounded-md bg-white/5 text-sm light-text"
                                 >Marketplace</a
                             >
                             <a
                                 href="https://github.com/winter-x64/vscode-theme"
                                 target="_blank"
-                                class="px-3 py-2 rounded-md bg-white/5 text-sm"
+                                class="px-3 py-2 rounded-md bg-white/5 text-sm light-text"
                                 >Source</a
                             >
                         </div>
@@ -462,7 +524,7 @@
                     <article class="p-6 rounded-2xl glass shadow-lg card-tilt">
                         <div class="flex items-start justify-between gap-4">
                             <div>
-                                <h3 class="font-semibold text-lg">
+                                <h3 class="font-semibold text-lg light-text">
                                     Payload for CubeSat
                                 </h3>
                                 <p class="text-xs text-gray-400 mt-1">
@@ -481,7 +543,7 @@
                         <div class="mt-4 flex gap-3">
                             <a
                                 href="#"
-                                class="px-3 py-2 rounded-md bg-white/5 text-sm"
+                                class="px-3 py-2 rounded-md bg-white/5 text-sm light-text"
                                 >Details</a
                             >
                         </div>
@@ -494,12 +556,12 @@
                 id="experience"
                 class="max-w-6xl mx-auto px-6 md:px-8 py-12"
             >
-                <h2 class="text-2xl font-bold mb-6">Experience</h2>
+                <h2 class="text-2xl font-bold mb-6 light-text">Experience</h2>
                 <div class="space-y-4">
                     <div class="p-4 rounded-xl glass">
                         <div class="flex justify-between items-start">
                             <div>
-                                <h4 class="font-semibold">
+                                <h4 class="font-semibold light-text">
                                     Community Management Intern — TinkerHub
                                 </h4>
                                 <div class="text-xs text-gray-400">
@@ -517,7 +579,7 @@
                     <div class="p-4 rounded-xl glass">
                         <div class="flex justify-between items-start">
                             <div>
-                                <h4 class="font-semibold">
+                                <h4 class="font-semibold light-text">
                                     Software Engineer Intern — Chirad
                                     Technologies LLP
                                 </h4>
@@ -535,7 +597,7 @@
                     <div class="p-4 rounded-xl glass">
                         <div class="flex justify-between items-start">
                             <div>
-                                <h4 class="font-semibold">
+                                <h4 class="font-semibold light-text">
                                     Technical Lead — Tinkerhub AISAT
                                 </h4>
                                 <div class="text-xs text-gray-400">
@@ -553,13 +615,15 @@
                 id="certifications"
                 class="max-w-6xl mx-auto px-6 md:px-8 py-12"
             >
-                <h2 class="text-2xl font-bold mb-6">Certifications</h2>
+                <h2 class="text-2xl font-bold mb-6 light-text">
+                    Certifications
+                </h2>
                 <div class="grid sm:grid-cols-2 gap-4">
                     <div
                         class="p-4 rounded-xl glass flex items-center justify-between"
                     >
                         <div>
-                            <div class="font-semibold">
+                            <div class="font-semibold light-text">
                                 HackerRank Certified Python Developer
                             </div>
                             <div class="text-xs text-gray-400 mt-1">
@@ -569,7 +633,7 @@
                         <a
                             href="https://www.hackerrank.com/certificates/95ce4a1561ff"
                             target="_blank"
-                            class="px-3 py-2 rounded-md bg-white/5"
+                            class="px-3 py-2 rounded-md bg-white/5 light-text"
                             >View</a
                         >
                     </div>
@@ -579,10 +643,10 @@
 
             <!-- CONTACT -->
             <section id="contact" class="max-w-6xl mx-auto px-6 md:px-8 py-12">
-                <h2 class="text-2xl font-bold mb-6">Get In Touch</h2>
+                <h2 class="text-2xl font-bold mb-6 light-text">Get In Touch</h2>
                 <div class="grid md:grid-cols-2 gap-6">
                     <div class="p-6 rounded-xl glass">
-                        <h4 class="font-semibold">Say hi</h4>
+                        <h4 class="font-semibold light-text">Say hi</h4>
                         <p class="text-sm text-gray-400 mt-2">
                             Prefer email? Send me a message and I usually reply
                             within a few days.
@@ -590,20 +654,20 @@
 
                         <div class="mt-4 flex flex-col gap-3">
                             <a
-                                class="p-3 rounded-md bg-white/3 flex items-center gap-3"
+                                class="p-3 rounded-md bg-white/3 flex items-center gap-3 light-text"
                                 href="mailto:winterx64.work@gmail.com"
                                 ><i class="fa-solid fa-envelope"></i>
                                 winterx64.work@gmail.com</a
                             >
                             <a
-                                class="p-3 rounded-md bg-white/3 flex items-center gap-3"
+                                class="p-3 rounded-md bg-white/3 flex items-center gap-3 light-text"
                                 href="https://github.com/winter-x64"
                                 target="_blank"
                                 ><i class="fa-brands fa-github"></i>
                                 @winter-x64</a
                             >
                             <a
-                                class="p-3 rounded-md bg-white/3 flex items-center gap-3"
+                                class="p-3 rounded-md bg-white/3 flex items-center gap-3 light-text"
                                 href="https://linkedin.com/in/winter-x64"
                                 target="_blank"
                                 ><i class="fa-brands fa-linkedin"></i>
@@ -621,7 +685,7 @@
                         <input
                             name="name"
                             required
-                            class="w-full mt-2 p-3 rounded-md bg-transparent border border-white/6 text-sm"
+                            class="w-full mt-2 p-3 rounded-md bg-transparent border border-white/6 text-sm light-text"
                         />
 
                         <label class="block text-xs text-gray-300 mt-3"
@@ -631,7 +695,7 @@
                             name="email"
                             type="email"
                             required
-                            class="w-full mt-2 p-3 rounded-md bg-transparent border border-white/6 text-sm"
+                            class="w-full mt-2 p-3 rounded-md bg-transparent border border-white/6 text-sm light-text"
                         />
 
                         <label class="block text-xs text-gray-300 mt-3"
@@ -641,7 +705,7 @@
                             name="message"
                             required
                             rows="4"
-                            class="w-full mt-2 p-3 rounded-md bg-transparent border border-white/6 text-sm"
+                            class="w-full mt-2 p-3 rounded-md bg-transparent border border-white/6 text-sm light-text"
                         ></textarea>
 
                         <button
@@ -667,14 +731,17 @@
             <div
                 class="absolute right-0 top-0 w-64 h-full p-6 bg-[#07070b] glass"
             >
-                <button id="closeMobile" class="mb-4 p-2 rounded-md bg-white/3">
+                <button
+                    id="closeMobile"
+                    class="mb-4 p-2 rounded-md bg-white/3 light-text"
+                >
                     x
                 </button>
                 <nav class="flex flex-col gap-3">
-                    <a href="#about" class="py-2">About</a>
-                    <a href="#projects" class="py-2">Projects</a>
-                    <a href="#experience" class="py-2">Experience</a>
-                    <a href="#contact" class="py-2">Contact</a>
+                    <a href="#about" class="py-2 light-text">About</a>
+                    <a href="#projects" class="py-2 light-text">Projects</a>
+                    <a href="#experience" class="py-2 light-text">Experience</a>
+                    <a href="#contact" class="py-2 light-text">Contact</a>
                 </nav>
             </div>
         </div>
@@ -685,24 +752,58 @@
             document.getElementById("year").textContent =
                 new Date().getFullYear();
 
-            // Theme toggle
+            // Theme toggle - Fixed implementation
             const themeToggle = document.getElementById("themeToggle");
             const themeIcon = document.getElementById("themeIcon");
-            if (localStorage.getItem("theme") === "light")
-                document.documentElement.classList.remove("dark");
-            else document.documentElement.classList.add("dark");
+
+            // Initialize theme on page load
+            function initializeTheme() {
+                const savedTheme = localStorage.getItem("theme");
+                const prefersDark = window.matchMedia(
+                    "(prefers-color-scheme: dark)"
+                ).matches;
+
+                // If no saved theme, use system preference or default to dark
+                if (!savedTheme) {
+                    const defaultTheme = prefersDark ? "dark" : "light";
+                    localStorage.setItem("theme", defaultTheme);
+                }
+
+                const currentTheme = localStorage.getItem("theme");
+
+                if (currentTheme === "dark") {
+                    document.documentElement.classList.add("dark");
+                } else {
+                    document.documentElement.classList.remove("dark");
+                }
+
+                updateIcon();
+            }
 
             function updateIcon() {
-                if (document.documentElement.classList.contains("dark"))
-                    themeIcon.className = "fa-solid fa-moon";
-                else themeIcon.className = "fa-solid fa-sun";
+                if (document.documentElement.classList.contains("dark")) {
+                    themeIcon.className = "fa-solid fa-sun text-sm light-text";
+                } else {
+                    themeIcon.className = "fa-solid fa-moon text-sm light-text";
+                }
             }
-            updateIcon();
+
+            // Initialize theme when page loads
+            initializeTheme();
+
+            // Theme toggle click handler
             themeToggle.addEventListener("click", () => {
-                document.documentElement.classList.toggle("dark");
-                const nowDark =
+                const isDark =
                     document.documentElement.classList.contains("dark");
-                localStorage.setItem("theme", nowDark ? "dark" : "light");
+
+                if (isDark) {
+                    document.documentElement.classList.remove("dark");
+                    localStorage.setItem("theme", "light");
+                } else {
+                    document.documentElement.classList.add("dark");
+                    localStorage.setItem("theme", "dark");
+                }
+
                 updateIcon();
             });
 
