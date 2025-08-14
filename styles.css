@@ -1,0 +1,327 @@
+/* Root variables for consistent theming */
+:root {
+    --bg-primary: #f8fafc;
+    --bg-secondary: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-tertiary: #64748b;
+    --border-color: rgba(71, 85, 105, 0.1);
+    --glass-bg: rgba(255, 255, 255, 0.8);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --shadow: rgba(15, 23, 42, 0.08);
+}
+
+.dark {
+    --bg-primary: #05060a;
+    --bg-secondary: #0a0b11;
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --text-tertiary: #94a3b8;
+    --border-color: rgba(255, 255, 255, 0.06);
+    --glass-bg: rgba(255, 255, 255, 0.02);
+    --glass-border: rgba(255, 255, 255, 0.05);
+    --shadow: rgba(0, 0, 0, 0.3);
+}
+
+/* Base styles */
+body {
+    background: radial-gradient(
+            ellipse at top right,
+            rgba(168, 85, 247, 0.08),
+            transparent 25%
+        ),
+        var(--bg-primary);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    font-family: "Inter", sans-serif;
+}
+
+.text-primary {
+    color: var(--text-primary);
+}
+.text-secondary {
+    color: var(--text-secondary);
+}
+.text-tertiary {
+    color: var(--text-tertiary);
+}
+
+/* Glass morphism */
+.glass {
+    background: linear-gradient(135deg, var(--glass-bg), var(--glass-bg));
+    backdrop-filter: blur(12px) saturate(120%);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.glass:hover {
+    box-shadow: 0 12px 48px var(--shadow);
+    transform: translateY(-2px);
+}
+
+/* Enhanced neon text */
+.neon-text {
+    background: linear-gradient(135deg, #00f7ff, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px rgba(0, 247, 255, 0.1);
+}
+
+/* Improved card hover effects */
+.card-tilt {
+    transform-style: preserve-3d;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-tilt:hover {
+    transform: translateY(-8px) rotateX(2deg) rotateY(-1deg);
+}
+
+/* Particles container */
+#particles {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+/* Button styles */
+.btn-primary {
+    background: linear-gradient(135deg, #00f7ff, #a855f7);
+    color: #000;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 247, 255, 0.2);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 247, 255, 0.3);
+}
+
+.btn-secondary {
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: var(--glass-bg);
+    transform: translateY(-1px);
+}
+
+/* Navigation improvements */
+nav {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px) saturate(120%);
+    border: 1px solid var(--glass-border);
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: var(--text-primary);
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #00f7ff, #a855f7);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Enhanced mobile menu styles */
+.mobile-menu-backdrop {
+    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.mobile-menu {
+    background: var(--bg-secondary);
+    backdrop-filter: blur(20px);
+    border-left: 1px solid var(--border-color);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-nav-item {
+    position: relative;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mobile-nav-item:hover {
+    background: var(--glass-bg);
+    padding-left: 32px;
+}
+
+.mobile-nav-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(135deg, #00f7ff, #a855f7);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.mobile-nav-item:hover::before {
+    transform: scaleY(1);
+}
+
+.mobile-nav-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-tertiary);
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-item:hover .mobile-nav-icon {
+    color: var(--text-primary);
+    transform: scale(1.1);
+}
+
+.mobile-social-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    margin: 4px 16px;
+}
+
+.mobile-social-item:hover {
+    background: var(--glass-bg);
+    color: var(--text-primary);
+}
+
+.mobile-menu-header {
+    background: linear-gradient(135deg, var(--glass-bg), transparent);
+    border-bottom: 1px solid var(--border-color);
+    padding: 24px;
+}
+
+/* Hamburger animation */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    width: 20px;
+    height: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hamburger span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: var(--text-secondary);
+    transition: all 0.3s ease;
+    border-radius: 1px;
+}
+
+.hamburger span:nth-child(1) {
+    margin-bottom: 5px;
+}
+
+.hamburger span:nth-child(2) {
+    margin-bottom: 5px;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Loading states */
+.loading {
+    opacity: 0;
+    animation: fadeIn 0.6s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Slide in animation for mobile menu */
+.slide-in {
+    animation: slideIn 0.3s ease-out forwards;
+}
+
+.slide-out {
+    animation: slideOut 0.3s ease-out forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .card-tilt:hover {
+        transform: none;
+    }
+
+    .mobile-menu {
+        width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .mobile-menu {
+        width: 100vw;
+    }
+}
