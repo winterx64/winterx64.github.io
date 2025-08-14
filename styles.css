@@ -156,6 +156,11 @@ nav {
     backdrop-filter: blur(20px);
     border-left: 1px solid var(--border-color);
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: 100vh;
+    overflow: hidden;
 }
 
 .mobile-nav-item {
@@ -224,6 +229,24 @@ nav {
     background: linear-gradient(135deg, var(--glass-bg), transparent);
     border-bottom: 1px solid var(--border-color);
     padding: 24px;
+    flex-shrink: 0;
+}
+
+.mobile-menu nav {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Optional: subtle fade at bottom of scroll area */
+.mobile-menu nav::after {
+    content: "";
+    position: sticky;
+    bottom: 0;
+    display: block;
+    height: 30px;
+    background: linear-gradient(to bottom, transparent, var(--bg-secondary));
+    pointer-events: none;
 }
 
 /* Hamburger animation */
