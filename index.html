@@ -21,7 +21,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Share+Tech+Mono&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Share+Tech+Mono&display=swap"
             rel="stylesheet"
         />
         <link
@@ -29,10 +29,9 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         />
 
-        <!-- Tailwind CDN (for quick setup) -->
+        <!-- Tailwind CDN -->
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
-            // Tailwind theme extension
             tailwind.config = {
                 darkMode: "class",
                 theme: {
@@ -55,87 +54,193 @@
         </script>
 
         <style>
-            /* Dark mode styles (default) */
-            .dark body {
-                background: radial-gradient(
-                        ellipse at top right,
-                        rgba(168, 85, 247, 0.06),
-                        transparent 20%
-                    ),
-                    #05060a;
-                color: #e5e7eb;
+            /* Root variables for consistent theming */
+            :root {
+                --bg-primary: #f8fafc;
+                --bg-secondary: #ffffff;
+                --text-primary: #0f172a;
+                --text-secondary: #475569;
+                --text-tertiary: #64748b;
+                --border-color: rgba(71, 85, 105, 0.1);
+                --glass-bg: rgba(255, 255, 255, 0.8);
+                --glass-border: rgba(255, 255, 255, 0.2);
+                --shadow: rgba(15, 23, 42, 0.08);
             }
 
-            /* Light mode styles */
+            .dark {
+                --bg-primary: #05060a;
+                --bg-secondary: #0a0b11;
+                --text-primary: #f1f5f9;
+                --text-secondary: #cbd5e1;
+                --text-tertiary: #94a3b8;
+                --border-color: rgba(255, 255, 255, 0.06);
+                --glass-bg: rgba(255, 255, 255, 0.02);
+                --glass-border: rgba(255, 255, 255, 0.05);
+                --shadow: rgba(0, 0, 0, 0.3);
+            }
+
+            /* Base styles */
             body {
                 background: radial-gradient(
                         ellipse at top right,
-                        rgba(168, 85, 247, 0.1),
-                        transparent 20%
+                        rgba(168, 85, 247, 0.08),
+                        transparent 25%
                     ),
-                    #f8fafc;
-                color: #1f2937;
-                transition: background-color 0.3s ease, color 0.3s ease;
+                    var(--bg-primary);
+                color: var(--text-primary);
+                transition: all 0.3s ease;
+                font-family: "Inter", sans-serif;
             }
 
+            .text-primary {
+                color: var(--text-primary);
+            }
+            .text-secondary {
+                color: var(--text-secondary);
+            }
+            .text-tertiary {
+                color: var(--text-tertiary);
+            }
+
+            /* Glass morphism */
             .glass {
-                backdrop-filter: blur(6px) saturate(120%);
-                transition: background-color 0.3s ease;
-            }
-
-            .dark .glass {
                 background: linear-gradient(
-                    180deg,
-                    rgba(255, 255, 255, 0.02),
-                    rgba(255, 255, 255, 0.01)
+                    135deg,
+                    var(--glass-bg),
+                    var(--glass-bg)
                 );
+                backdrop-filter: blur(12px) saturate(120%);
+                border: 1px solid var(--glass-border);
+                box-shadow: 0 8px 32px var(--shadow);
+                transition: all 0.3s ease;
             }
 
-            .glass {
-                background: linear-gradient(
-                    180deg,
-                    rgba(255, 255, 255, 0.8),
-                    rgba(255, 255, 255, 0.6)
-                );
+            .glass:hover {
+                box-shadow: 0 12px 48px var(--shadow);
+                transform: translateY(-2px);
             }
 
+            /* Enhanced neon text */
             .neon-text {
-                text-shadow: 0 0 8px rgba(0, 247, 255, 0.12),
-                    0 0 20px rgba(168, 85, 247, 0.04);
+                background: linear-gradient(135deg, #00f7ff, #a855f7);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                text-shadow: 0 0 20px rgba(0, 247, 255, 0.1);
             }
 
-            /* Light mode text colors */
-            .light-text {
-                color: #374151;
+            /* Improved card hover effects */
+            .card-tilt {
+                transform-style: preserve-3d;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             }
 
-            .dark .light-text {
-                color: #e5e7eb;
+            .card-tilt:hover {
+                transform: translateY(-8px) rotateX(2deg) rotateY(-1deg);
             }
 
-            /* particle placeholder container */
+            /* Particles container */
             #particles {
-                position: absolute;
+                position: fixed;
                 inset: 0;
                 z-index: 0;
                 pointer-events: none;
+                opacity: 0.3;
             }
-            .card-tilt {
-                transform-style: preserve-3d;
-                transition: transform 0.25s ease;
+
+            /* Button styles */
+            .btn-primary {
+                background: linear-gradient(135deg, #00f7ff, #a855f7);
+                color: #000;
+                font-weight: 600;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 20px rgba(0, 247, 255, 0.2);
             }
-            .card-tilt:hover {
-                transform: translateY(-6px) rotateX(2deg) rotateY(-2deg);
+
+            .btn-primary:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 30px rgba(0, 247, 255, 0.3);
             }
-            .loader {
-                display: none;
+
+            .btn-secondary {
+                border: 1px solid var(--border-color);
+                color: var(--text-primary);
+                transition: all 0.3s ease;
+            }
+
+            .btn-secondary:hover {
+                background: var(--glass-bg);
+                transform: translateY(-1px);
+            }
+
+            /* Navigation improvements */
+            nav {
+                background: var(--glass-bg);
+                backdrop-filter: blur(16px) saturate(120%);
+                border: 1px solid var(--glass-border);
+            }
+
+            .nav-link {
+                color: var(--text-secondary);
+                transition: all 0.3s ease;
+                position: relative;
+            }
+
+            .nav-link:hover {
+                color: var(--text-primary);
+            }
+
+            .nav-link::after {
+                content: "";
+                position: absolute;
+                bottom: -4px;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: linear-gradient(135deg, #00f7ff, #a855f7);
+                transition: width 0.3s ease;
+            }
+
+            .nav-link:hover::after {
+                width: 100%;
+            }
+
+            /* Mobile menu improvements */
+            .mobile-menu {
+                background: var(--bg-secondary);
+                backdrop-filter: blur(20px);
+                border-right: 1px solid var(--border-color);
+            }
+
+            /* Smooth scrolling */
+            html {
+                scroll-behavior: smooth;
+            }
+
+            /* Loading states */
+            .loading {
+                opacity: 0;
+                animation: fadeIn 0.6s ease-in-out forwards;
+            }
+
+            @keyframes fadeIn {
+                to {
+                    opacity: 1;
+                }
+            }
+
+            /* Responsive improvements */
+            @media (max-width: 768px) {
+                .card-tilt:hover {
+                    transform: none;
+                }
             }
         </style>
     </head>
     <body
         class="antialiased relative min-h-screen selection:bg-neon/30 selection:text-white"
     >
-        <!-- Particles / subtle background lines (SVG) -->
+        <!-- Enhanced particles background -->
         <div id="particles" aria-hidden="true">
             <svg
                 class="w-full h-full"
@@ -143,288 +248,302 @@
                 xmlns="http://www.w3.org/2000/svg"
             >
                 <defs>
-                    <linearGradient id="g" x1="0" x2="1">
+                    <linearGradient
+                        id="particleGrad"
+                        x1="0%"
+                        y1="0%"
+                        x2="100%"
+                        y2="100%"
+                    >
                         <stop
                             offset="0%"
                             stop-color="#00f7ff"
-                            stop-opacity="0.04"
+                            stop-opacity="0.03"
                         />
                         <stop
-                            offset="100%"
+                            offset="50%"
                             stop-color="#a855f7"
                             stop-opacity="0.02"
                         />
+                        <stop
+                            offset="100%"
+                            stop-color="#00f7ff"
+                            stop-opacity="0.01"
+                        />
                     </linearGradient>
                 </defs>
-                <rect width="100%" height="100%" fill="url(#g)" />
+                <rect width="100%" height="100%" fill="url(#particleGrad)" />
             </svg>
         </div>
 
         <!-- NAVBAR -->
         <header class="fixed top-4 left-0 right-0 z-30 px-4 md:px-10">
             <nav
-                class="max-w-6xl mx-auto flex items-center justify-between p-2 rounded-2xl glass shadow-lg"
+                class="max-w-6xl mx-auto flex items-center justify-between p-3 rounded-2xl glass"
             >
-                <a href="#home" class="flex items-center gap-3">
+                <a href="#home" class="flex items-center gap-3 group">
                     <div
-                        class="w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-neon to-neon2 text-black font-bold"
+                        class="w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-neon to-neon2 text-black font-bold transition-transform group-hover:scale-105"
                     >
                         AK
                     </div>
                     <div class="hidden sm:block">
-                        <div class="text-sm font-semibold light-text">
+                        <div class="text-sm font-semibold text-primary">
                             winter_x64
                         </div>
-                        <div class="text-[11px] text-gray-400">
+                        <div class="text-[11px] text-tertiary">
                             maker · dev · hardware
                         </div>
                     </div>
                 </a>
 
                 <div class="hidden md:flex items-center gap-6">
-                    <a
-                        href="#about"
-                        class="nav-link text-sm hover:underline light-text"
-                        >About</a
-                    >
-                    <a
-                        href="#projects"
-                        class="nav-link text-sm hover:underline light-text"
-                        >Projects</a
-                    >
-                    <a
-                        href="#experience"
-                        class="nav-link text-sm hover:underline light-text"
+                    <a href="#about" class="nav-link text-sm">About</a>
+                    <a href="#projects" class="nav-link text-sm">Projects</a>
+                    <a href="#experience" class="nav-link text-sm"
                         >Experience</a
                     >
-                    <a
-                        href="#contact"
-                        class="nav-link text-sm hover:underline light-text"
-                        >Contact</a
-                    >
+                    <a href="#contact" class="nav-link text-sm">Contact</a>
                 </div>
 
                 <div class="flex items-center gap-3">
                     <a
-                        href="#"
-                        class="hidden sm:inline-block text-sm px-3 py-2 rounded-md border border-neon/20 hover:bg-neon/5 light-text"
-                        >Resume</a
+                        href="#contact"
+                        class="hidden sm:inline-block text-sm px-4 py-2 rounded-lg btn-secondary"
                     >
+                        Resume
+                    </a>
                     <button
                         id="themeToggle"
-                        class="w-10 h-10 rounded-md flex items-center justify-center bg-transparent hover:bg-white/3"
+                        class="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-white/5 transition-colors"
                     >
                         <i
                             id="themeIcon"
-                            class="fa-solid fa-moon text-sm light-text"
+                            class="fa-solid fa-moon text-sm text-secondary"
                         ></i>
                     </button>
-
-                    <!-- mobile menu -->
                     <button
                         id="mobileBtn"
-                        class="md:hidden p-2 ml-2 rounded-md bg-white/3"
+                        class="md:hidden p-2 rounded-lg hover:bg-white/5 transition-colors"
                     >
-                        <i class="fa-solid fa-bars light-text"></i>
+                        <i class="fa-solid fa-bars text-secondary"></i>
                     </button>
                 </div>
             </nav>
         </header>
 
         <!-- HERO -->
-        <main class="pt-28">
+        <main class="pt-28 relative z-10">
             <section
                 id="home"
-                class="max-w-6xl mx-auto px-6 md:px-8 lg:px-0 min-h-[70vh] flex items-center z-10 relative"
+                class="max-w-6xl mx-auto px-6 md:px-8 lg:px-0 min-h-[75vh] flex items-center"
             >
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                    <!-- left: intro -->
-                    <div class="space-y-6">
-                        <div class="text-sm text-neon2 font-medium">
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center w-full"
+                >
+                    <!-- Left: Intro -->
+                    <div class="space-y-8 loading">
+                        <div
+                            class="text-xl text-neon2 font-medium tracking-wide"
+                        >
                             Hello, I'm
                         </div>
                         <h1
-                            class="text-4xl md:text-6xl font-extrabold leading-tight neon-text font-monoHead light-text"
+                            class="text-4xl md:text-6xl font-extrabold leading-tight font-monoHead"
                         >
                             winter_x64
                             <span
-                                class="block text-lg md:text-2xl font-bold text-gray-400 mt-2"
-                                >Akhil B Xavier</span
+                                class="block text-base md:text-xl font-semibold text-gray-400 mt-2"
                             >
+                                Akhil B Xavier
+                            </span>
                         </h1>
 
                         <div
-                            class="flex items-center gap-3 text-lg md:text-xl text-gray-300"
+                            class="flex items-center gap-3 text-xl md:text-2xl"
                         >
-                            <div class="type-roles font-semibold light-text">
+                            <div class="type-roles font-medium text-primary">
                                 Full Stack Developer
                             </div>
                         </div>
 
-                        <p class="text-gray-400 max-w-xl">
+                        <p
+                            class="text-secondary max-w-xl text-lg leading-relaxed text-sm"
+                        >
                             I design and build full-stack web apps and IoT
-                            systems — from experimental embedded builds to
+                            systems, from experimental embedded builds to
                             polished web products. I ship pragmatic solutions
                             and love turning ideas into working prototypes.
                         </p>
 
-                        <div class="flex items-center gap-4 mt-3">
+                        <div class="flex items-center gap-4 mt-8">
                             <a
                                 href="#projects"
-                                class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-neon to-neon2 text-black font-semibold shadow-lg"
-                                >View My Work
-                                <i class="fa-solid fa-arrow-right ml-2"></i
-                            ></a>
-                            <a
-                                href="/resume.pdf"
-                                class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/10 hover:bg-white/2 light-text"
-                                >Download Resume</a
+                                class="inline-flex items-center gap-2 px-4 py-2 rounded-xl btn-primary"
                             >
+                                View My Work
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                            <a
+                                href="#contact"
+                                class="inline-flex items-center gap-2 px-4 py-2 rounded-xl btn-secondary"
+                            >
+                                Download Resume
+                            </a>
                         </div>
 
-                        <div
-                            class="mt-6 flex items-center gap-4 text-sm text-gray-400"
-                        >
-                            <div class="flex items-center gap-2">
-                                <i class="fa-brands fa-github"></i>
-                                <a
-                                    class="underline"
-                                    href="https://github.com/winter-x64"
-                                    target="_blank"
-                                    >github.com/winter-x64</a
-                                >
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <i class="fa-brands fa-linkedin"></i>
-                                <a
-                                    class="underline"
-                                    href="https://linkedin.com/in/winter-x64"
-                                    target="_blank"
-                                    >linkedin</a
-                                >
-                            </div>
+                        <div class="flex items-center gap-6 text-sm pt-4">
+                            <a
+                                href="https://github.com/winter-x64"
+                                target="_blank"
+                                class="flex items-center gap-2 text-secondary hover:text-primary transition-colors"
+                            >
+                                <i class="fa-brands fa-github text-base"></i>
+                                <span>github.com/winter-x64</span>
+                            </a>
+                            <a
+                                href="https://linkedin.com/in/winter-x64"
+                                target="_blank"
+                                class="flex items-center gap-2 text-secondary hover:text-primary transition-colors"
+                            >
+                                <i class="fa-brands fa-linkedin text-base"></i>
+                                <span>linkedin</span>
+                            </a>
                         </div>
                     </div>
 
-                    <!-- right: card / avatar -->
-                    <div class="relative">
-                        <div class="card-tilt p-6 rounded-2xl glass shadow-xl">
-                            <div class="flex items-center gap-4">
+                    <!-- Right: Profile Card -->
+                    <div class="relative loading" style="animation-delay: 0.2s">
+                        <div class="card-tilt p-8 rounded-2xl glass">
+                            <div class="flex items-center gap-4 mb-6">
                                 <div
                                     class="w-20 h-20 rounded-xl bg-gradient-to-br from-neon to-neon2 flex items-center justify-center text-black font-bold text-xl"
                                 >
                                     AK
                                 </div>
                                 <div>
-                                    <h3 class="font-semibold light-text">
+                                    <h3 class="font-semibold text text-primary">
                                         Akhil B Xavier
                                     </h3>
-                                    <p class="text-xs text-gray-400">
+                                    <p class="text-xs text-tertiary">
                                         Backend Dev · Embedded Systems · Design
                                     </p>
                                 </div>
                             </div>
 
-                            <div class="mt-4 grid grid-cols-2 gap-3">
-                                <div class="p-3 rounded-md bg-white/3">
-                                    <div class="text-xs text-gray-300">
+                            <div class="grid grid-cols-2 gap-4 mb-6">
+                                <div class="p-4 rounded-xl bg-white/5">
+                                    <div class="text-xs text-tertiary mb-1">
                                         Experience
                                     </div>
-                                    <div class="font-bold text-lg light-text">
+                                    <div class="font-bold text-xl text-primary">
                                         3+ yrs
                                     </div>
                                 </div>
-                                <div class="p-3 rounded-md bg-white/3">
-                                    <div class="text-xs text-gray-300">
+                                <div class="p-4 rounded-xl bg-white/5">
+                                    <div class="text-xs text-tertiary mb-1">
                                         Projects
                                     </div>
-                                    <div class="font-bold text-lg light-text">
+                                    <div class="font-bold text-xl text-primary">
                                         12+
                                     </div>
                                 </div>
-                                <div class="p-3 rounded-md bg-white/3">
-                                    <div class="text-xs text-gray-300">
+                                <div class="p-4 rounded-xl bg-white/5">
+                                    <div class="text-xs text-tertiary mb-1">
                                         Certs
                                     </div>
-                                    <div class="font-bold text-lg light-text">
+                                    <div class="font-bold text-xl text-primary">
                                         4
                                     </div>
                                 </div>
-                                <div class="p-3 rounded-md bg-white/3">
-                                    <div class="text-xs text-gray-300">
+                                <div class="p-4 rounded-xl bg-white/5">
+                                    <div class="text-xs text-tertiary mb-1">
                                         Open Source
                                     </div>
-                                    <div class="font-bold text-lg light-text">
+                                    <div class="font-bold text-xl text-primary">
                                         6 repos
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="mt-4">
-                                <div class="text-sm text-gray-300">
+                            <div>
+                                <div class="text-sm text-tertiary mb-3">
                                     Quick Links
                                 </div>
-                                <div class="flex gap-3 mt-3">
+                                <div class="flex gap-3">
                                     <a
                                         href="https://dropanote.onrender.com/"
                                         target="_blank"
-                                        class="px-3 py-2 rounded-md bg-white/3 light-text"
-                                        >DropaNote</a
+                                        class="px-4 py-2 rounded-lg bg-white/10 text-primary text-sm hover:bg-white/15 transition-colors"
                                     >
+                                        DropaNote
+                                    </a>
                                     <a
                                         href="https://marketplace.visualstudio.com/items?itemName=winterx64.winteriscoding"
                                         target="_blank"
-                                        class="px-3 py-2 rounded-md bg-white/3 light-text"
-                                        >VSCode Theme</a
+                                        class="px-4 py-2 rounded-lg bg-white/10 text-primary text-sm hover:bg-white/15 transition-colors"
                                     >
+                                        VSCode Theme
+                                    </a>
                                 </div>
                             </div>
                         </div>
 
                         <div
-                            class="absolute -right-8 -bottom-8 w-40 h-40 rounded-full bg-gradient-to-br from-neon/30 to-neon2/20 blur-3xl"
+                            class="absolute -right-8 -bottom-8 w-40 h-40 rounded-full bg-gradient-to-br from-neon/20 to-neon2/10 blur-3xl"
                         ></div>
                     </div>
                 </div>
             </section>
 
             <!-- ABOUT -->
-            <section id="about" class="max-w-6xl mx-auto px-6 md:px-8 py-12">
-                <div class="grid md:grid-cols-3 gap-8 items-center">
-                    <div class="md:col-span-1">
-                        <h2 class="text-2xl font-bold light-text">About Me</h2>
-                        <p class="text-sm text-gray-400 mt-2">
+            <section id="about" class="max-w-6xl mx-auto px-6 md:px-8 py-20">
+                <div class="grid md:grid-cols-3 gap-12 items-start">
+                    <div class="md:col-span-1 space-y-4">
+                        <h2 class="text-3xl font-bold text-primary">
+                            About Me
+                        </h2>
+                        <p class="text-secondary leading-relaxed text-sm">
                             I build across the stack — from embedded firmware
                             and electronics to web apps and developer tools. My
                             background mixes community building, product
                             development, and a love for fast prototypes.
                         </p>
-
-                        <div class="mt-4 space-y-2">
-                            <div class="text-xs text-gray-400">Location</div>
-                            <div class="font-medium light-text">
+                        <div class="pt-4">
+                            <div class="text-sm text-tertiary mb-2">
+                                Location
+                            </div>
+                            <div class="font-medium text-primary">
                                 Kochi, India
                             </div>
                         </div>
                     </div>
 
                     <div class="md:col-span-2">
-                        <div class="grid sm:grid-cols-2 gap-4">
-                            <div class="p-4 rounded-xl glass">
-                                <h4 class="text-sm font-semibold light-text">
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div class="p-6 rounded-2xl glass">
+                                <h4
+                                    class="text-lg font-semibold text-primary mb-3"
+                                >
                                     What I enjoy
                                 </h4>
-                                <p class="text-xs text-gray-300 mt-2">
+                                <p
+                                    class="text-secondary leading-relaxed text-sm"
+                                >
                                     Tiny satellites, IoT sensors,
                                     product-focused web apps, and developer
                                     tooling.
                                 </p>
                             </div>
-                            <div class="p-4 rounded-xl glass">
-                                <h4 class="text-sm font-semibold light-text">
+                            <div class="p-6 rounded-2xl glass">
+                                <h4
+                                    class="text-lg font-semibold text-primary mb-3"
+                                >
                                     How I work
                                 </h4>
-                                <p class="text-xs text-gray-300 mt-2">
+                                <p
+                                    class="text-secondary leading-relaxed text-sm"
+                                >
                                     Iterative — build small prototypes, test
                                     early, and ship. I prefer simple APIs and
                                     clear UX.
@@ -436,116 +555,143 @@
             </section>
 
             <!-- PROJECTS -->
-            <section id="projects" class="max-w-6xl mx-auto px-6 md:px-8 py-12">
-                <div class="flex items-center justify-between mb-6">
-                    <h2 class="text-2xl font-bold light-text">
+            <section id="projects" class="max-w-6xl mx-auto px-6 md:px-8 py-20">
+                <div class="flex items-center justify-between mb-10">
+                    <h2 class="text-3xl font-bold text-primary">
                         Projects That Matter
                     </h2>
-                    <div class="text-sm text-gray-400">Featured: DropaNote</div>
+                    <div class="text-sm text-tertiary">Featured: DropaNote</div>
                 </div>
 
-                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- DropaNote -->
                     <article class="p-6 rounded-2xl glass shadow-lg card-tilt">
-                        <div class="flex items-start justify-between gap-4">
+                        <div
+                            class="flex items-start justify-between gap-4 mb-4"
+                        >
                             <div>
-                                <h3 class="font-semibold text-lg light-text">
+                                <h3
+                                    class="font-semibold text-xl text-primary mb-2"
+                                >
                                     DropaNote
                                 </h3>
-                                <p class="text-xs text-gray-400 mt-1">
+                                <p class="text-sm text-tertiary">
                                     Lightweight embeddable feedback collection
                                     tool.
                                 </p>
                             </div>
-                            <div class="text-sm text-gray-300">
+                            <div
+                                class="text-xs text-secondary bg-white/10 px-3 py-1 rounded-full"
+                            >
                                 Flask · Supabase
                             </div>
                         </div>
 
-                        <p class="text-sm text-gray-300 mt-4">
+                        <p class="text-secondary mb-6 leading-relaxed text-sm">
                             Create embeddable forms, view submissions on a
                             responsive dashboard, and manage apps quickly. Built
                             to be simple and privacy-friendly.
                         </p>
 
-                        <div class="mt-4 flex gap-3">
+                        <div class="flex gap-3">
                             <a
                                 href="https://dropanote.onrender.com/"
                                 target="_blank"
-                                class="px-3 py-2 rounded-md bg-white/5 text-sm light-text"
-                                >Live</a
+                                class="px-4 py-2 rounded-lg bg-white/10 text-primary text-sm hover:bg-white/15 transition-colors"
                             >
+                                Live Demo
+                            </a>
                             <a
                                 href="https://github.com/winter-x64/dropanote"
                                 target="_blank"
-                                class="px-3 py-2 rounded-md bg-white/5 text-sm light-text"
-                                >Source</a
+                                class="px-4 py-2 rounded-lg border border-white/20 text-secondary text-sm hover:text-primary hover:border-white/30 transition-colors"
                             >
+                                Source
+                            </a>
                         </div>
                     </article>
 
                     <!-- VSCode Theme -->
                     <article class="p-6 rounded-2xl glass shadow-lg card-tilt">
-                        <div class="flex items-start justify-between gap-4">
+                        <div
+                            class="flex items-start justify-between gap-4 mb-4"
+                        >
                             <div>
-                                <h3 class="font-semibold text-lg light-text">
+                                <h3
+                                    class="font-semibold text-xl text-primary mb-2"
+                                >
                                     WinterIsCoding
                                 </h3>
-                                <p class="text-xs text-gray-400 mt-1">
+                                <p class="text-sm text-tertiary">
                                     Modern dark theme with multiple variants for
                                     VSCode.
                                 </p>
                             </div>
-                            <div class="text-sm text-gray-300">
+                            <div
+                                class="text-xs text-secondary bg-white/10 px-3 py-1 rounded-full"
+                            >
                                 JSON · Marketplace
                             </div>
                         </div>
-                        <p class="text-sm text-gray-300 mt-4">
+
+                        <p class="text-secondary mb-6 leading-relaxed text-sm">
                             Theme focused on legibility and a calm color palette
                             for long coding sessions.
                         </p>
-                        <div class="mt-4 flex gap-3">
+
+                        <div class="flex gap-3">
                             <a
                                 href="https://marketplace.visualstudio.com/items?itemName=winterx64.winteriscoding"
                                 target="_blank"
-                                class="px-3 py-2 rounded-md bg-white/5 text-sm light-text"
-                                >Marketplace</a
+                                class="px-4 py-2 rounded-lg bg-white/10 text-primary text-sm hover:bg-white/15 transition-colors"
                             >
+                                Marketplace
+                            </a>
                             <a
                                 href="https://github.com/winter-x64/vscode-theme"
                                 target="_blank"
-                                class="px-3 py-2 rounded-md bg-white/5 text-sm light-text"
-                                >Source</a
+                                class="px-4 py-2 rounded-lg border border-white/20 text-secondary text-sm hover:text-primary hover:border-white/30 transition-colors"
                             >
+                                Source
+                            </a>
                         </div>
                     </article>
 
                     <!-- CubeSat payload -->
                     <article class="p-6 rounded-2xl glass shadow-lg card-tilt">
-                        <div class="flex items-start justify-between gap-4">
+                        <div
+                            class="flex items-start justify-between gap-4 mb-4"
+                        >
                             <div>
-                                <h3 class="font-semibold text-lg light-text">
+                                <h3
+                                    class="font-semibold text-xl text-primary mb-2"
+                                >
                                     Payload for CubeSat
                                 </h3>
-                                <p class="text-xs text-gray-400 mt-1">
+                                <p class="text-sm text-tertiary">
                                     DIY spectrometer using Raspberry Pi +
                                     Arducam.
                                 </p>
                             </div>
-                            <div class="text-sm text-gray-300">
+                            <div
+                                class="text-xs text-secondary bg-white/10 px-3 py-1 rounded-full"
+                            >
                                 Raspberry Pi · Python
                             </div>
                         </div>
-                        <p class="text-sm text-gray-300 mt-4">
+
+                        <p class="text-secondary mb-6 leading-relaxed text-sm">
                             Proof-of-concept spectrometer for material analysis
                             in low-orbit scenarios.
                         </p>
-                        <div class="mt-4 flex gap-3">
+
+                        <div class="flex gap-3">
                             <a
-                                href="#"
-                                class="px-3 py-2 rounded-md bg-white/5 text-sm light-text"
-                                >Details</a
+                                href="#contact"
+                                class="px-4 py-2 rounded-lg bg-white/10 text-primary text-sm hover:bg-white/15 transition-colors"
                             >
+                                Learn More
+                            </a>
                         </div>
                     </article>
                 </div>
@@ -554,222 +700,296 @@
             <!-- EXPERIENCE -->
             <section
                 id="experience"
-                class="max-w-6xl mx-auto px-6 md:px-8 py-12"
+                class="max-w-6xl mx-auto px-6 md:px-8 py-20"
             >
-                <h2 class="text-2xl font-bold mb-6 light-text">Experience</h2>
-                <div class="space-y-4">
-                    <div class="p-4 rounded-xl glass">
-                        <div class="flex justify-between items-start">
+                <h2 class="text-3xl font-bold mb-10 text-primary">
+                    Experience
+                </h2>
+                <div class="space-y-6">
+                    <div class="p-6 rounded-2xl glass">
+                        <div class="flex justify-between items-start mb-3">
                             <div>
-                                <h4 class="font-semibold light-text">
+                                <h4 class="font-semibold text-lg text-primary">
                                     Community Management Intern — TinkerHub
                                 </h4>
-                                <div class="text-xs text-gray-400">
+                                <div class="text-sm text-tertiary">
                                     Apr 2023 - Present · Hybrid
                                 </div>
                             </div>
-                            <div class="text-sm text-gray-300">2 yrs</div>
+                            <div
+                                class="text-sm text-secondary bg-white/10 px-3 py-1 rounded-full"
+                            >
+                                2 yrs
+                            </div>
                         </div>
-                        <p class="text-sm text-gray-300 mt-2">
+                        <p class="text-secondary text-sm">
                             Led community engagement, mentored students, and
                             organized tech events.
                         </p>
                     </div>
 
-                    <div class="p-4 rounded-xl glass">
-                        <div class="flex justify-between items-start">
+                    <div class="p-6 rounded-2xl glass">
+                        <div class="flex justify-between items-start mb-3">
                             <div>
-                                <h4 class="font-semibold light-text">
+                                <h4 class="font-semibold text-lg text-primary">
                                     Software Engineer Intern — Chirad
                                     Technologies LLP
                                 </h4>
-                                <div class="text-xs text-gray-400">
+                                <div class="text-sm text-tertiary">
                                     Sept 2024 - Feb 2025 · Remote
                                 </div>
                             </div>
-                            <div class="text-sm text-gray-300">Web</div>
+                            <div
+                                class="text-sm text-secondary bg-white/10 px-3 py-1 rounded-full"
+                            >
+                                Web
+                            </div>
                         </div>
-                        <p class="text-sm text-gray-300 mt-2">
-                            Built web apps, Backend APIs
+                        <p class="text-secondary text-sm">
+                            Built web apps and Backend APIs
                         </p>
                     </div>
 
-                    <div class="p-4 rounded-xl glass">
-                        <div class="flex justify-between items-start">
+                    <div class="p-6 rounded-2xl glass">
+                        <div class="flex justify-between items-start mb-3">
                             <div>
-                                <h4 class="font-semibold light-text">
+                                <h4 class="font-semibold text-lg text-primary">
                                     Technical Lead — Tinkerhub AISAT
                                 </h4>
-                                <div class="text-xs text-gray-400">
+                                <div class="text-sm text-tertiary">
                                     Feb 2022 - Feb 2023
                                 </div>
                             </div>
-                            <div class="text-sm text-gray-300">Leadership</div>
+                            <div
+                                class="text-sm text-secondary bg-white/10 px-3 py-1 rounded-full"
+                            >
+                                Leadership
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- CERTIFICATIONS -->
+            <!-- CERTIFICATIONS - Clean 2 Column Layout -->
             <section
                 id="certifications"
-                class="max-w-6xl mx-auto px-6 md:px-8 py-12"
+                class="max-w-6xl mx-auto px-6 md:px-8 py-20"
             >
-                <h2 class="text-2xl font-bold mb-6 light-text">
+                <h2 class="text-3xl font-bold mb-10 text-primary">
                     Certifications
                 </h2>
-                <div class="grid sm:grid-cols-2 gap-4">
-                    <div
-                        class="p-4 rounded-xl glass flex items-center justify-between"
-                    >
-                        <div>
-                            <div class="font-semibold light-text">
-                                HackerRank Certified Python Developer
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="p-6 rounded-2xl glass card-tilt">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center"
+                            >
+                                <i
+                                    class="fa-brands fa-python text-white text-lg"
+                                ></i>
                             </div>
-                            <div class="text-xs text-gray-400 mt-1">
-                                Issued: May 2023
+                            <div>
+                                <h4 class="font-semibold text-lg text-primary">
+                                    HackerRank Python Developer
+                                </h4>
+                                <p class="text-sm text-tertiary">May 2023</p>
                             </div>
                         </div>
+                        <p class="text-secondary mb-4 text-sm">
+                            Certified in Python fundamentals, data structures,
+                            and algorithm implementation.
+                        </p>
                         <a
                             href="https://www.hackerrank.com/certificates/95ce4a1561ff"
                             target="_blank"
-                            class="px-3 py-2 rounded-md bg-white/5 light-text"
-                            >View</a
+                            class="px-4 py-2 rounded-lg bg-white/10 text-primary text-sm hover:bg-white/15 transition-colors"
                         >
+                            View Certificate
+                            <i class="fa-solid fa-external-link text-xs"></i>
+                        </a>
                     </div>
-                    <!-- add more cards as needed -->
+
+                    <div class="p-6 rounded-2xl glass card-tilt opacity-60">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-gradient-to-br from-gray-400 to-gray-600 flex items-center justify-center"
+                            >
+                                <i
+                                    class="fa-solid fa-certificate text-white text-lg"
+                                ></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg text-primary">
+                                    More Coming Soon
+                                </h4>
+                                <p class="text-sm text-tertiary">2025</p>
+                            </div>
+                        </div>
+                        <p class="text-secondary mb-4 text-sm">
+                            Currently pursuing additional certifications in
+                            cloud computing and DevOps.
+                        </p>
+                        <div class="text-tertiary text-sm">In Progress...</div>
+                    </div>
                 </div>
             </section>
 
-            <!-- CONTACT -->
-            <section id="contact" class="max-w-6xl mx-auto px-6 md:px-8 py-12">
-                <h2 class="text-2xl font-bold mb-6 light-text">Get In Touch</h2>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="p-6 rounded-xl glass">
-                        <h4 class="font-semibold light-text">Say hi</h4>
-                        <p class="text-sm text-gray-400 mt-2">
-                            Prefer email? Send me a message and I usually reply
-                            within a few days.
+            <!-- CONTACT - Clean 2 Column Layout -->
+            <section id="contact" class="max-w-6xl mx-auto px-6 md:px-8 py-20">
+                <h2 class="text-3xl font-bold mb-10 text-primary">
+                    Get In Touch
+                </h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="p-8 rounded-2xl glass">
+                        <h4 class="font-semibold text-xl text-primary mb-4">
+                            Let's Connect
+                        </h4>
+                        <p class="text-secondary mb-6 leading-relaxed text-sm">
+                            I'm always open to discussing new opportunities,
+                            interesting projects, or just having a chat about
+                            technology and innovation.
                         </p>
 
-                        <div class="mt-4 flex flex-col gap-3">
-                            <a
-                                class="p-3 rounded-md bg-white/3 flex items-center gap-3 light-text"
-                                href="mailto:winterx64.work@gmail.com"
-                                ><i class="fa-solid fa-envelope"></i>
-                                winterx64.work@gmail.com</a
-                            >
-                            <a
-                                class="p-3 rounded-md bg-white/3 flex items-center gap-3 light-text"
-                                href="https://github.com/winter-x64"
-                                target="_blank"
-                                ><i class="fa-brands fa-github"></i>
-                                @winter-x64</a
-                            >
-                            <a
-                                class="p-3 rounded-md bg-white/3 flex items-center gap-3 light-text"
-                                href="https://linkedin.com/in/winter-x64"
-                                target="_blank"
-                                ><i class="fa-brands fa-linkedin"></i>
-                                linkedin</a
-                            >
+                        <div class="space-y-4 text-sm">
+                            <div class="flex items-center gap-3 text-secondary">
+                                <i class="fa-solid fa-map-marker-alt w-5"></i>
+                                <span>Kochi, India</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-secondary">
+                                <i class="fa-solid fa-clock w-5"></i>
+                                <span>Usually responds within 24 hours</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-secondary">
+                                <i class="fa-solid fa-coffee w-5"></i>
+                                <span
+                                    >Always up for a good tech discussion</span
+                                >
+                            </div>
                         </div>
                     </div>
 
-                    <form
-                        class="p-6 rounded-xl glass"
-                        action="https://formspree.io/f/your-form-id"
-                        method="POST"
-                    >
-                        <label class="block text-xs text-gray-300">Name</label>
-                        <input
-                            name="name"
-                            required
-                            class="w-full mt-2 p-3 rounded-md bg-transparent border border-white/6 text-sm light-text"
-                        />
+                    <div class="p-8 rounded-2xl glass">
+                        <h4 class="font-semibold text-xl text-primary mb-4">
+                            Reach Out
+                        </h4>
+                        <p class="text-secondary mb-6 leading-relaxed text-sm">
+                            Whether you have a project in mind, want to
+                            collaborate, or just want to say hello, I'd love to
+                            hear from you.
+                        </p>
 
-                        <label class="block text-xs text-gray-300 mt-3"
-                            >Email</label
-                        >
-                        <input
-                            name="email"
-                            type="email"
-                            required
-                            class="w-full mt-2 p-3 rounded-md bg-transparent border border-white/6 text-sm light-text"
-                        />
+                        <div class="space-y-4 text-sm">
+                            <a
+                                href="mailto:winterx64.work@gmail.com"
+                                class="flex items-center gap-4 p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors group"
+                            >
+                                <i
+                                    class="fa-solid fa-envelope group-hover:scale-110 transition-transform w-5"
+                                ></i>
+                                <span class="text-primary"
+                                    >winterx64.work@gmail.com</span
+                                >
+                            </a>
 
-                        <label class="block text-xs text-gray-300 mt-3"
-                            >Message</label
-                        >
-                        <textarea
-                            name="message"
-                            required
-                            rows="4"
-                            class="w-full mt-2 p-3 rounded-md bg-transparent border border-white/6 text-sm light-text"
-                        ></textarea>
+                            <a
+                                href="https://github.com/winter-x64"
+                                target="_blank"
+                                class="flex items-center gap-4 p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors group"
+                            >
+                                <i
+                                    class="fa-brands fa-github group-hover:scale-110 transition-transform w-5"
+                                ></i>
+                                <span class="text-primary">@winter-x64</span>
+                            </a>
 
-                        <button
-                            type="submit"
-                            class="mt-4 px-4 py-2 rounded-md bg-gradient-to-r from-neon to-neon2 text-black font-semibold"
-                        >
-                            Send Message
-                        </button>
-                    </form>
+                            <a
+                                href="https://linkedin.com/in/winter-x64"
+                                target="_blank"
+                                class="flex items-center gap-4 p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors group"
+                            >
+                                <i
+                                    class="fa-brands fa-linkedin group-hover:scale-110 transition-transform w-5"
+                                ></i>
+                                <span class="text-primary">linkedin</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <footer
-                class="max-w-6xl mx-auto px-6 md:px-8 py-8 text-center text-sm text-gray-500"
-            >
-                © <span id="year"></span> Akhil B Xavier (winter_x64). Built
-                with ❤️ and a bias for action.
+            <footer class="max-w-6xl mx-auto px-6 md:px-8 py-12 text-center">
+                <p class="text-tertiary text-sm">
+                    © <span id="year"></span> Akhil B Xavier (winter_x64). Built
+                    with ❤️ and a bias for action.
+                </p>
             </footer>
         </main>
 
-        <!-- Mobile Sidebar (basic) -->
+        <!-- Mobile Menu -->
         <div id="mobileMenu" class="fixed inset-0 z-40 bg-black/50 hidden">
             <div
-                class="absolute right-0 top-0 w-64 h-full p-6 bg-[#07070b] glass"
+                class="absolute right-0 top-0 w-64 h-full mobile-menu transform translate-x-full transition-transform duration-300 ease-in-out"
             >
-                <button
-                    id="closeMobile"
-                    class="mb-4 p-2 rounded-md bg-white/3 light-text"
-                >
-                    x
-                </button>
-                <nav class="flex flex-col gap-3">
-                    <a href="#about" class="py-2 light-text">About</a>
-                    <a href="#projects" class="py-2 light-text">Projects</a>
-                    <a href="#experience" class="py-2 light-text">Experience</a>
-                    <a href="#contact" class="py-2 light-text">Contact</a>
-                </nav>
+                <div class="p-6">
+                    <button
+                        id="closeMobile"
+                        class="mb-8 p-2 rounded-lg hover:bg-white/5 transition-colors text-primary"
+                    >
+                        <i class="fa-solid fa-times"></i>
+                    </button>
+                    <nav class="flex flex-col gap-4">
+                        <a
+                            href="#about"
+                            class="py-3 text-secondary hover:text-primary transition-colors"
+                            >About</a
+                        >
+                        <a
+                            href="#projects"
+                            class="py-3 text-secondary hover:text-primary transition-colors"
+                            >Projects</a
+                        >
+                        <a
+                            href="#experience"
+                            class="py-3 text-secondary hover:text-primary transition-colors"
+                            >Experience</a
+                        >
+                        <a
+                            href="#contact"
+                            class="py-3 text-secondary hover:text-primary transition-colors"
+                            >Contact</a
+                        >
+                        <div class="mt-6 pt-6 border-t border-white/10">
+                            <a
+                                href="#contact"
+                                class="inline-flex items-center gap-2 px-4 py-2 rounded-lg btn-secondary"
+                            >
+                                Download Resume
+                            </a>
+                        </div>
+                    </nav>
+                </div>
             </div>
         </div>
 
         <!-- Scripts -->
         <script>
-            // Year
+            // Set current year
             document.getElementById("year").textContent =
                 new Date().getFullYear();
 
-            // Theme toggle - Fixed implementation
+            // Theme toggle with improved functionality
             const themeToggle = document.getElementById("themeToggle");
             const themeIcon = document.getElementById("themeIcon");
 
-            // Initialize theme on page load
             function initializeTheme() {
                 const savedTheme = localStorage.getItem("theme");
                 const prefersDark = window.matchMedia(
                     "(prefers-color-scheme: dark)"
                 ).matches;
 
-                // If no saved theme, use system preference or default to dark
-                if (!savedTheme) {
-                    const defaultTheme = prefersDark ? "dark" : "light";
-                    localStorage.setItem("theme", defaultTheme);
-                }
-
-                const currentTheme = localStorage.getItem("theme");
+                const currentTheme =
+                    savedTheme || (prefersDark ? "dark" : "light");
+                localStorage.setItem("theme", currentTheme);
 
                 if (currentTheme === "dark") {
                     document.documentElement.classList.add("dark");
@@ -777,21 +997,17 @@
                     document.documentElement.classList.remove("dark");
                 }
 
-                updateIcon();
+                updateThemeIcon();
             }
 
-            function updateIcon() {
-                if (document.documentElement.classList.contains("dark")) {
-                    themeIcon.className = "fa-solid fa-sun text-sm light-text";
-                } else {
-                    themeIcon.className = "fa-solid fa-moon text-sm light-text";
-                }
+            function updateThemeIcon() {
+                const isDark =
+                    document.documentElement.classList.contains("dark");
+                themeIcon.className = `fa-solid fa-${
+                    isDark ? "sun" : "moon"
+                } text-sm text-secondary`;
             }
 
-            // Initialize theme when page loads
-            initializeTheme();
-
-            // Theme toggle click handler
             themeToggle.addEventListener("click", () => {
                 const isDark =
                     document.documentElement.classList.contains("dark");
@@ -804,63 +1020,171 @@
                     localStorage.setItem("theme", "dark");
                 }
 
-                updateIcon();
+                updateThemeIcon();
             });
 
-            // Mobile menu
+            // Initialize theme on load
+            initializeTheme();
+
+            // Mobile menu functionality
             const mobileBtn = document.getElementById("mobileBtn");
             const mobileMenu = document.getElementById("mobileMenu");
             const closeMobile = document.getElementById("closeMobile");
-            mobileBtn.addEventListener("click", () =>
-                mobileMenu.classList.remove("hidden")
-            );
-            closeMobile.addEventListener("click", () =>
-                mobileMenu.classList.add("hidden")
-            );
+            const mobileMenuContent = mobileMenu.querySelector(".mobile-menu");
 
-            // Rotating roles
+            function openMobileMenu() {
+                mobileMenu.classList.remove("hidden");
+                setTimeout(() => {
+                    mobileMenuContent.classList.remove("translate-x-full");
+                }, 10);
+            }
+
+            function closeMobileMenu() {
+                mobileMenuContent.classList.add("translate-x-full");
+                setTimeout(() => {
+                    mobileMenu.classList.add("hidden");
+                }, 300);
+            }
+
+            mobileBtn.addEventListener("click", openMobileMenu);
+            closeMobile.addEventListener("click", closeMobileMenu);
+
+            // Close mobile menu when clicking backdrop
+            mobileMenu.addEventListener("click", (e) => {
+                if (e.target === mobileMenu) {
+                    closeMobileMenu();
+                }
+            });
+
+            // Role rotation animation
             const roles = [
+                "Full Stack Developer",
                 "Backend Developer",
                 "Hardware Enthusiast",
                 "IoT Innovator",
                 "Open Source Contributor",
-                "UI UX Designer",
+                "UI/UX Designer",
             ];
-            let ri = 0;
-            const roleEl = document.querySelector(".type-roles");
-            setInterval(() => {
-                ri = (ri + 1) % roles.length;
-                roleEl.textContent = roles[ri];
-            }, 2500);
 
-            // Simple tilt effect for cards using mouse position
-            document.querySelectorAll(".card-tilt").forEach((card) => {
-                card.addEventListener("mousemove", (e) => {
-                    const r = card.getBoundingClientRect();
-                    const x = (e.clientX - r.left) / r.width - 0.5;
-                    const y = (e.clientY - r.top) / r.height - 0.5;
-                    card.style.transform = `perspective(900px) translateZ(0) rotateX(${
-                        -y * 6
-                    }deg) rotateY(${x * 6}deg)`;
-                });
-                card.addEventListener("mouseleave", () => {
-                    card.style.transform = "";
+            let roleIndex = 0;
+            const roleElement = document.querySelector(".type-roles");
+
+            function rotateRole() {
+                roleElement.style.opacity = "0";
+                roleElement.style.transform = "translateY(10px)";
+
+                setTimeout(() => {
+                    roleIndex = (roleIndex + 1) % roles.length;
+                    roleElement.textContent = roles[roleIndex];
+                    roleElement.style.opacity = "1";
+                    roleElement.style.transform = "translateY(0)";
+                }, 150);
+            }
+
+            // Add transition styles
+            roleElement.style.transition =
+                "opacity 0.3s ease, transform 0.3s ease";
+
+            // Start rotation
+            setInterval(rotateRole, 3000);
+
+            // Enhanced card tilt effects for desktop only
+            function initCardTilt() {
+                if (window.innerWidth > 768) {
+                    document.querySelectorAll(".card-tilt").forEach((card) => {
+                        card.addEventListener("mousemove", (e) => {
+                            const rect = card.getBoundingClientRect();
+                            const x =
+                                (e.clientX - rect.left) / rect.width - 0.5;
+                            const y =
+                                (e.clientY - rect.top) / rect.height - 0.5;
+
+                            const rotateY = x * 8;
+                            const rotateX = -y * 8;
+
+                            card.style.transform = `
+                                perspective(1000px) 
+                                translateZ(0) 
+                                rotateX(${rotateX}deg) 
+                                rotateY(${rotateY}deg)
+                                translateY(-4px)
+                            `;
+                        });
+
+                        card.addEventListener("mouseleave", () => {
+                            card.style.transform = "";
+                        });
+                    });
+                }
+            }
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+                anchor.addEventListener("click", function (e) {
+                    const target = document.querySelector(
+                        this.getAttribute("href")
+                    );
+                    if (target) {
+                        e.preventDefault();
+
+                        // Close mobile menu if open
+                        closeMobileMenu();
+
+                        // Smooth scroll to target
+                        const headerOffset = 100;
+                        const elementPosition =
+                            target.getBoundingClientRect().top;
+                        const offsetPosition =
+                            elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth",
+                        });
+                    }
                 });
             });
 
-            // Smooth scroll for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach((a) => {
-                a.addEventListener("click", function (e) {
-                    const t = document.querySelector(this.getAttribute("href"));
-                    if (t) {
-                        e.preventDefault();
-                        t.scrollIntoView({
-                            behavior: "smooth",
-                            block: "start",
-                        });
-                        mobileMenu.classList.add("hidden");
+            // Loading animation for sections
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px",
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("loading");
                     }
                 });
+            }, observerOptions);
+
+            // Observe all sections for loading animation
+            document.querySelectorAll("section").forEach((section) => {
+                observer.observe(section);
+            });
+
+            // Initialize card tilt effects
+            initCardTilt();
+
+            // Reinitialize on window resize
+            let resizeTimeout;
+            window.addEventListener("resize", () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    initCardTilt();
+                }, 150);
+            });
+
+            // Add subtle parallax effect to hero background
+            window.addEventListener("scroll", () => {
+                const scrolled = window.pageYOffset;
+                const particles = document.getElementById("particles");
+                if (particles && scrolled < window.innerHeight) {
+                    particles.style.transform = `translateY(${
+                        scrolled * 0.5
+                    }px)`;
+                }
             });
         </script>
     </body>
