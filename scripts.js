@@ -107,7 +107,6 @@ document.addEventListener("keydown", (e) => {
 
 // Role rotation animation
 const roles = [
-    "Full Stack Developer",
     "Backend Developer",
     "Hardware Enthusiast",
     "IoT Innovator",
