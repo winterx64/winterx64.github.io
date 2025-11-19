@@ -2,6 +2,6 @@
 
 this is my portfolio
 
-https://winter-x64.github.io
+https://winterx64.github.io
 
 > copying not allowd
