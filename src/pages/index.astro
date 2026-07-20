@@ -1,26 +1,940 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Hero from "../components/Hero.astro";
+import DesktopIcon from "../components/DesktopIcon.astro";
+import Window from "../components/Window.astro";
+
+// Window Content Components
 import About from "../components/About.astro";
-import Skills from "../components/Skills.astro";
 import Projects from "../components/Projects.astro";
-import Experience from "../components/Experience.astro";
-import Certifications from "../components/Certifications.astro";
+import Philosophy from "../components/Philosophy.astro";
+import Interests from "../components/Interests.astro";
+import Now from "../components/Now.astro";
+import Writing from "../components/Writing.astro";
 import Contact from "../components/Contact.astro";
-import Footer from "../components/Footer.astro";
 ---
 
-<Layout>
-  <Header />
-  <main class="pt-28 relative z-10">
-    <Hero />
-    <About />
-    <Skills />
-    <Projects />
-    <Experience />
-    <Certifications />
-    <Contact />
-    <Footer />
-  </main>
+<Layout title="Akhil B Xavier — Digital Headquarters OS">
+  
+  <!-- OS Desktop Workspace -->
+  <div class="relative w-screen h-[calc(100vh-44px)] select-none overflow-hidden z-10" id="desktop-workspace">
+    
+    <!-- Wallpaper Center Grid Branding -->
+    <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none z-0 opacity-[0.03]">
+      <span class="font-heading font-bold text-9xl tracking-widest text-white">SYSTEMS</span>
+      <span class="font-mono text-xs tracking-[1em] text-[var(--color-accent-site)]">BUILDER & FOUNDER</span>
+    </div>
+
+    <!-- Blueprint Technical Border Markings -->
+    <div class="absolute top-4 left-4 font-mono text-[9px] text-text-secondary/15 pointer-events-none select-none">
+      SYS_GRID: [1920x1080] // STATUS: SECURE_LINK
+    </div>
+    <div class="absolute top-4 right-4 font-mono text-[9px] text-text-secondary/15 pointer-events-none select-none">
+      IP: 127.0.0.1 // DEV_HQ.OS
+    </div>
+
+    <!-- Desktop Grid Area (Icons aligned on the left) -->
+    <div class="absolute top-12 left-6 bottom-6 flex flex-col flex-wrap gap-4 items-start w-32 z-10">
+      
+      <DesktopIcon 
+        id="icon-terminal" 
+        label="terminal.sh" 
+        iconClass="fa-solid fa-terminal text-[var(--color-accent-site)]" 
+        windowId="win-terminal" 
+      />
+
+      <DesktopIcon 
+        id="icon-about" 
+        label="about_me.txt" 
+        iconClass="fa-regular fa-file-lines text-white" 
+        windowId="win-about" 
+      />
+
+      <DesktopIcon 
+        id="icon-projects" 
+        label="projects_dir.exe" 
+        iconClass="fa-solid fa-code-branch text-white" 
+        windowId="win-projects" 
+      />
+
+      <DesktopIcon 
+        id="icon-philosophy" 
+        label="how_i_build.sh" 
+        iconClass="fa-solid fa-network-wired text-white" 
+        windowId="win-philosophy" 
+      />
+
+      <DesktopIcon 
+        id="icon-interests" 
+        label="scope_registry.cfg" 
+        iconClass="fa-solid fa-microchip text-white" 
+        windowId="win-interests" 
+      />
+
+      <DesktopIcon 
+        id="icon-now" 
+        label="live_status.log" 
+        iconClass="fa-solid fa-heartbeat text-white" 
+        windowId="win-now" 
+      />
+
+      <DesktopIcon 
+        id="icon-writing" 
+        label="journal_logs.db" 
+        iconClass="fa-solid fa-database text-white" 
+        windowId="win-writing" 
+      />
+
+      <DesktopIcon 
+        id="icon-contact" 
+        label="gateway_cfg.io" 
+        iconClass="fa-solid fa-shield-halved text-[var(--color-accent-site)]" 
+        windowId="win-contact" 
+      />
+
+    </div>
+
+    <!-- Windows Workspace Container -->
+    <div class="absolute inset-0 z-20 pointer-events-none" id="windows-container">
+      
+      <!-- 1. Terminal Window (Pre-opened) -->
+      <Window id="win-terminal" title="Terminal // terminal_shell.sh" width="580px" height="420px" defaultTop="10%" defaultLeft="50%" iconClass="fa-solid fa-terminal">
+        <div class="p-5 font-mono text-xs leading-relaxed text-[#A1A1AA] h-full flex flex-col justify-between" id="terminal-screen">
+          <div class="space-y-2 overflow-y-auto pr-1 flex-1 mb-4" id="terminal-logs">
+            <!-- Loading sequences inserted via script -->
+          </div>
+          <div class="border-t border-border-site/50 pt-2 flex items-center gap-2">
+            <span class="text-[var(--color-accent-site)]">akhil@abx.os:~$</span>
+            <div class="flex-1 flex items-center relative">
+              <input
+                type="text"
+                id="terminal-input"
+                class="bg-transparent border-none outline-none text-white w-full font-mono text-xs focus:ring-0 p-0"
+                autocomplete="off"
+                placeholder="type here..."
+                disabled
+              />
+              <span id="autocomplete-hint" class="absolute left-0 top-0 text-text-secondary/40 pointer-events-none select-none"></span>
+            </div>
+          </div>
+        </div>
+      </Window>
+
+      <!-- 2. About Window (Pre-opened) -->
+      <Window id="win-about" title="Notepad // about_readme.txt" width="680px" height="440px" defaultTop="15%" defaultLeft="10%" iconClass="fa-regular fa-file-lines">
+        <About />
+      </Window>
+
+      <!-- 3. Projects Window -->
+      <Window id="win-projects" title="File Explorer // projects_dir.exe" width="800px" height="480px" defaultTop="8%" defaultLeft="18%" iconClass="fa-solid fa-code-branch">
+        <Projects />
+      </Window>
+
+      <!-- 4. Philosophy Window -->
+      <Window id="win-philosophy" title="Pipeline // how_i_build.sh" width="760px" height="380px" defaultTop="22%" defaultLeft="15%" iconClass="fa-solid fa-network-wired">
+        <Philosophy />
+      </Window>
+
+      <!-- 5. Interests Window -->
+      <Window id="win-interests" title="Registry // scope_registry.cfg" width="680px" height="420px" defaultTop="25%" defaultLeft="28%" iconClass="fa-solid fa-microchip">
+        <Interests />
+      </Window>
+
+      <!-- 6. Now Window -->
+      <Window id="win-now" title="Telemetry // live_status.log" width="700px" height="410px" defaultTop="12%" defaultLeft="25%" iconClass="fa-solid fa-heartbeat">
+        <Now />
+      </Window>
+
+      <!-- 7. Writing Window -->
+      <Window id="win-writing" title="SQL Client // journal_logs.db" width="680px" height="380px" defaultTop="28%" defaultLeft="20%" iconClass="fa-solid fa-database">
+        <Writing />
+      </Window>
+
+      <!-- 8. Contact Window -->
+      <Window id="win-contact" title="Port Tunnel // gateway_cfg.io" width="640px" height="360px" defaultTop="32%" defaultLeft="16%" iconClass="fa-solid fa-shield-halved">
+        <Contact />
+      </Window>
+
+    </div>
+
+  </div>
+
+  <!-- Bottom OS Taskbar Dock -->
+  <div class="os-taskbar px-4 flex items-center justify-between z-50">
+    
+    <!-- Start Button, Quick Launch, & Taskbar Apps -->
+    <div class="flex items-center gap-3">
+      <!-- Start Button -->
+      <button 
+        id="start-menu-btn"
+        class="font-heading font-bold text-xs tracking-tight text-white border border-border-site hover:border-[var(--color-accent-site)] bg-[#161616] px-3.5 py-1 rounded transition-colors cursor-pointer"
+      >
+        SYSTEM.OS
+      </button>
+      
+      <span class="text-border-site">|</span>
+
+      <!-- Quick Launch Dock -->
+      <div class="flex items-center gap-1.5 border-r border-border-site/50 pr-3">
+        <button class="quick-launch-btn w-6 h-6 rounded flex items-center justify-center bg-transparent border border-transparent hover:border-border-site hover:bg-[#161616] text-[#A1A1AA] hover:text-[#4F9DFF] transition-all cursor-pointer" data-target="win-terminal" title="Launch Terminal">
+          <i class="fa-solid fa-terminal text-[10px]"></i>
+        </button>
+        <button class="quick-launch-btn w-6 h-6 rounded flex items-center justify-center bg-transparent border border-transparent hover:border-border-site hover:bg-[#161616] text-[#A1A1AA] hover:text-[#4F9DFF] transition-all cursor-pointer" data-target="win-about" title="Launch About Document">
+          <i class="fa-regular fa-file-lines text-[10px]"></i>
+        </button>
+        <button class="quick-launch-btn w-6 h-6 rounded flex items-center justify-center bg-transparent border border-transparent hover:border-border-site hover:bg-[#161616] text-[#A1A1AA] hover:text-[#4F9DFF] transition-all cursor-pointer" data-target="win-projects" title="Launch Explorer">
+          <i class="fa-solid fa-folder text-[10px]"></i>
+        </button>
+        <button class="quick-launch-btn w-6 h-6 rounded flex items-center justify-center bg-transparent border border-transparent hover:border-border-site hover:bg-[#161616] text-[#A1A1AA] hover:text-[#4F9DFF] transition-all cursor-pointer" data-target="win-now" title="Launch Live Telemetry">
+          <i class="fa-solid fa-heartbeat text-[10px]"></i>
+        </button>
+      </div>
+      
+      <!-- Taskbar Application Dock (Toggles minimized states) -->
+      <div class="flex items-center gap-2" id="taskbar-apps-dock">
+        <!-- Rendered dynamically by script -->
+      </div>
+    </div>
+
+    <!-- System Tray clock & statistics -->
+    <div class="flex items-center gap-4 font-mono text-[9px] text-text-secondary select-none">
+      <div class="hidden sm:flex items-center gap-3">
+        <span>CPU: <span id="cpu-stat">4%</span></span>
+        <span>MEM: <span id="mem-stat">12%</span></span>
+        <span class="text-border-site">|</span>
+      </div>
+      <div id="taskbar-clock" class="text-white font-bold">12:00:00 UTC</div>
+    </div>
+
+  </div>
+
+  <!-- Start Menu Dropdown Panel -->
+  <div 
+    id="start-menu-dropdown" 
+    class="fixed bottom-12 left-4 w-72 bg-surface-site border border-border-site rounded p-4 shadow-2xl hidden z-50 font-mono text-xs text-text-secondary space-y-4"
+  >
+    <div class="border-b border-border-site pb-2">
+      <span class="text-white block font-heading font-bold">SYSTEM DIAGNOSTICS</span>
+      <span class="text-[9px]">OS ENVIRONMENT v2.6.4</span>
+    </div>
+    <div class="space-y-1.5 text-[10px]">
+      <div>Uptime: <span class="text-white" id="start-menu-uptime">24d 14h 08m</span></div>
+      <div>Active Connections: <span class="text-green-400">ESTABLISHED</span></div>
+      <div>Audio driver: <span class="text-green-400">ACTIVE (Oscillator API)</span></div>
+    </div>
+
+    <!-- Window Manager Layout controls inside Start Menu -->
+    <div class="border-t border-border-site pt-3 space-y-2">
+      <span class="text-[9px] uppercase tracking-wider block font-bold text-text-secondary">WINDOW MANAGER</span>
+      <div class="grid grid-cols-2 gap-1.5 font-mono text-[10px]">
+        <button id="open-tiling" class="text-center text-white border border-border-site hover:border-white py-1 rounded cursor-pointer transition-colors text-[9px]">
+          TILE GRID
+        </button>
+        <button id="open-cascading" class="text-center text-white border border-border-site hover:border-white py-1 rounded cursor-pointer transition-colors text-[9px]">
+          CASCADE
+        </button>
+      </div>
+    </div>
+
+    <!-- Theme Customization Switcher -->
+    <div class="border-t border-border-site pt-3 space-y-2">
+      <span class="text-[9px] uppercase tracking-wider block font-bold text-text-secondary">ACCENT THEME</span>
+      <div class="flex items-center gap-2">
+        <button class="theme-color-picker w-4 h-4 rounded-full bg-[#4F9DFF] border border-white/10 hover:scale-110 transition-transform cursor-pointer" data-color="#4F9DFF" title="Default Blue"></button>
+        <button class="theme-color-picker w-4 h-4 rounded-full bg-[#10B981] border border-white/10 hover:scale-110 transition-transform cursor-pointer" data-color="#10B981" title="Matrix Green"></button>
+        <button class="theme-color-picker w-4 h-4 rounded-full bg-[#F59E0B] border border-white/10 hover:scale-110 transition-transform cursor-pointer" data-color="#F59E0B" title="CRT Amber"></button>
+        <button class="theme-color-picker w-4 h-4 rounded-full bg-[#A855F7] border border-white/10 hover:scale-110 transition-transform cursor-pointer" data-color="#A855F7" title="Cyber Purple"></button>
+      </div>
+    </div>
+
+    <div class="border-t border-border-site pt-2 flex flex-col gap-1.5">
+      <button id="open-all-ports" class="w-full text-center text-white border border-border-site hover:border-white py-1.5 rounded transition-colors cursor-pointer text-[10px]">
+        OPEN ALL MODULES
+      </button>
+      <button id="close-all-ports" class="w-full text-center text-text-secondary border border-border-site hover:border-[#FF4F4F] hover:text-[#FF4F4F] py-1.5 rounded transition-colors cursor-pointer text-[10px]">
+        SHUTDOWN ALL MODULES
+      </button>
+    </div>
+  </div>
+
 </Layout>
+
+<script>
+  // Central OS Windowing System Manager
+  const container = document.getElementById("windows-container");
+  const taskbarDock = document.getElementById("taskbar-apps-dock");
+  const startBtn = document.getElementById("start-menu-btn");
+  const startMenu = document.getElementById("start-menu-dropdown");
+
+  const windowRegistry = [
+    { id: "win-terminal", title: "terminal.sh" },
+    { id: "win-about", title: "about_me.txt" },
+    { id: "win-projects", title: "projects_dir.exe" },
+    { id: "win-philosophy", title: "how_i_build.sh" },
+    { id: "win-interests", title: "scope_registry.cfg" },
+    { id: "win-now", title: "live_status.log" },
+    { id: "win-writing", title: "journal_logs.db" },
+    { id: "win-contact", title: "gateway_cfg.io" }
+  ];
+
+  let activeZIndex = 100;
+
+  // 1. Native Synthesized Retro Audio
+  let audioCtx: AudioContext | null = null;
+
+  function playBeep(freq = 600, duration = 0.08, type: OscillatorType = "sine") {
+    try {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
+      }
+      if (audioCtx.state === "suspended") {
+        audioCtx.resume();
+      }
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      
+      gain.gain.setValueAtTime(0.015, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+      
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration);
+    } catch (e) {
+      console.warn("Audio Context init blocked or failed:", e);
+    }
+  }
+
+  function playBootSound() {
+    playBeep(261.63, 0.1); // C4
+    setTimeout(() => playBeep(329.63, 0.1), 120); // E4
+    setTimeout(() => playBeep(392.00, 0.1), 240); // G4
+    setTimeout(() => playBeep(523.25, 0.2), 360); // C5
+  }
+
+  // 2. Z-Index Sorting (Focus Window)
+  function focusWindow(winId: string) {
+    const win = document.getElementById(winId);
+    if (!win) return;
+    activeZIndex++;
+    win.style.zIndex = String(activeZIndex);
+    
+    // Set active-win classes
+    document.querySelectorAll(".os-window").forEach(w => {
+      w.classList.remove("active-win");
+    });
+    win.classList.remove("minimized");
+    win.classList.add("active-win");
+    
+    // Highlight taskbar button
+    document.querySelectorAll(".taskbar-app-btn").forEach(btn => {
+      if (btn.getAttribute("data-window") === winId) {
+        btn.classList.add("border-[var(--color-accent-site)]", "text-white");
+        btn.classList.remove("border-border-site", "text-text-secondary");
+      } else {
+        btn.classList.remove("border-[var(--color-accent-site)]", "text-white");
+        btn.classList.add("border-border-site", "text-text-secondary");
+      }
+    });
+  }
+
+  // 3. Drag-and-Drop system ( CENTRALIZED )
+  function initDraggable(win: HTMLElement) {
+    const header = win.querySelector(".window-header") as HTMLElement;
+    if (!header) return;
+
+    let isDragging = false;
+    let startX = 0, startY = 0;
+    let initialX = 0, initialY = 0;
+
+    header.addEventListener("mousedown", dragStart);
+    header.addEventListener("touchstart", dragStart, { passive: true });
+
+    function dragStart(e: any) {
+      if (win.classList.contains("maximized")) return;
+      focusWindow(win.id);
+      playBeep(580, 0.03);
+      
+      isDragging = true;
+      const clientX = e.type === "touchstart" ? e.touches[0].clientX : e.clientX;
+      const clientY = e.type === "touchstart" ? e.touches[0].clientY : e.clientY;
+      
+      startX = clientX;
+      startY = clientY;
+      
+      const rect = win.getBoundingClientRect();
+      initialX = rect.left;
+      initialY = rect.top;
+
+      document.addEventListener("mousemove", dragMove);
+      document.addEventListener("mouseup", dragEnd);
+      document.addEventListener("touchmove", dragMove, { passive: false });
+      document.addEventListener("touchend", dragEnd);
+    }
+
+    function dragMove(e: any) {
+      if (!isDragging) return;
+      if (e.type === "touchmove") e.preventDefault();
+      
+      const clientX = e.type === "touchmove" ? e.touches[0].clientX : e.clientX;
+      const clientY = e.type === "touchmove" ? e.touches[0].clientY : e.clientY;
+      
+      const dx = clientX - startX;
+      const dy = clientY - startY;
+
+      win.style.top = `${initialY + dy}px`;
+      win.style.left = `${initialX + dx}px`;
+    }
+
+    function dragEnd() {
+      isDragging = false;
+      document.removeEventListener("mousemove", dragMove);
+      document.removeEventListener("mouseup", dragEnd);
+      document.removeEventListener("touchmove", dragMove);
+      document.removeEventListener("touchend", dragEnd);
+    }
+  }
+
+  // 4. Drag Resizing system ( CENTRALIZED )
+  function initResizable(win: HTMLElement) {
+    const trigger = win.querySelector(".resize-trigger") as HTMLElement;
+    if (!trigger) return;
+
+    let isResizing = false;
+    let startX = 0, startY = 0;
+    let initialWidth = 0, initialHeight = 0;
+
+    trigger.addEventListener("mousedown", resizeStart);
+    trigger.addEventListener("touchstart", resizeStart, { passive: true });
+
+    function resizeStart(e: any) {
+      if (win.classList.contains("maximized")) return;
+      focusWindow(win.id);
+      playBeep(520, 0.04);
+      
+      isResizing = true;
+      const clientX = e.type === "touchstart" ? e.touches[0].clientX : e.clientX;
+      const clientY = e.type === "touchstart" ? e.touches[0].clientY : e.clientY;
+
+      startX = clientX;
+      startY = clientY;
+      
+      initialWidth = win.offsetWidth;
+      initialHeight = win.offsetHeight;
+
+      document.addEventListener("mousemove", resizeMove);
+      document.addEventListener("mouseup", resizeEnd);
+      document.addEventListener("touchmove", resizeMove, { passive: false });
+      document.addEventListener("touchend", resizeEnd);
+    }
+
+    function resizeMove(e: any) {
+      if (!isResizing) return;
+      if (e.type === "touchmove") e.preventDefault();
+
+      const clientX = e.type === "touchmove" ? e.touches[0].clientX : e.clientX;
+      const clientY = e.type === "touchmove" ? e.touches[0].clientY : e.clientY;
+
+      const dx = clientX - startX;
+      const dy = clientY - startY;
+
+      const w = Math.max(340, initialWidth + dx);
+      const h = Math.max(220, initialHeight + dy);
+
+      win.style.width = `${w}px`;
+      win.style.height = `${h}px`;
+    }
+
+    function resizeEnd() {
+      isResizing = false;
+      document.removeEventListener("mousemove", resizeMove);
+      document.removeEventListener("mouseup", resizeEnd);
+      document.removeEventListener("touchmove", resizeMove);
+      document.removeEventListener("touchend", resizeEnd);
+      playBeep(640, 0.03);
+    }
+  }
+
+  // 5. Centralized Layout Windows Manager Actions
+  function getActiveOpenWindows() {
+    return windowRegistry.filter(item => {
+      const el = document.getElementById(item.id);
+      return el && el.classList.contains("active-win") && !el.classList.contains("minimized");
+    });
+  }
+
+  function tileWindows() {
+    const activeWins = getActiveOpenWindows();
+    const count = activeWins.length;
+    if (count === 0) return;
+    
+    playBeep(680, 0.08);
+    const taskbarHeight = 44;
+    const margin = 12;
+    const screenW = window.innerWidth;
+    const screenH = window.innerHeight - taskbarHeight;
+
+    if (count === 1) {
+      const el = document.getElementById(activeWins[0].id);
+      if (el) {
+        el.classList.remove("maximized");
+        el.style.top = `${margin}px`;
+        el.style.left = `${margin}px`;
+        el.style.width = `calc(100vw - ${margin * 2}px)`;
+        el.style.height = `calc(100vh - ${taskbarHeight + margin * 2}px)`;
+      }
+    } else if (count === 2) {
+      // Split Vertically (Side by Side columns)
+      const w = Math.floor((screenW - margin * 3) / 2);
+      const h = screenH - margin * 2;
+      
+      activeWins.forEach((winItem, idx) => {
+        const el = document.getElementById(winItem.id);
+        if (el) {
+          el.classList.remove("maximized");
+          el.style.top = `${margin}px`;
+          el.style.left = `${margin + idx * (w + margin)}px`;
+          el.style.width = `${w}px`;
+          el.style.height = `${h}px`;
+        }
+      });
+    } else if (count === 3) {
+      // Left 1 Col, Right split 2 vertically
+      const w = Math.floor((screenW - margin * 3) / 2);
+      const hHalf = Math.floor((screenH - margin * 3) / 2);
+      
+      const el1 = document.getElementById(activeWins[0].id);
+      if (el1) {
+        el1.classList.remove("maximized");
+        el1.style.top = `${margin}px`;
+        el1.style.left = `${margin}px`;
+        el1.style.width = `${w}px`;
+        el1.style.height = `${screenH - margin * 2}px`;
+      }
+
+      const el2 = document.getElementById(activeWins[1].id);
+      if (el2) {
+        el2.classList.remove("maximized");
+        el2.style.top = `${margin}px`;
+        el2.style.left = `${margin * 2 + w}px`;
+        el2.style.width = `${w}px`;
+        el2.style.height = `${hHalf}px`;
+      }
+
+      const el3 = document.getElementById(activeWins[2].id);
+      if (el3) {
+        el3.classList.remove("maximized");
+        el3.style.top = `${margin * 2 + hHalf}px`;
+        el3.style.left = `${margin * 2 + w}px`;
+        el3.style.width = `${w}px`;
+        el3.style.height = `${hHalf}px`;
+      }
+    } else {
+      // 2x2 grid layout quadrant for 4 or more
+      const w = Math.floor((screenW - margin * 3) / 2);
+      const h = Math.floor((screenH - margin * 3) / 2);
+      
+      activeWins.forEach((winItem, idx) => {
+        if (idx >= 4) return;
+        const el = document.getElementById(winItem.id);
+        if (el) {
+          el.classList.remove("maximized");
+          const col = idx % 2;
+          const row = Math.floor(idx / 2);
+          el.style.top = `${margin + row * (h + margin)}px`;
+          el.style.left = `${margin + col * (w + margin)}px`;
+          el.style.width = `${w}px`;
+          el.style.height = `${h}px`;
+        }
+      });
+    }
+  }
+
+  function cascadeWindows() {
+    const activeWins = getActiveOpenWindows();
+    if (activeWins.length === 0) return;
+    
+    playBeep(640, 0.08);
+
+    activeWins.forEach((winItem, idx) => {
+      const el = document.getElementById(winItem.id);
+      if (el) {
+        el.classList.remove("maximized");
+        el.style.width = "620px";
+        el.style.height = "400px";
+        el.style.top = `${40 + idx * 30}px`;
+        el.style.left = `${80 + idx * 30}px`;
+        focusWindow(winItem.id); // stagger focus stack order
+      }
+    });
+  }
+
+  // 6. Register drag handles and window controls
+  windowRegistry.forEach(item => {
+    const win = document.getElementById(item.id);
+    if (!win) return;
+
+    initDraggable(win);
+    initResizable(win);
+
+    win.addEventListener("mousedown", () => focusWindow(win.id));
+    win.addEventListener("touchstart", () => focusWindow(win.id), { passive: true });
+
+    // Minimize Button
+    win.querySelector(".win-btn-min")?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      playBeep(420, 0.08);
+      win.classList.add("minimized");
+      win.classList.remove("active-win");
+      
+      const btn = document.querySelector(`.taskbar-app-btn[data-window="${win.id}"]`);
+      btn?.classList.remove("border-[var(--color-accent-site)]", "text-white");
+    });
+
+    // Maximize Button
+    win.querySelector(".win-btn-max")?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      playBeep(620, 0.08);
+      win.classList.toggle("maximized");
+    });
+
+    // Close Button
+    win.querySelector(".win-btn-close")?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      playBeep(240, 0.12, "sawtooth");
+      win.classList.remove("active-win");
+      win.classList.add("minimized");
+      
+      const dockBtn = document.querySelector(`.taskbar-app-btn[data-window="${win.id}"]`);
+      if (dockBtn) dockBtn.remove();
+    });
+  });
+
+  // 7. Create Taskbar Dock buttons dynamically
+  function createDockButton(winId: string, title: string) {
+    if (document.querySelector(`.taskbar-app-btn[data-window="${winId}"]`)) return;
+
+    const btn = document.createElement("button");
+    btn.className = "taskbar-app-btn font-mono text-[10px] bg-[#161616] border border-border-site text-text-secondary px-3 py-1 rounded transition-colors cursor-pointer";
+    btn.setAttribute("data-window", winId);
+    btn.textContent = title;
+    
+    btn.addEventListener("click", () => {
+      const win = document.getElementById(winId);
+      if (!win) return;
+
+      if (win.classList.contains("active-win") && !win.classList.contains("minimized")) {
+        playBeep(420, 0.08);
+        win.classList.add("minimized");
+        win.classList.remove("active-win");
+        btn.classList.remove("border-[var(--color-accent-site)]", "text-white");
+      } else {
+        playBeep(640, 0.06);
+        win.classList.remove("minimized");
+        focusWindow(winId);
+      }
+    });
+
+    taskbarDock?.appendChild(btn);
+  }
+
+  // 8. Open Windows on Shortcut clicks
+  document.querySelectorAll(".desktop-shortcut").forEach(sc => {
+    const winId = sc.getAttribute("data-window");
+    const label = sc.querySelector("span")?.textContent || "app.exe";
+    
+    if (winId) {
+      sc.addEventListener("click", () => {
+        const win = document.getElementById(winId);
+        if (win) {
+          playBeep(600, 0.05);
+          win.classList.remove("minimized");
+          createDockButton(winId, label);
+          focusWindow(winId);
+        }
+      });
+    }
+  });
+
+  // Quick Launch clicks support
+  document.querySelectorAll(".quick-launch-btn").forEach(btn => {
+    const targetId = btn.getAttribute("data-target");
+    const matchingRegistry = windowRegistry.find(r => r.id === targetId);
+    
+    if (targetId && matchingRegistry) {
+      btn.addEventListener("click", () => {
+        const win = document.getElementById(targetId);
+        if (win) {
+          playBeep(680, 0.04);
+          win.classList.remove("minimized");
+          createDockButton(targetId, matchingRegistry.title);
+          focusWindow(targetId);
+        }
+      });
+    }
+  });
+
+  // Pre-open on boot
+  setTimeout(() => {
+    playBootSound();
+    
+    // Terminal
+    const term = document.getElementById("win-terminal");
+    if (term) {
+      term.classList.remove("minimized");
+      term.classList.add("active-win");
+      createDockButton("win-terminal", "terminal.sh");
+      focusWindow("win-terminal");
+    }
+    // About
+    const about = document.getElementById("win-about");
+    if (about) {
+      about.classList.remove("minimized");
+      about.classList.add("active-win");
+      createDockButton("win-about", "about_me.txt");
+      focusWindow("win-about");
+    }
+  }, 300);
+
+  // 9. Start Menu Actions & Accent Switcher
+  if (startBtn && startMenu) {
+    startBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      playBeep(620, 0.06);
+      startMenu.classList.toggle("hidden");
+    });
+
+    document.addEventListener("click", () => {
+      startMenu.classList.add("hidden");
+    });
+  }
+
+  // Accent Switcher Logic
+  document.querySelectorAll(".theme-color-picker").forEach(picker => {
+    picker.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const color = picker.getAttribute("data-color");
+      if (color) {
+        document.documentElement.style.setProperty("--color-accent-site", color);
+        playBeep(880, 0.08);
+      }
+    });
+  });
+
+  // Layout commands binding
+  document.getElementById("open-tiling")?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    tileWindows();
+  });
+
+  document.getElementById("open-cascading")?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    cascadeWindows();
+  });
+
+  // Open All / Shutdown All Start Menu commands
+  document.getElementById("open-all-ports")?.addEventListener("click", () => {
+    playBeep(680, 0.1);
+    windowRegistry.forEach(item => {
+      const win = document.getElementById(item.id);
+      if (win) {
+        win.classList.remove("minimized");
+        createDockButton(item.id, item.title);
+        focusWindow(item.id);
+      }
+    });
+  });
+
+  document.getElementById("close-all-ports")?.addEventListener("click", () => {
+    playBeep(200, 0.2, "sawtooth");
+    windowRegistry.forEach(item => {
+      const win = document.getElementById(item.id);
+      if (win) {
+        win.classList.remove("active-win");
+        win.classList.add("minimized");
+      }
+    });
+    if (taskbarDock) taskbarDock.innerHTML = "";
+  });
+
+  // 10. System Clock Ticker
+  const clockEl = document.getElementById("taskbar-clock");
+  function tickClock() {
+    if (clockEl) {
+      const now = new Date();
+      clockEl.textContent = `${now.toUTCString().split(' ')[4]} UTC`;
+    }
+  }
+  tickClock();
+  setInterval(tickClock, 1000);
+
+  // CPU/MEM/Uptime simulated tickers
+  const cpuEl = document.getElementById("cpu-stat");
+  const memEl = document.getElementById("mem-stat");
+  const utEl = document.getElementById("start-menu-uptime");
+  const startupTime = Date.now() - 2120000000;
+
+  setInterval(() => {
+    if (cpuEl) cpuEl.textContent = `${Math.floor(Math.random() * 8) + 2}%`;
+    if (memEl) memEl.textContent = `${Math.floor(Math.random() * 3) + 11}%`;
+    if (utEl) {
+      const d = Date.now() - startupTime;
+      const days = Math.floor(d / (1000 * 60 * 60 * 24));
+      const hrs = Math.floor((d / (1000 * 60 * 60)) % 24);
+      const mins = Math.floor((d / (1000 * 60)) % 60);
+      utEl.textContent = `${days}d ${hrs}h ${mins}m`;
+    }
+  }, 4000);
+
+  // 11. Standalone Terminal Script (inside pre-opened window)
+  const termInput = document.getElementById("terminal-input") as HTMLInputElement;
+  const termLogs = document.getElementById("terminal-logs");
+  const termScreen = document.getElementById("terminal-screen");
+  const hintEl = document.getElementById("autocomplete-hint");
+
+  const bootLogs = [
+    '<span class="text-[var(--color-accent-site)]">// abx.os initialization... success.</span>',
+    'RAM telemetry diagnostic checks... <span class="text-[var(--color-accent-site)]">OK</span>',
+    'Secure Gateway USMP buffer nodes... <span class="text-green-400">ESTABLISHED</span>',
+    'Loading personal config files... <span class="text-[var(--color-accent-site)]">OK</span>',
+    'Type <span class="text-white font-bold">\'help\'</span> to retrieve available commands.'
+  ];
+
+  const commands: Record<string, string> = {
+    help: `Available routines:<br/>
+  - <span class="text-white font-bold">about</span>     : Philosophy & values readme<br/>
+  - <span class="text-white font-bold">projects</span>  : Retrieve directories of projects<br/>
+  - <span class="text-white font-bold">status</span>    : Telemetry status check logs<br/>
+  - <span class="text-white font-bold">clear</span>     : Wipe console log`,
+    about: `NOTEPAD.EXE pre-opened. Switch focus to the [about_me.txt] window to review biography logs.`,
+    projects: `FILES.EXE initialized. Refer to the directory view in the [projects_dir.exe] window.`,
+    status: `SYS.HEALTH diagnostics:<br/>
+  - Connection Gateway : <span class="text-green-400">ONLINE</span><br/>
+  - Current CPU Load   : <span class="text-green-400">4%</span><br/>
+  - Memory Allocations : 42MB / 512MB<br/>
+  - Audio driver       : Activated (Web Audio)`
+  };
+
+  const commandList = Object.keys(commands);
+  const cmdHistory: string[] = [];
+  let historyIndex = -1;
+
+  function appendLog(text: string, isCommand = false) {
+    if (!termLogs) return;
+    const div = document.createElement("div");
+    if (isCommand) {
+      div.className = "text-white mt-2 pt-2 border-t border-border-site/30";
+      div.innerHTML = `<span class="text-[var(--color-accent-site)]">akhil@abx.os:~$</span> ${text}`;
+    } else {
+      div.className = "text-text-secondary leading-normal text-[10px]";
+      div.innerHTML = text;
+    }
+    termLogs.appendChild(div);
+    setTimeout(() => {
+      if (termScreen) termScreen.scrollTop = termScreen.scrollHeight;
+    }, 20);
+  }
+
+  let logIdx = 0;
+  function triggerBoot() {
+    if (logIdx < bootLogs.length) {
+      appendLog(bootLogs[logIdx]);
+      logIdx++;
+      setTimeout(triggerBoot, 350);
+    } else {
+      if (termInput) {
+        termInput.disabled = false;
+        termInput.placeholder = "type help...";
+        termInput.focus();
+      }
+    }
+  }
+
+  setTimeout(triggerBoot, 500);
+
+  function updateHint() {
+    if (!hintEl || !termInput) return;
+    const val = termInput.value.trim().toLowerCase();
+    if (!val) {
+      hintEl.textContent = "";
+      return;
+    }
+    const match = commandList.find(c => c.startsWith(val));
+    if (match && match !== val) {
+      hintEl.textContent = val + match.substring(val.length);
+    } else {
+      hintEl.textContent = "";
+    }
+  }
+
+  if (termInput) {
+    termInput.addEventListener("input", updateHint);
+    termInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        const fullCmd = termInput.value.trim();
+        const cmd = fullCmd.toLowerCase().split(" ")[0];
+        
+        if (!fullCmd) return;
+        
+        appendLog(fullCmd, true);
+        cmdHistory.push(fullCmd);
+        historyIndex = cmdHistory.length;
+        
+        playBeep(640, 0.04);
+        
+        if (cmd === "clear") {
+          if (termLogs) termLogs.innerHTML = "";
+        } else if (cmd in commands) {
+          appendLog(commands[cmd]);
+        } else {
+          appendLog(`system error: command '${cmd}' not recognized.`);
+        }
+        
+        termInput.value = "";
+        if (hintEl) hintEl.textContent = "";
+      }
+      
+      if (e.key === "Tab") {
+        e.preventDefault();
+        const val = termInput.value.trim().toLowerCase();
+        const match = commandList.find(c => c.startsWith(val));
+        if (match) {
+          termInput.value = match;
+          if (hintEl) hintEl.textContent = "";
+          playBeep(700, 0.03);
+        }
+      }
+
+      if (e.key === "ArrowUp") {
+        e.preventDefault();
+        if (cmdHistory.length > 0 && historyIndex > 0) {
+          historyIndex--;
+          termInput.value = cmdHistory[historyIndex];
+          updateHint();
+          playBeep(600, 0.02);
+        }
+      }
+
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        if (historyIndex < cmdHistory.length - 1) {
+          historyIndex++;
+          termInput.value = cmdHistory[historyIndex];
+          updateHint();
+          playBeep(600, 0.02);
+        } else {
+          historyIndex = cmdHistory.length;
+          termInput.value = "";
+          updateHint();
+        }
+      }
+    });
+
+    termScreen?.addEventListener("click", () => {
+      if (!termInput.disabled) termInput.focus();
+    });
+  }
+</script>

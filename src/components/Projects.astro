@@ -1,182 +1,288 @@
-<section
-  id="projects"
-  class="max-w-6xl mx-auto px-6 md:px-8 lg:px-0 py-20 reveal-up"
->
-  <div class="mb-12">
-    <h2 class="text-3xl font-bold text-primary mb-4">Projects That Matter</h2>
-    <p class="text-secondary leading-relaxed text-sm max-w-2xl">
-      A selection of my work that showcases my skills in web development,
-      hardware integration, and innovative solutions. Each project reflects my
-      passion for technology and problem-solving.
-    </p>
+---
+// Projects component refactored for OS window sizing
+---
+<div class="p-6 md:p-8 space-y-12">
+  <div class="space-y-2">
+    <span class="font-mono text-xs text-[#4F9DFF]">// 02. ARCHITECTURE & PRODUCTS</span>
+    <h2 class="text-2xl md:text-3xl font-heading font-bold text-white tracking-tight">
+      Featured Projects
+    </h2>
   </div>
 
-  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-    <!-- DropaNote -->
-    <article
-      class="p-6 rounded-2xl glass shadow-lg card-tilt reveal-up delay-100"
-    >
-      <div class="flex items-start justify-between gap-4 mb-4">
+  <div class="space-y-12">
+    
+    <!-- Project 1: USMP -->
+    <article class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-5 space-y-4">
+        <div class="flex items-center gap-2">
+          <span class="font-mono text-[9px] px-2 py-0.5 bg-[#4F9DFF]/10 text-[#4F9DFF] border border-[#4F9DFF]/20 rounded">
+            PROTOCOL
+          </span>
+          <span class="font-mono text-[9px] text-text-secondary">v1.0.4</span>
+        </div>
+        
+        <h3 class="text-xl font-bold text-white font-heading tracking-tight">
+          USMP — Unified Secure Multi-transport Protocol
+        </h3>
+        
+        <p class="text-text-secondary text-xs leading-relaxed font-sans">
+          A secure communication protocol designed for modern connected systems. Abstract physical transports into unified frame channels with end-to-end libsodium cryptography.
+        </p>
+
+        <div class="flex flex-wrap gap-1.5 font-mono text-[9px]">
+          <span class="px-2 py-0.5 bg-surface-site border border-border-site rounded text-white">Rust</span>
+          <span class="px-2 py-0.5 bg-surface-site border border-border-site rounded text-white">C++</span>
+          <span class="px-2 py-0.5 bg-surface-site border border-border-site rounded text-white">Protobuf</span>
+        </div>
+
         <div>
-          <h3 class="font-semibold text-xl text-primary mb-2">DropaNote</h3>
-          <p class="text-sm text-tertiary">
-            Lightweight embeddable feedback collection tool.
-          </p>
+          <a href="https://github.com/winterx64/usmp-protocol" target="_blank" class="font-mono text-[10px] text-[#4F9DFF] hover:underline">
+            // VIEW SOURCE CODE
+          </a>
         </div>
       </div>
-      <!-- Tags -->
-      <div class="flex flex-wrap gap-2 mb-4">
-        <span
-          class="bg-white/10 text-primary text-xs font-medium px-3 py-1 rounded-full"
-          >Flask</span
-        >
-        <span
-          class="bg-white/10 text-primary text-xs font-medium px-3 py-1 rounded-full"
-          >Supabase</span
-        >
-        <span
-          class="bg-white/10 text-primary text-xs font-medium px-3 py-1 rounded-full"
-          >Jinja</span
-        >
-        <span
-          class="bg-white/10 text-primary text-xs font-medium px-3 py-1 rounded-full"
-          >Tailwind CSS</span
-        >
-        <span
-          class="bg-white/10 text-primary text-xs font-medium px-3 py-1 rounded-full"
-          >Render</span
-        >
-      </div>
-      <p class="text-secondary mb-6 leading-relaxed text-sm">
-        Create embeddable forms, view submissions on a responsive dashboard, and
-        manage apps quickly. Built to be simple and privacy-friendly.
-      </p>
 
-      <div class="flex gap-3">
-        <a
-          href="https://dropanote.onrender.com/"
-          target="_blank"
-          class="px-4 py-2 rounded-lg bg-white/10 text-primary text-sm hover:bg-white/15 transition-colors"
-        >
-          Live Demo
-        </a>
-        <a
-          href="https://github.com/winterx64/dropanote"
-          target="_blank"
-          class="px-4 py-2 rounded-lg border border-white/20 text-secondary text-sm hover:text-primary hover:border-white/30 transition-colors"
-        >
-          Source
-        </a>
+      <div class="lg:col-span-7 bg-surface-site tech-border rounded p-4 h-[220px] flex flex-col justify-between relative overflow-hidden spotlight-card" id="usmp-project-card">
+        <div class="flex items-center justify-between font-mono text-[9px] text-text-secondary">
+          <span>// PROTOCOL PATHWAYS</span>
+          <span class="text-[#4F9DFF] flex items-center gap-1.5"><span class="w-1.5 h-1.5 bg-[#4F9DFF] rounded-full animate-ping"></span> SECURE</span>
+        </div>
+
+        <div class="flex-1 flex items-center justify-center">
+          <svg class="w-full max-w-[420px] h-[120px]" fill="none" viewBox="0 0 480 150">
+            <path d="M 0 75 L 480 75" stroke="#1F1F1F" stroke-width="1" stroke-dasharray="4" />
+            <path id="securePath" d="M 120 75 C 200 40, 280 40, 360 75" stroke="#4F9DFF" stroke-width="1.5" />
+            <path id="blePath" d="M 120 75 C 200 110, 280 110, 360 75" stroke="#A1A1AA" stroke-width="1" stroke-dasharray="4" />
+            <circle r="3.5" fill="#4F9DFF"><animateMotion dur="3s" repeatCount="indefinite"><mpath href="#securePath" /></animateMotion></circle>
+            <circle r="2.5" fill="#A1A1AA" opacity="0.7"><animateMotion dur="5s" repeatCount="indefinite"><mpath href="#blePath" /></animateMotion></circle>
+            <circle cx="120" cy="75" r="5" fill="#090909" stroke="#4F9DFF" stroke-width="2" />
+            <circle cx="360" cy="75" r="5" fill="#090909" stroke="#4F9DFF" stroke-width="2" />
+            <text x="120" y="60" fill="#FFFFFF" font-family="monospace" font-size="10" text-anchor="middle">TX_CLIENT</text>
+            <text x="360" y="60" fill="#FFFFFF" font-family="monospace" font-size="10" text-anchor="middle">RX_HOST</text>
+          </svg>
+        </div>
       </div>
     </article>
 
-    <!-- CubeSat payload -->
-    <article
-      class="p-6 rounded-2xl glass shadow-lg card-tilt reveal-up delay-200"
-    >
-      <div class="flex items-start justify-between gap-4 mb-4">
-        <div>
-          <h3 class="font-semibold text-xl text-primary mb-2">
-            Payload for CubeSat
-          </h3>
-          <p class="text-sm text-tertiary">
-            DIY spectrometer using Raspberry Pi + Arducam.
-          </p>
+    <div class="grid-line-h"></div>
+
+    <!-- Project 2: DropaNote -->
+    <article class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-5 lg:order-last space-y-4">
+        <div class="flex items-center gap-2">
+          <span class="font-mono text-[9px] px-2 py-0.5 bg-[#4F9DFF]/10 text-[#4F9DFF] border border-[#4F9DFF]/20 rounded">
+            PLATFORM
+          </span>
+          <span class="font-mono text-[9px] text-text-secondary">v2.1.0</span>
+        </div>
+        
+        <h3 class="text-xl font-bold text-white font-heading tracking-tight">
+          DropaNote — Feedback Infrastructure
+        </h3>
+        
+        <p class="text-text-secondary text-xs leading-relaxed font-sans">
+          Collect and analyze client feedback natively. High-speed webhook routing, PostgreSQL/Redis schemas, and administrative dashboard metrics.
+        </p>
+
+        <div class="flex flex-wrap gap-1.5 font-mono text-[9px]">
+          <span class="px-2 py-0.5 bg-surface-site border border-border-site rounded text-white">Flask</span>
+          <span class="px-2 py-0.5 bg-surface-site border border-border-site rounded text-white">Postgres</span>
+          <span class="px-2 py-0.5 bg-surface-site border border-border-site rounded text-white">Redis</span>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <a href="https://dropanote.onrender.com/" target="_blank" class="font-mono text-[10px] text-[#4F9DFF] hover:underline">
+            // LIVE DEMO
+          </a>
+          <span class="text-border-site">|</span>
+          <a href="https://github.com/winterx64/dropanote" target="_blank" class="font-mono text-[10px] text-text-secondary hover:text-white">
+            SOURCE
+          </a>
         </div>
       </div>
-      <!-- Tags -->
-      <div class="flex flex-wrap gap-2 mb-4">
-        <span
-          class="bg-white/10 text-primary text-xs font-medium px-3 py-1 rounded-full"
-          >Raspberry Pi</span
-        >
-        <span
-          class="bg-white/10 text-primary text-xs font-medium px-3 py-1 rounded-full"
-          >Arducam</span
-        >
-        <span
-          class="bg-white/10 text-primary text-xs font-medium px-3 py-1 rounded-full"
-          >Arduino UNO</span
-        >
-        <span
-          class="bg-white/10 text-primary text-xs font-medium px-3 py-1 rounded-full"
-          >Lidar</span
-        >
-      </div>
-      <p class="text-secondary mb-6 leading-relaxed text-sm">
-        Proof-of-concept spectrometer for material analysis in low-orbit
-        scenarios. with object detection capabilities using Lidar and camera
-      </p>
 
-      <div class="flex gap-3">
-        <a
-          href="#contact"
-          class="px-4 py-2 rounded-lg bg-white/10 text-primary text-sm hover:bg-white/15 transition-colors"
-        >
-          Learn More
-        </a>
+      <div class="lg:col-span-7 bg-surface-site tech-border rounded p-4 h-[220px] flex flex-col justify-between relative overflow-hidden spotlight-card" id="dropanote-project-card">
+        <div class="flex items-center justify-between font-mono text-[9px] text-text-secondary">
+          <span>// WEBHOOK TELEMETRY FEED</span>
+          <span class="text-green-400 flex items-center gap-1"><span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span> INGESTING</span>
+        </div>
+
+        <div class="flex-1 flex flex-col justify-center my-2 font-mono text-[8px] text-[#A1A1AA] overflow-hidden">
+          <div class="bg-[#090909] border border-border-site rounded p-3 h-[110px] overflow-y-auto space-y-1 scrollbar-none" id="live-webhook-logs">
+            <div>[16:32:00] PIPELINE ACTIVE. Listening...</div>
+            <div class="text-[#4F9DFF]">[16:32:01] WEBHOOK_INBOUND: POST /v1/submissions accepted</div>
+            <div class="text-green-400">[16:32:01] FILTER: spam_score = 0.02 (SAFE)</div>
+          </div>
+        </div>
       </div>
     </article>
 
-    <!-- VSCode Theme -->
-    <article
-      class="p-6 rounded-2xl glass shadow-lg card-tilt reveal-up delay-300"
-    >
-      <div class="flex items-start justify-between gap-4 mb-4">
+    <div class="grid-line-h"></div>
+
+    <!-- Project 3: Metaloom -->
+    <article class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-5 space-y-4">
+        <div class="flex items-center gap-2">
+          <span class="font-mono text-[9px] px-2 py-0.5 bg-[#4F9DFF]/10 text-[#4F9DFF] border border-[#4F9DFF]/20 rounded">
+            STUDIO
+          </span>
+          <span class="font-mono text-[9px] text-text-secondary">ACTIVE</span>
+        </div>
+        
+        <h3 class="text-xl font-bold text-white font-heading tracking-tight">
+          Metaloom — Creative Tech Studio
+        </h3>
+        
+        <p class="text-text-secondary text-xs leading-relaxed font-sans">
+          Building high-performance interactive interfaces, custom WebGL canvas frameworks, and responsive web products for tech companies.
+        </p>
+
+        <div class="flex flex-wrap gap-1.5 font-mono text-[9px]">
+          <span class="px-2 py-0.5 bg-surface-site border border-border-site rounded text-white">TS</span>
+          <span class="px-2 py-0.5 bg-surface-site border border-border-site rounded text-white">Next.js</span>
+          <span class="px-2 py-0.5 bg-surface-site border border-border-site rounded text-white">WebGL</span>
+        </div>
+
         <div>
-          <h3 class="font-semibold text-xl text-primary mb-2">
-            WinterIsCoding
-          </h3>
-          <p class="text-sm text-tertiary">
-            Modern dark theme with multiple variants for VSCode.
-          </p>
+          <a href="https://metaloom.io" target="_blank" class="font-mono text-[10px] text-[#4F9DFF] hover:underline">
+            // VISIT STUDIO
+          </a>
         </div>
       </div>
-      <!-- Tags -->
-      <div class="flex flex-wrap gap-2 mb-4">
-        <span
-          class="bg-white/10 text-primary text-xs font-medium px-3 py-1 rounded-full"
-          >Marketplace</span
-        >
-        <span
-          class="bg-white/10 text-primary text-xs font-medium px-3 py-1 rounded-full"
-          >JSON</span
-        >
-        <span
-          class="bg-white/10 text-primary text-xs font-medium px-3 py-1 rounded-full"
-          >VSCode</span
-        >
-        <span
-          class="bg-white/10 text-primary text-xs font-medium px-3 py-1 rounded-full"
-          >Theme</span
-        >
-        <span
-          class="bg-white/10 text-primary text-xs font-medium px-3 py-1 rounded-full"
-          >Extension</span
-        >
-      </div>
 
-      <p class="text-secondary mb-6 leading-relaxed text-sm">
-        Theme focused on legibility and a calm color palette for long coding
-        sessions. Supports light and dark modes with multiple color variants.
-      </p>
+      <div class="lg:col-span-7 bg-surface-site tech-border rounded p-4 h-[220px] flex flex-col justify-between relative overflow-hidden spotlight-card" id="metaloom-project-card">
+        <div class="flex items-center justify-between font-mono text-[9px] text-text-secondary">
+          <span>// WEBGL CANVAS COMPILER</span>
+          <span class="text-xs text-white">// hover to draw</span>
+        </div>
 
-      <div class="flex gap-3">
-        <a
-          href="https://marketplace.visualstudio.com/items?itemName=winterx64.winteriscoding"
-          target="_blank"
-          class="px-4 py-2 rounded-lg bg-white/10 text-primary text-sm hover:bg-white/15 transition-colors"
-        >
-          Marketplace
-        </a>
-        <a
-          href="https://github.com/winterx64/vscode-theme"
-          target="_blank"
-          class="px-4 py-2 rounded-lg border border-white/20 text-secondary text-sm hover:text-primary hover:border-white/30 transition-colors"
-        >
-          Source
-        </a>
+        <div class="flex-1 flex items-center justify-center relative my-2 overflow-hidden bg-[#090909] border border-border-site rounded">
+          <canvas id="metaloom-nodes-canvas" class="absolute inset-0 w-full h-full"></canvas>
+          <div class="z-20 pointer-events-none text-center bg-surface-site/90 border border-border-site px-3 py-1.5 rounded font-mono text-[9px] text-text-secondary">
+            <span>WebGL Dynamic Layer Node Queue</span>
+          </div>
+        </div>
       </div>
     </article>
+
   </div>
-</section>
+</div>
+
+<script>
+  // Spotlights
+  const projectIds = ["usmp-project-card", "dropanote-project-card", "metaloom-project-card"];
+  projectIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener("mousemove", (e: MouseEvent) => {
+        const rect = el.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        el.style.setProperty("--mouse-x", `${x}px`);
+        el.style.setProperty("--mouse-y", `${y}px`);
+      });
+    }
+  });
+
+  // Logs simulator
+  const logsContainer = document.getElementById("live-webhook-logs");
+  const logMessages = [
+    '<span class="text-[#4F9DFF]">[INGEST] POST accepted from client_node</span>',
+    '<span class="text-green-400">[HEURISTIC] spam analyzer: score = 0.01 (SAFE)</span>',
+    '<span class="text-white">[PARSER] context fields tag: "bug_report"</span>',
+    '<span class="text-[#4F9DFF]">[DATABASE] Supabase transaction committed</span>'
+  ];
+  let logIdx = 0;
+  if (logsContainer) {
+    setInterval(() => {
+      const now = new Date();
+      const timeStr = `[${now.toTimeString().split(' ')[0]}]`;
+      const msg = logMessages[logIdx % logMessages.length];
+      const div = document.createElement("div");
+      div.innerHTML = `${timeStr} ${msg}`;
+      logsContainer.appendChild(div);
+      logsContainer.scrollTop = logsContainer.scrollHeight;
+      if (logsContainer.children.length > 8) {
+        logsContainer.removeChild(logsContainer.firstChild as ChildNode);
+      }
+      logIdx++;
+    }, 3000);
+  }
+
+  // Canvas Node Animation
+  const canvas = document.getElementById("metaloom-nodes-canvas") as HTMLCanvasElement;
+  if (canvas) {
+    const ctx = canvas.getContext("2d");
+    let w = canvas.offsetWidth;
+    let h = canvas.offsetHeight;
+    canvas.width = w;
+    canvas.height = h;
+
+    const dots: { x: number; y: number; vx: number; vy: number }[] = [];
+    for (let i = 0; i < 15; i++) {
+      dots.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.8,
+        vy: (Math.random() - 0.5) * 0.8
+      });
+    }
+
+    let mouse = { x: -1000, y: -1000 };
+    canvas.addEventListener("mousemove", (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    });
+    canvas.addEventListener("mouseleave", () => {
+      mouse.x = -1000;
+      mouse.y = -1000;
+    });
+
+    function draw() {
+      if (!ctx || !canvas) return;
+      ctx.clearRect(0, 0, w, h);
+      
+      dots.forEach(dot => {
+        dot.x += dot.vx;
+        dot.y += dot.vy;
+        if (dot.x < 0 || dot.x > w) dot.vx *= -1;
+        if (dot.y < 0 || dot.y > h) dot.vy *= -1;
+        ctx.beginPath();
+        ctx.arc(dot.x, dot.y, 1.2, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(79, 157, 255, 0.4)";
+        ctx.fill();
+      });
+
+      for (let i = 0; i < dots.length; i++) {
+        for (let j = i + 1; j < dots.length; j++) {
+          const d1 = dots[i];
+          const d2 = dots[j];
+          const dist = Math.hypot(d1.x - d2.x, d1.y - d2.y);
+          if (dist < 50) {
+            ctx.beginPath();
+            ctx.moveTo(d1.x, d1.y);
+            ctx.lineTo(d2.x, d2.y);
+            ctx.strokeStyle = `rgba(31, 31, 31, ${1 - dist / 50})`;
+            ctx.stroke();
+          }
+        }
+      }
+
+      if (mouse.x > -500) {
+        dots.forEach(dot => {
+          const dist = Math.hypot(dot.x - mouse.x, dot.y - mouse.y);
+          if (dist < 60) {
+            ctx.beginPath();
+            ctx.moveTo(dot.x, dot.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.strokeStyle = `rgba(79, 157, 255, ${0.4 - dist / 60 * 0.4})`;
+            ctx.stroke();
+          }
+        });
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  }
+</script>

@@ -1,0 +1,29 @@
+---
+interface Props {
+  id: string;
+  label: string;
+  iconClass: string;
+  windowId: string;
+}
+
+const { id, label, iconClass, windowId } = Astro.props;
+---
+<div
+  id={id}
+  class="desktop-shortcut group"
+  data-window={windowId}
+  role="button"
+  tabindex="0"
+>
+  <!-- Icon Frame -->
+  <div class="w-12 h-12 rounded border border-border-site/50 bg-[#181818] flex items-center justify-center text-text-secondary group-hover:text-white group-hover:border-[#4F9DFF]/40 group-hover:bg-[#1f1f1f] transition-all mb-2 relative">
+    <!-- Spotlight subtle dot -->
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(79,157,255,0.1)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity rounded"></div>
+    <i class={`${iconClass} text-lg z-10`}></i>
+  </div>
+  
+  <!-- Label -->
+  <span class="font-mono text-[10px] text-text-secondary group-hover:text-white truncate w-full px-1 block tracking-tight">
+    {label}
+  </span>
+</div>

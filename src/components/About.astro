@@ -1,35 +1,75 @@
-<section id="about" class="max-w-6xl mx-auto px-6 md:px-8 lg:px-0 py-20 reveal-up">
-  <div class="grid md:grid-cols-3 gap-12 items-start">
-    <div class="md:col-span-1 space-y-4 reveal-up delay-100">
-      <h2 class="text-3xl font-bold text-primary">About Me</h2>
-      <p class="text-secondary leading-relaxed text-sm">
-        I build across the stack from embedded firmware and electronics to web
-        apps and developer tools. My background mixes community building,
-        product development, and a love for fast prototypes.
-      </p>
-      <div class="pt-4 reveal-up delay-200">
-        <div class="text-sm text-tertiary mb-2">Location</div>
-        <div class="font-medium text-primary">Kochi, India</div>
+---
+// About component refactored for OS window sizing
+---
+<div class="p-6 md:p-8 space-y-8">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    <!-- Left Column -->
+    <div class="lg:col-span-7 space-y-6">
+      <div class="space-y-2">
+        <span class="font-mono text-xs text-[#4F9DFF]">// 01. MINDSET</span>
+        <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-white font-heading">
+          Engineering from first principles.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-text-secondary text-xs leading-relaxed font-sans">
+        <div class="space-y-4 border-l border-border-site pl-3">
+          <h3 class="font-mono text-[10px] text-white">// 01.1 DECONSTRUCT</h3>
+          <p>
+            I don't rely on copy-paste abstractions or superficial frameworks without knowing their underlying costs. My building philosophy starts with identifying constraints, breaking down systems to their atomic components, and assembling them cleanly from there.
+          </p>
+        </div>
+
+        <div class="space-y-4 border-l border-border-site pl-3">
+          <h3 class="font-mono text-[10px] text-white">// 01.2 ENDURANCE</h3>
+          <p>
+            True product engineering goes beyond making things look nice or writing complex algorithms. It is about understanding users, anticipating performance limits, and engineering solutions that endure.
+          </p>
+        </div>
       </div>
     </div>
 
-    <div class="md:col-span-2">
-      <div class="grid sm:grid-cols-2 gap-6">
-        <div class="p-6 rounded-2xl glass card-tilt reveal-up delay-200">
-          <h4 class="text-lg font-semibold text-primary mb-3">What I enjoy</h4>
-          <p class="text-secondary leading-relaxed text-sm">
-            Tiny satellites, IoT sensors, product-focused web apps, and
-            developer tooling.
-          </p>
+    <!-- Right Column: Decorative Rust Code Panel -->
+    <div class="lg:col-span-5 w-full">
+      <div 
+        class="tech-border rounded spotlight-card p-4 relative font-mono text-[10px] leading-normal text-text-secondary overflow-hidden"
+        id="about-code-card"
+      >
+        <div class="flex items-center justify-between border-b border-border-site pb-2 mb-3 text-[9px] z-10 relative">
+          <span class="text-white">// core_mindset.rs</span>
+          <span class="text-text-secondary">UTF-8</span>
         </div>
-        <div class="p-6 rounded-2xl glass card-tilt reveal-up delay-300">
-          <h4 class="text-lg font-semibold text-primary mb-3">How I work</h4>
-          <p class="text-secondary leading-relaxed text-sm">
-            Iterative, build small prototypes, test early, and ship. I prefer
-            simple APIs and clear UX.
-          </p>
-        </div>
+
+        <pre class="overflow-x-auto text-[#A1A1AA] z-10 relative"><code class="text-white">pub struct <span class="text-[#4F9DFF]">ProductEngineer</span> &#123;
+    pub name: String,
+    pub philosophy: Philosophy,
+    pub constraints: Vec&lt;Constraint&gt;,
+&#125;
+
+impl <span class="text-[#4F9DFF]">ProductEngineer</span> &#123;
+    pub fn <span class="text-[#4F9DFF]">build</span>(&amp;self) -&gt; Result&lt;System, Error&gt; &#123;
+        let base = self.deconstruct_to_atoms()?;
+        let pipeline = Pipeline::new()
+            .optimize_protocols()
+            .minimize_dependencies()
+            .ensure_security();
+        pipeline.deploy(base)
+    }
+&#125;</code></pre>
       </div>
     </div>
   </div>
-</section>
+</div>
+
+<script>
+  const aboutCard = document.getElementById("about-code-card");
+  if (aboutCard) {
+    aboutCard.addEventListener("mousemove", (e: MouseEvent) => {
+      const rect = aboutCard.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      aboutCard.style.setProperty("--mouse-x", `${x}px`);
+      aboutCard.style.setProperty("--mouse-y", `${y}px`);
+    });
+  }
+</script>

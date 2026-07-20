@@ -1,0 +1,112 @@
+---
+// Philosophy component refactored for OS window sizing
+---
+<div class="p-6 md:p-8 space-y-8">
+  <div class="space-y-2">
+    <span class="font-mono text-xs text-[#4F9DFF]">// 03. METHODOLOGY</span>
+    <h2 class="text-2xl md:text-3xl font-heading font-bold text-white tracking-tight">
+      How I Build
+    </h2>
+  </div>
+
+  <!-- Flow Diagram -->
+  <div class="space-y-6">
+    <div class="hidden lg:block w-full h-4 relative top-[28px] z-0 mb-[-16px] px-6">
+      <svg class="w-full h-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1000 20">
+        <path id="pipelinePath" d="M 0 10 L 1000 10" stroke="#1F1F1F" stroke-width="1.5" />
+        <path d="M 0 10 L 1000 10" stroke="#4F9DFF" stroke-width="1.5" stroke-dasharray="8, 32" class="packet-stream-fast" opacity="0.4" />
+      </svg>
+    </div>
+
+    <!-- Grid of phases -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 relative z-10">
+      
+      <!-- Phase 1: Think -->
+      <div class="tech-card rounded p-4 flex flex-col justify-between space-y-4 spotlight-card" id="phil-card-1">
+        <div class="space-y-1">
+          <div class="font-mono text-[10px] text-[#4F9DFF]">01 // THINK</div>
+          <h3 class="text-sm font-bold text-white font-heading">First Principles</h3>
+        </div>
+        <p class="text-text-secondary text-[11px] leading-relaxed font-sans">
+          Deconstruct the problem to core constraints. Define requirements before coding.
+        </p>
+        <div class="font-mono text-[9px] text-[#A1A1AA] border-t border-border-site/50 pt-2 flex items-center justify-between">
+          <span>AMBIGUITY</span>
+        </div>
+      </div>
+
+      <!-- Phase 2: Design -->
+      <div class="tech-card rounded p-4 flex flex-col justify-between space-y-4 spotlight-card" id="phil-card-2">
+        <div class="space-y-1">
+          <div class="font-mono text-[10px] text-[#4F9DFF]">02 // DESIGN</div>
+          <h3 class="text-sm font-bold text-white font-heading">Architecture</h3>
+        </div>
+        <p class="text-text-secondary text-[11px] leading-relaxed font-sans">
+          Draft protocol frames and database schemas. Minimize early friction.
+        </p>
+        <div class="font-mono text-[9px] text-[#A1A1AA] border-t border-border-site/50 pt-2 flex items-center justify-between">
+          <span>SCHEMA.JSON</span>
+        </div>
+      </div>
+
+      <!-- Phase 3: Build -->
+      <div class="tech-card rounded p-4 flex flex-col justify-between space-y-4 spotlight-card" id="phil-card-3">
+        <div class="space-y-1">
+          <div class="font-mono text-[10px] text-[#4F9DFF]">03 // BUILD</div>
+          <h3 class="text-sm font-bold text-white font-heading">Compile</h3>
+        </div>
+        <p class="text-text-secondary text-[11px] leading-relaxed font-sans">
+          Write structured, compiler-safe code. Keep dependencies extremely minimal.
+        </p>
+        <div class="font-mono text-[9px] text-[#A1A1AA] border-t border-border-site/50 pt-2 flex items-center justify-between">
+          <span>BINARY</span>
+        </div>
+      </div>
+
+      <!-- Phase 4: Launch -->
+      <div class="tech-card rounded p-4 flex flex-col justify-between space-y-4 spotlight-card" id="phil-card-4">
+        <div class="space-y-1">
+          <div class="font-mono text-[10px] text-[#4F9DFF]">04 // LAUNCH</div>
+          <h3 class="text-sm font-bold text-white font-heading">Telemetry</h3>
+        </div>
+        <p class="text-text-secondary text-[11px] leading-relaxed font-sans">
+          Ship to redundant nodes. Establish system log monitoring and status telemetry.
+        </p>
+        <div class="font-mono text-[9px] text-[#A1A1AA] border-t border-border-site/50 pt-2 flex items-center justify-between">
+          <span>ONLINE</span>
+        </div>
+      </div>
+
+      <!-- Phase 5: Improve -->
+      <div class="tech-card rounded p-4 flex flex-col justify-between space-y-4 spotlight-card" id="phil-card-5">
+        <div class="space-y-1">
+          <div class="font-mono text-[10px] text-[#4F9DFF]">05 // IMPROVE</div>
+          <h3 class="text-sm font-bold text-white font-heading">Refinement</h3>
+        </div>
+        <p class="text-text-secondary text-[11px] leading-relaxed font-sans">
+          Analyze latency metrics and payload sizes. Refactor pipeline bottlenecks.
+        </p>
+        <div class="font-mono text-[9px] text-[#A1A1AA] border-t border-border-site/50 pt-2 flex items-center justify-between">
+          <span>NEXT_ITER</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  const philIds = ["phil-card-1", "phil-card-2", "phil-card-3", "phil-card-4", "phil-card-5"];
+  philIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener("mousemove", (e: MouseEvent) => {
+        const rect = el.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        el.style.setProperty("--mouse-x", `${x}px`);
+        el.style.setProperty("--mouse-y", `${y}px`);
+      });
+    }
+  });
+</script>

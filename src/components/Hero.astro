@@ -1,169 +1,297 @@
+---
+// Hero component with upgraded UI/UX features, crosshairs, and advanced terminal controls
+---
 <section
   id="home"
-  class="max-w-6xl mx-auto px-6 md:px-8 lg:px-0 min-h-[75vh] flex items-center"
+  class="max-w-7xl mx-auto px-6 md:px-12 pt-40 pb-24 flex items-center min-h-[95vh] relative z-10"
 >
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center w-full">
-    <!-- Left: Intro -->
-    <div class="space-y-8 reveal-up">
-      <div class="text-lg text-neon2 font-medium tracking-wide">Hello, I'm</div>
-      <h1
-        class="text-4xl md:text-6xl font-extrabold leading-tight font-monoHead"
-      >
-        winterx64
-        <span
-          class="block text-base md:text-xl font-semibold text-gray-400 mt-2"
-        >
-          Akhil B Xavier
-        </span>
-      </h1>
+  <!-- Layout Crosshairs -->
+  <div class="absolute top-12 left-6 font-mono text-[9px] text-[#4F9DFF]/30 select-none pointer-events-none">[X_COORD: 0.0]</div>
+  <div class="absolute top-12 right-6 font-mono text-[9px] text-[#4F9DFF]/30 select-none pointer-events-none">[Y_COORD: 1.0]</div>
+  <div class="absolute bottom-6 left-6 font-mono text-[9px] text-[#4F9DFF]/20 select-none pointer-events-none">// SECURE_NODE: L_40</div>
 
-      <div class="flex items-center gap-3 text-xl md:text-2xl">
-        <div id="type-roles" class="font-medium text-primary">
-          Backend Developer
-        </div>
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center w-full">
+    <!-- Left Column: Headline & Bio -->
+    <div class="lg:col-span-7 space-y-8 reveal-up">
+      
+      <!-- Subheadline/Metadata -->
+      <div class="flex items-center gap-3 font-mono text-[10px] text-text-secondary border-b border-border-site/50 pb-3 max-w-md">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#4F9DFF] animate-pulse"></span>
+        <span>GATEWAY: ACTIVE</span>
+        <span class="text-border-site">/</span>
+        <span>LOC: KOCHI, IN</span>
+        <span class="text-border-site">/</span>
+        <span>SYS_LATENCY: 12ms</span>
       </div>
 
-      <p class="text-secondary max-w-xl text-lg leading-relaxed text-sm">
-        I design and build web apps and IoT systems, from experimental embedded
-        builds to polished web products. I ship pragmatic solutions and love
-        turning ideas into working prototypes.
+      <!-- Main Oversized Typography -->
+      <div class="space-y-4">
+        <div class="font-mono text-xs text-[#4F9DFF] tracking-wider uppercase">
+          // Product Engineer. Founder. Systems Thinker.
+        </div>
+        <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-white leading-[1.05] font-heading">
+          Hi, I'm Akhil B Xavier.<br/>
+          <span class="text-text-secondary text-3xl md:text-5xl font-light">
+            I build products, systems, and technology that solve real problems.
+          </span>
+        </h1>
+      </div>
+
+      <!-- Supporting Text -->
+      <p class="text-text-secondary text-base md:text-lg leading-relaxed max-w-xl font-sans">
+        My work sits at the intersection of product engineering, backend systems, embedded technology, and secure communication.
       </p>
 
-      <div class="flex items-center gap-4 mt-8 reveal-up delay-200">
+      <!-- CTA and Meta Links -->
+      <div class="flex flex-wrap items-center gap-4 pt-4">
         <a
           href="#projects"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-lg btn-primary"
+          class="px-6 py-3 bg-white text-black font-semibold text-sm tracking-tight rounded hover:bg-[#4F9DFF] hover:text-black transition-all flex items-center gap-2 group"
         >
-          View My Work
-          <i class="fa-solid fa-arrow-right"></i>
+          View Projects
+          <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
         </a>
         <a
           href="#contact"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-lg btn-secondary"
+          class="px-6 py-3 border border-border-site hover:border-white text-text-secondary hover:text-white font-mono text-xs rounded transition-colors"
         >
-          Download Resume
+          // CONTACT_SYS.REQ
         </a>
       </div>
 
-      <div class="flex items-center gap-6 text-sm pt-4 reveal-up delay-300">
-        <a
-          href="https://github.com/winterx64"
-          target="_blank"
-          class="flex items-center gap-2 text-secondary hover:text-primary transition-colors"
-        >
-          <i class="fa-brands fa-github text-base"></i>
-          <span>github.com/winterx64</span>
+      <!-- Secondary details -->
+      <div class="flex items-center gap-8 text-xs font-mono text-text-secondary pt-8 border-t border-border-site/30">
+        <a href="https://github.com/winterx64" target="_blank" class="hover:text-white transition-colors flex items-center gap-1.5">
+          <i class="fa-brands fa-github"></i>
+          github.com/winterx64
         </a>
-        <a
-          href="https://linkedin.com/in/winterx64"
-          target="_blank"
-          class="flex items-center gap-2 text-secondary hover:text-primary transition-colors"
-        >
-          <i class="fa-brands fa-linkedin text-base"></i>
-          <span>linkedin</span>
+        <a href="https://linkedin.com/in/winterx64" target="_blank" class="hover:text-white transition-colors flex items-center gap-1.5">
+          <i class="fa-brands fa-linkedin"></i>
+          linkedin.com/in/winterx64
         </a>
       </div>
     </div>
 
-    <!-- Right: Profile Card -->
-    <div class="relative reveal-up delay-100">
-      <div class="card-tilt p-8 rounded-2xl glass">
-        <div class="flex items-center gap-4 mb-6">
-          <div
-            class="w-20 h-20 rounded-xl bg-gradient-to-br from-neon to-neon2 flex items-center justify-center text-black font-bold text-xl"
-          >
-            <img
-              src="/assets/winter1x1.jpg"
-              alt="Akhil B Xavier"
-              class="w-full h-full rounded-xl object-cover"
-            />
+    <!-- Right Column: Interactive Terminal Widget -->
+    <div class="lg:col-span-5 w-full reveal-up delay-200">
+      <div class="tech-border rounded bg-surface-site shadow-2xl relative overflow-hidden spotlight-card" id="terminal-card">
+        
+        <!-- Terminal Header -->
+        <div class="bg-[#181818] border-b border-border-site px-4 py-2.5 flex items-center justify-between z-10 relative">
+          <div class="flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#1F1F1F] inline-block"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-[#1F1F1F] inline-block"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-[#1F1F1F] inline-block"></span>
           </div>
-          <div>
-            <h3 class="font-semibold text text-primary">Akhil B Xavier</h3>
-            <p class="text-xs text-tertiary">
-              Backend Dev · Embedded Systems · Design
-            </p>
+          <span class="font-mono text-[10px] text-text-secondary">sh - akhil@abx.os - ~/hq</span>
+          <div class="w-8"></div>
+        </div>
+
+        <!-- Terminal Body -->
+        <div class="p-5 font-mono text-xs leading-relaxed text-[#A1A1AA] h-[360px] flex flex-col justify-between z-10 relative" id="terminal-screen">
+          
+          <!-- Terminal Content Area -->
+          <div class="space-y-2 overflow-y-auto pr-1 flex-1 mb-4" id="terminal-logs">
+            <!-- Staggered Boot Logs inserted via script -->
+          </div>
+
+          <!-- Command Input Area -->
+          <div class="border-t border-border-site/50 pt-3 flex items-center gap-2">
+            <span class="text-[#4F9DFF]">akhil@abx.os:~$</span>
+            <div class="flex-1 flex items-center relative">
+              <input
+                type="text"
+                id="terminal-input"
+                class="bg-transparent border-none outline-none text-white w-full font-mono text-xs focus:ring-0 p-0"
+                autocomplete="off"
+                placeholder="type here..."
+                disabled
+              />
+              <span id="autocomplete-hint" class="absolute left-0 top-0 text-text-secondary/40 pointer-events-none select-none"></span>
+            </div>
           </div>
         </div>
 
-        <div class="grid grid-cols-2 gap-4 mb-6">
-          <div class="p-4 rounded-xl bg-white/5">
-            <div class="text-xs text-tertiary mb-1">Experience</div>
-            <div class="font-bold text-xl text-primary">3+ yrs</div>
-          </div>
-          <div class="p-4 rounded-xl bg-white/5">
-            <div class="text-xs text-tertiary mb-1">Projects</div>
-            <div class="font-bold text-xl text-primary">12+</div>
-          </div>
-          <div class="p-4 rounded-xl bg-white/5">
-            <div class="text-xs text-tertiary mb-1">Certs</div>
-            <div class="font-bold text-xl text-primary">4</div>
-          </div>
-          <div class="p-4 rounded-xl bg-white/5">
-            <div class="text-xs text-tertiary mb-1">Open Source</div>
-            <div class="font-bold text-xl text-primary">6 repos</div>
-          </div>
-        </div>
-
-        <div>
-          <div class="text-sm text-tertiary mb-3">Quick Links</div>
-          <div class="flex gap-3">
-            <a
-              href="https://dropanote.onrender.com/"
-              target="_blank"
-              class="px-4 py-2 rounded-lg bg-white/10 text-primary text-sm hover:bg-white/15 transition-colors"
-            >
-              DropaNote
-            </a>
-            <a
-              href="https://marketplace.visualstudio.com/items?itemName=winterx64.winteriscoding"
-              target="_blank"
-              class="px-4 py-2 rounded-lg bg-white/10 text-primary text-sm hover:bg-white/15 transition-colors"
-            >
-              VSCode Theme
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class="absolute -right-8 -bottom-8 w-40 h-40 rounded-full bg-gradient-to-br from-neon/20 to-neon2/10 blur-3xl"
-      >
       </div>
     </div>
   </div>
 </section>
 
 <script>
-  // Role rotation animation
-  const roles = [
-    "Backend Developer",
-    "Hardware Enthusiast",
-    "IoT Innovator",
-    "Open Source Contributor",
-    "UI/UX Designer",
-  ];
-
-  let roleIndex = 0;
-  const roleElement = document.getElementById("type-roles");
-
-  function rotateRole() {
-    if (!roleElement) return;
-    roleElement.style.opacity = "0";
-    roleElement.style.transform = "translateY(10px)";
-
-    setTimeout(() => {
-      roleIndex = (roleIndex + 1) % roles.length;
-      roleElement.textContent = roles[roleIndex];
-      roleElement.style.opacity = "1";
-      roleElement.style.transform = "translateY(0)";
-    }, 150);
+  // Spotlight coordinate tracking inside terminal card
+  const termCard = document.getElementById("terminal-card");
+  if (termCard) {
+    termCard.addEventListener("mousemove", (e: MouseEvent) => {
+      const rect = termCard.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      termCard.style.setProperty("--mouse-x", `${x}px`);
+      termCard.style.setProperty("--mouse-y", `${y}px`);
+    });
   }
 
-  if (roleElement) {
-    // Add transition styles
-    roleElement.style.transition = "opacity 0.3s ease, transform 0.3s ease";
-    // Start rotation
-    setInterval(rotateRole, 3000);
+  // Terminal logic
+  const inputEl = document.getElementById("terminal-input") as HTMLInputElement;
+  const logsEl = document.getElementById("terminal-logs");
+  const screenEl = document.getElementById("terminal-screen");
+  const hintEl = document.getElementById("autocomplete-hint");
+
+  const bootLogs = [
+    '<span class="text-[#4F9DFF]">// initializing abx.os kernel...</span>',
+    'load core system modules... <span class="text-[#4F9DFF]">OK</span>',
+    'loading network protocols (USMP)... <span class="text-[#4F9DFF]">OK</span>',
+    'connecting telemetry sockets... <span class="text-[#4F9DFF]">OK</span>',
+    'ready. Type <span class="text-white font-bold">\'help\'</span> for routines.'
+  ];
+
+  const commands: Record<string, string> = {
+    help: `Available routines:<br/>
+  - <span class="text-white font-bold">about</span>     :Philosophy & architectural values<br/>
+  - <span class="text-white font-bold">projects</span>  :View current code architecture logs<br/>
+  - <span class="text-white font-bold">status</span>    :Live server heartbeats & latency metrics<br/>
+  - <span class="text-white font-bold">clear</span>     :Purge logs`,
+    
+    about: `<span class="text-[#4F9DFF]">AKHIL B XAVIER // SYSTEMS BUILDER</span><br/>
+Product Engineer & Founder. I deconstruct abstract complexities into first-principles structures: performant databases, cryptographic network channels, and secure embedded firmware.`,
+    
+    projects: `Current Registries:<br/>
+  - [USMP]      : Unified Secure Multi-transport Protocol (Rust/C++)<br/>
+  - [DropaNote] : Feedback Webhook Ingestion Engine (Flask/Postgres)<br/>
+  - [Metaloom]  : Creative Tech WebGL UI Studio (Next.js/TS)`,
+    
+    status: `SYS.HEARTBEAT status checklist:<br/>
+  - Node Gateway : <span class="text-green-400">ONLINE</span><br/>
+  - Latency      : <span class="text-green-400">12ms</span> (stable)<br/>
+  - Port         : 4321/TCP (Secure)<br/>
+  - Memory usage : 42MB / 512MB`
+  };
+
+  const commandList = Object.keys(commands);
+  const cmdHistory: string[] = [];
+  let historyIndex = -1;
+
+  function appendLog(text: string, isCommand = false) {
+    if (!logsEl) return;
+    const div = document.createElement("div");
+    if (isCommand) {
+      div.className = "text-white mt-3 border-t border-border-site/30 pt-2";
+      div.innerHTML = `<span class="text-[#4F9DFF]">akhil@abx.os:~$</span> ${text}`;
+    } else {
+      div.className = "text-text-secondary leading-relaxed text-[11px]";
+      div.innerHTML = text;
+    }
+    logsEl.appendChild(div);
+    
+    setTimeout(() => {
+      if (screenEl) {
+        screenEl.scrollTop = screenEl.scrollHeight;
+      }
+    }, 20);
+  }
+
+  // Diagnostic boot sequence
+  let logIdx = 0;
+  function triggerBoot() {
+    if (logIdx < bootLogs.length) {
+      appendLog(bootLogs[logIdx]);
+      logIdx++;
+      setTimeout(triggerBoot, 350);
+    } else {
+      if (inputEl) {
+        inputEl.disabled = false;
+        inputEl.placeholder = "type help...";
+        inputEl.focus();
+      }
+    }
+  }
+
+  // Trigger boot on load
+  setTimeout(triggerBoot, 500);
+
+  // Autocomplete Hint updates
+  function updateHint() {
+    if (!hintEl || !inputEl) return;
+    const val = inputEl.value.trim().toLowerCase();
+    if (!val) {
+      hintEl.textContent = "";
+      return;
+    }
+    const match = commandList.find(c => c.startsWith(val));
+    if (match && match !== val) {
+      hintEl.textContent = val + match.substring(val.length);
+    } else {
+      hintEl.textContent = "";
+    }
+  }
+
+  if (inputEl) {
+    inputEl.addEventListener("input", updateHint);
+
+    inputEl.addEventListener("keydown", (e) => {
+      // Enter: Submit Command
+      if (e.key === "Enter") {
+        const fullCmd = inputEl.value.trim();
+        const cmd = fullCmd.toLowerCase().split(" ")[0];
+        
+        if (!fullCmd) return;
+        
+        appendLog(fullCmd, true);
+        cmdHistory.push(fullCmd);
+        historyIndex = cmdHistory.length;
+        
+        if (cmd === "clear") {
+          if (logsEl) logsEl.innerHTML = "";
+        } else if (cmd in commands) {
+          appendLog(commands[cmd]);
+        } else {
+          appendLog(`routine error: system command '${cmd}' not recognized. Try <span class="text-[#4F9DFF]">'help'</span>.`);
+        }
+        
+        inputEl.value = "";
+        if (hintEl) hintEl.textContent = "";
+      }
+      
+      // Tab: Autocomplete Command
+      if (e.key === "Tab") {
+        e.preventDefault();
+        const val = inputEl.value.trim().toLowerCase();
+        const match = commandList.find(c => c.startsWith(val));
+        if (match) {
+          inputEl.value = match;
+          if (hintEl) hintEl.textContent = "";
+        }
+      }
+
+      // Up Arrow: History Previous
+      if (e.key === "ArrowUp") {
+        e.preventDefault();
+        if (cmdHistory.length > 0 && historyIndex > 0) {
+          historyIndex--;
+          inputEl.value = cmdHistory[historyIndex];
+          updateHint();
+        }
+      }
+
+      // Down Arrow: History Next
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        if (historyIndex < cmdHistory.length - 1) {
+          historyIndex++;
+          inputEl.value = cmdHistory[historyIndex];
+          updateHint();
+        } else {
+          historyIndex = cmdHistory.length;
+          inputEl.value = "";
+          updateHint();
+        }
+      }
+    });
+
+    // Refocus on click
+    screenEl?.addEventListener("click", () => {
+      if (!inputEl.disabled) {
+        inputEl.focus();
+      }
+    });
   }
 </script>

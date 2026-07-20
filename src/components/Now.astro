@@ -1,0 +1,120 @@
+---
+// Now component refactored for OS window sizing
+---
+<div class="p-6 md:p-8 space-y-8">
+  <div class="space-y-2">
+    <span class="font-mono text-xs text-[#4F9DFF]">// 05. TELEMETRY LOGS</span>
+    <h2 class="text-2xl md:text-3xl font-heading font-bold text-white tracking-tight">
+      What I'm Building Now
+    </h2>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+    
+    <!-- Status Card 1: USMP -->
+    <div class="tech-card rounded p-4 flex flex-col justify-between space-y-4 spotlight-card" id="now-card-1">
+      <div class="space-y-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-1.5">
+            <span class="pulse-indicator"></span>
+            <span class="font-mono text-[9px] text-white">ACTIVE DEV</span>
+          </div>
+          <span class="font-mono text-[8px] text-[#A1A1AA]">USMP-CORE</span>
+        </div>
+        <h3 class="text-base font-bold text-white font-heading">USMP Protocol</h3>
+        <p class="text-text-secondary text-[11px] leading-relaxed font-sans">
+          Testing transport speeds over BLE channels. Hardening key-exchange buffers.
+        </p>
+      </div>
+      <div class="font-mono text-[8px] text-text-secondary pt-2 border-t border-border-site/30">
+        BRANCH: dev/transports
+      </div>
+    </div>
+
+    <!-- Status Card 2: DropaNote -->
+    <div class="tech-card rounded p-4 flex flex-col justify-between space-y-4 spotlight-card" id="now-card-2">
+      <div class="space-y-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-1.5">
+            <span class="pulse-indicator bg-yellow-500 after:bg-yellow-500"></span>
+            <span class="font-mono text-[9px] text-white">MAINTENANCE</span>
+          </div>
+          <span class="font-mono text-[8px] text-[#A1A1AA]">DROPA-INFRA</span>
+        </div>
+        <h3 class="text-base font-bold text-white font-heading">DropaNote</h3>
+        <p class="text-text-secondary text-[11px] leading-relaxed font-sans">
+          Upgrading rate limits and audit logs. Optimizing webhooks routing layers.
+        </p>
+      </div>
+      <div class="font-mono text-[8px] text-text-secondary pt-2 border-t border-border-site/30">
+        BRANCH: release/v2.1
+      </div>
+    </div>
+
+    <!-- Status Card 3: Metaloom -->
+    <div class="tech-card rounded p-4 flex flex-col justify-between space-y-4 spotlight-card" id="now-card-3">
+      <div class="space-y-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-1.5">
+            <span class="pulse-indicator"></span>
+            <span class="font-mono text-[9px] text-white">ACTIVE SHIP</span>
+          </div>
+          <span class="font-mono text-[8px] text-[#A1A1AA]">STUDIO-HQ</span>
+        </div>
+        <h3 class="text-base font-bold text-white font-heading">Metaloom Studio</h3>
+        <p class="text-text-secondary text-[11px] leading-relaxed font-sans">
+          Structuring visualizer canvas setups. Hardening responsive custom animations.
+        </p>
+      </div>
+      <div class="font-mono text-[8px] text-text-secondary pt-2 border-t border-border-site/30">
+        BRANCH: main
+      </div>
+    </div>
+
+  </div>
+
+  <div class="border border-border-site bg-[#181818] p-3 rounded font-mono text-[9px] text-text-secondary flex flex-col sm:flex-row items-center justify-between gap-2">
+    <div class="flex items-center gap-1.5">
+      <span class="w-1 h-1 rounded-full bg-green-500 animate-ping"></span>
+      <span>CLUSTER: abx-node-cluster-main.network</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <span id="uptime-clock">UPTIME: 00d 00h 00m 00s</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  const nowIds = ["now-card-1", "now-card-2", "now-card-3"];
+  nowIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener("mousemove", (e: MouseEvent) => {
+        const rect = el.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        el.style.setProperty("--mouse-x", `${x}px`);
+        el.style.setProperty("--mouse-y", `${y}px`);
+      });
+    }
+  });
+
+  const clockEl = document.getElementById("uptime-clock");
+  const startDate = new Date();
+  startDate.setDate(startDate.getDate() - 24);
+  startDate.setHours(startDate.getHours() - 14);
+  startDate.setMinutes(startDate.getMinutes() - 8);
+
+  function tickUptime() {
+    if (!clockEl) return;
+    const diff = Date.now() - startDate.getTime();
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const mins = Math.floor((diff / (1000 * 60)) % 60);
+    const secs = Math.floor((diff / 1000) % 60);
+    const pad = (num: number) => String(num).padStart(2, "0");
+    clockEl.textContent = `UPTIME: ${pad(days)}d ${pad(hours)}h ${pad(mins)}m ${pad(secs)}s`;
+  }
+  tickUptime();
+  setInterval(tickUptime, 1000);
+</script>

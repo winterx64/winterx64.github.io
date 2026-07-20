@@ -1,0 +1,64 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  width?: string;
+  height?: string;
+  defaultTop?: string;
+  defaultLeft?: string;
+  iconClass?: string;
+}
+
+const {
+  id,
+  title,
+  width = "640px",
+  height = "400px",
+  defaultTop = "15%",
+  defaultLeft = "20%",
+  iconClass = "fa-solid fa-folder",
+} = Astro.props;
+---
+<div
+  id={id}
+  class="os-window spotlight-card shadow-2xl"
+  style={`width: ${width}; height: ${height}; top: ${defaultTop}; left: ${defaultLeft};`}
+  data-window-id={id}
+>
+  <!-- Window Header (Drag Handle) -->
+  <div class="window-header font-mono text-[11px] text-text-secondary select-none">
+    <div class="flex items-center gap-2 drag-trigger flex-1 h-full py-1">
+      <i class={`${iconClass} text-[var(--color-accent-site)] text-[10px]`}></i>
+      <span class="text-white font-bold">{title}</span>
+    </div>
+    
+    <!-- OS Controls -->
+    <div class="flex items-center gap-3 font-mono text-[10px]">
+      <button class="win-btn-min hover:text-white transition-colors px-1" title="Minimize">[-]</button>
+      <button class="win-btn-max hover:text-white transition-colors px-1" title="Maximize">[+]</button>
+      <button class="win-btn-close hover:text-[#FF4F4F] text-[#A1A1AA] font-bold transition-colors px-1" title="Close">[X]</button>
+    </div>
+  </div>
+
+  <!-- Window Body -->
+  <div class="window-body">
+    <slot />
+  </div>
+
+  <!-- Resize Handle -->
+  <div class="resize-trigger"></div>
+</div>
+
+<script is:inline define:vars={{ id }}>
+  // Local card coordinate spotlight tracking for this window
+  const winEl = document.getElementById(id);
+  if (winEl) {
+    winEl.addEventListener("mousemove", (e) => {
+      const rect = winEl.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      winEl.style.setProperty("--mouse-x", `${x}px`);
+      winEl.style.setProperty("--mouse-y", `${y}px`);
+    });
+  }
+</script>
