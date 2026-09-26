@@ -3,9 +3,45 @@ import "../styles/global.css";
 
 interface Props {
   title?: string;
+  description?: string;
+  image?: string;
 }
 
-const { title = "winterx64 - maker · dev · hardware" } = Astro.props;
+const {
+  title = "winterx64 - maker · dev · hardware",
+  description = "Akhil B Xavier (winterx64) — Full Stack Developer & Hardware Enthusiast. IoT, web, and embedded systems.",
+  image = "/assets/winter1x1.jpg",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://winterx64.github.io");
+const socialImageURL = new URL(image, Astro.site ?? "https://winterx64.github.io");
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Akhil B Xavier",
+  "alternateName": "winterx64",
+  "url": "https://winterx64.github.io",
+  "image": new URL("/assets/winter1x1.jpg", Astro.site ?? "https://winterx64.github.io").toString(),
+  "jobTitle": "Full Stack Developer & Hardware Enthusiast",
+  "description": description,
+  "sameAs": [
+    "https://github.com/winterx64",
+    "https://linkedin.com/in/winterx64"
+  ]
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "winterx64 Portfolio",
+  "url": "https://winterx64.github.io",
+  "description": description,
+  "author": {
+    "@type": "Person",
+    "name": "Akhil B Xavier"
+  }
+};
 ---
 
 <!doctype html>
@@ -13,19 +49,42 @@ const { title = "winterx64 - maker · dev · hardware" } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>{title}</title>
 
-    <!-- SEO + Social -->
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content="Akhil B Xavier" />
     <meta
-      name="description"
-      content="Akhil B Xavier (winterx64) — Full Stack Developer & Hardware Enthusiast. IoT, web, and embedded systems."
+      name="keywords"
+      content="winterx64, Akhil B Xavier, Full Stack Developer, Hardware Enthusiast, Embedded Systems, IoT, USMP, DropaNote, Portfolio"
     />
-    <meta property="og:title" content="winterx64 Portfolio" />
-    <meta
-      property="og:description"
-      content="Full Stack Developer & Hardware Enthusiast"
-    />
+    <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#05060a" />
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="winterx64" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImageURL} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageURL} />
+    <meta name="twitter:creator" content="@winterx64" />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
 
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
